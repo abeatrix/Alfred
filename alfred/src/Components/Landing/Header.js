@@ -1,13 +1,17 @@
 import React from "react";
+import { HeaderContainer, HeaderBG, VideoBG, HeaderContent, HeaderH1  } from './HeaderElements'
+import Video from '../../assets/video.mp4'
 
 function Header() {
     return (
-        <header class="vertical-center">
-            <div>
-                <h1>Alfred</h1>
-                <h5>A butler for your portfolio.</h5>
-            </div>
-	    </header>
+        <HeaderContainer>
+            <HeaderBG>
+                <VideoBG autoPlay loop muted src={Video} type='video/mp4' />
+            </HeaderBG>
+            <HeaderContent>
+                    <HeaderH1>ALFRED</HeaderH1>
+            </HeaderContent>
+	    </HeaderContainer>
     );
 }
 
