@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -6,13 +5,13 @@ export const FooterContainer = styled.footer`
     background: black;
 `
 export const FooterWrapper = styled.div`
-padding: 50px 25px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-max-width: 1100px;
-margin: 0 auto;
+    padding: 50px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
 `
 
 export const FooterLinksContainer = styled.div`
@@ -47,7 +46,7 @@ export const FooterLink = styled(Link)`
     font-size: 15px;
 
     &:hover {
-        color: green;
+        color: #65E082;
         transition: 0.3s ease-out;
     }
 `
@@ -73,11 +72,16 @@ export const SocialLogo = styled(Link)`
     align-items: center;
     margin-bottom: 15px;
     font-weight: bold;
+
+    &:hover {
+        color: #65E082;
+        transition: 0.3s ease-out;
+    }
 `
 
 export const CopyRights = styled.small`
-color: white;
-margin-bottom: 15px;
+    color: white;
+    margin-bottom: 15px;
 `
 
 export const SocialIcons = styled.div`
@@ -90,4 +94,9 @@ export const SocialIcons = styled.div`
 export const SocialIconLink = styled(Link)`
     color: white;
     font-size: 20px;
+
+    &:hover {
+        color: #65E082;
+        transition: 0.3s ease-out;
+    }
 `
