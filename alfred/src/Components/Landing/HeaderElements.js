@@ -40,7 +40,7 @@ export const HeaderH1 = styled.h1 `
     color: white;
     font-size: 100px;
     text-align: center;
-    font-family: 'Rubik Mono One', sans-serif;
+    font-family: 'Sarina', cursive;
 `
 export const HeaderP = styled.p `
     margin-top: 25px;

@@ -1,17 +1,47 @@
-export const SubHeaderONE = {
+export const subHeaderOne = {
     id: 'one',
     lightMode: true,
-    lightModeText: false,
-    lightTextDesc: false,
+    lightTextSubTitle: true,
     subheaderText: 'Portfolio Tracker',
     subheadingText: 'Beginner Friendly',
     subtitleText: 'this is a testing section.',
     buttonText: 'Sign Up Here',
     imgStart: true,
-    img: require('../../../assets/img1.png'),
-    alt: '',
+    img: 'https://i.ibb.co/RpxRF1m/img4.png',
+    alt: 'one',
     light: true,
     primary: true,
-    lightText: true,
-}
+    darkModeText: false,
+};
 
+export const subHeaderTwo = {
+    id: 'two',
+    lightMode: false,
+    lightTextSubTitle: false,
+    subheaderText: 'Portfolio Tracker',
+    subheadingText: 'Beginner Friendly',
+    subtitleText: 'this is a testing section.',
+    buttonText: 'Sign Up Here',
+    imgStart: false,
+    img: 'https://i.ibb.co/NFgyj2n/img3.png',
+    alt: 'two',
+    light: false,
+    primary: false,
+    darkModeText: true,
+};
+
+export const subHeaderThree = {
+    id: 'one',
+    lightMode: true,
+    lightTextSubTitle: true,
+    subheaderText: 'Portfolio Tracker',
+    subheadingText: 'Beginner Friendly',
+    subtitleText: 'this is a testing section.',
+    buttonText: 'Sign Up Here',
+    imgStart: true,
+    img: 'https://i.ibb.co/b7Gq1Zx/img2.png',
+    alt: 'one',
+    light: true,
+    primary: true,
+    darkModeText: false,
+};

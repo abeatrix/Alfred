@@ -9,7 +9,7 @@ function Header() {
                 <VideoBG autoPlay loop muted src={Video} type='video/mp4' />
             </HeaderBG>
             <HeaderContent>
-                    <HeaderH1>ALFRED</HeaderH1>
+                    <HeaderH1>Alfred</HeaderH1>
             </HeaderContent>
 	    </HeaderContainer>
     );
