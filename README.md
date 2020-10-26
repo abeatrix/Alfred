@@ -29,14 +29,23 @@ Website is made up of two pages:
 ## Data Models / ERD
 
 ## MVP
-Database
-Back-end
-Front-end
+Back-end w/ Database
+Front-end w/ Landing Page + Portfolio Page
 Full CRUD functionality
 Deployment
 
 ## Milestones
-Divide your work into parts - the most essential features for your MVP, features that are important but not essential, and features that can be saved for a later iteration. Create 3-5 major milestones with dates outlining when you expect essential features will be done.
+- Database
+  - MongoDB
+- Back-end
+  - Model setup
+  - Routes setup
+- Front-end
+  - Create components
+  - Landing Page
+  - Portfolio Page
+  - React Routes
+- Deployment
 
 ## Future Plans
 - Paper-Trade
