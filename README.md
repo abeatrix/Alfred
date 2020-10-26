@@ -1,6 +1,6 @@
 # Alfred
 A simple portfolio tracker for everyone.
-<a href="https://ibb.co/H7fr92M"><img src="https://i.ibb.co/TcxHNTn/Landing-Page.png" alt="Landing-Page" border="0" width="100%"></a>
+<img src="https://i.ibb.co/TcxHNTn/Landing-Page.png" alt="Landing-Page" border="0" width="100%">
 
 ## Problems
 Most of the portfolio trackers available to public have a complicated registration process and the layouts are not user/beginner-friendly.
@@ -22,12 +22,12 @@ Website is made up of two pages:
     - Sidebar to manage portfolio (add/remove stock to/from portfolio)
 
 ## Wireframes
-<a href="https://ibb.co/5F4cBcW"><img src="https://i.ibb.co/QdQmrmF/Login.png" alt="Login" border="0" width="100%"></a>
-<a href="https://ibb.co/tYtzsqv"><img src="https://i.ibb.co/ZcPS8BF/Signup.png" alt="Signup" border="0" width="100%"></a>
-<a href="https://ibb.co/mDrKwx4"><img src="https://i.ibb.co/98m0LMW/Alfred-v1-001.png" alt="Alfred-v1-001" border="0" width="100%"></a>
-<a href="https://ibb.co/y8kyqB7"><img src="https://i.ibb.co/sF1wqJz/Alfred-v1-002.png" alt="Alfred-v1-002" border="0" width="100%"></a>
-<a href="https://ibb.co/YLkVGB4"><img src="https://i.ibb.co/z4RtwVW/Alfred-v2-001.png" alt="Alfred-v2-001" border="0" width="100%"></a>
-<a href="https://ibb.co/CvDnqSb"><img src="https://i.ibb.co/vmRJbM3/Alfred-v2-002.png" alt="Alfred-v2-002" border="0" width="100%"></a>
+<img src="https://i.ibb.co/QdQmrmF/Login.png" alt="Login" border="0" width="100%">
+<img src="https://i.ibb.co/ZcPS8BF/Signup.png" alt="Signup" border="0" width="100%">
+<img src="https://i.ibb.co/98m0LMW/Alfred-v1-001.png" alt="Alfred-v1-001" border="0" width="100%">
+<img src="https://i.ibb.co/sF1wqJz/Alfred-v1-002.png" alt="Alfred-v1-002" border="0" width="100%">
+<img src="https://i.ibb.co/z4RtwVW/Alfred-v2-001.png" alt="Alfred-v2-001" border="0" width="100%">
+<img src="https://i.ibb.co/vmRJbM3/Alfred-v2-002.png" alt="Alfred-v2-002" border="0" width="100%">
 
 ## Data Models / ERD
 <img src="https://i.ibb.co/W3KTSWj/alfred-ERD.jpg" alt="alfred-ERD" border="0"><img src="https://i.ibb.co/XbG7mmV/alfred-ERDpapertrade.png" alt="alfred-ERDpapertrade" border="0">
