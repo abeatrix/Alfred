@@ -1,3 +1,4 @@
 alfred/.env
 backend/node_modules
 alfred/node_modules
+backend/.env

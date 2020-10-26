@@ -1,15 +1,16 @@
 //  HUB FOR MODELS AND DB CONNECTIONS
 const mongoose = require('mongoose');
 
+require("dotenv").config(); //USE .ENV FILE
 const connectionString = process.env.MONGODB_URL || 'mongodb://localhost:27017/alfred-db';
 
 /* LOOKING FOR FEEDBACKS */
 mongoose.connect(connectionString, {
-    userNewUrlParser: true,
+    useNewUrlParser: true,
     userCreateIndex: true,
     useUnifiedTopology: true,
     userFindAndModify: true,
-}).then(() => console.log(`MongoDB successfully connected to ${connectionString}`)
+}).then(() => console.log(`MongoDB successfully connected to ${connectionString}`))
 .catch((err) => console.log(`MongoDB connection error: ${err}`));
 
 // EXPORT

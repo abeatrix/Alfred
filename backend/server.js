@@ -3,21 +3,28 @@ const express = require('express');
 const cors = require('cors');
 
 // INTERNAL IMPORTS
-// const routes = require('./routes');
+const routes = require('./routes');
+const db = require("./models");
+
+// all uses of .env
+// require("dotenv").config();
+const PORT = process.env.PORT || 4000;
 
 /* INSTANCED MODULES */
 const app = express();
 
-// MIDDLEWARE - JSON PARSING
+// // MIDDLEWARE - JSON PARSING
 app.use(express.json());
 app.use(cors());
 
 // MIDDLEWARE - API Routes
-app.use('/api/v1/portfolios', route.portfolio);
+// app.use('/api/v1/portfolios', routes.portfolio);
 
 // USERS ROUTES
-app.use('api/v1/users', routes.user);
+// app.use('api/v1/users', routes.user);
 
+// AUTH ROUTES
+app.use('/api/auth/', routes.auth);
 
 // SERVER LISTENER
-app.listen(process.env.PORT || 4000, () => console.log(`server is running, for now...`));
+app.listen(PORT, () => console.log(`server is running on PORT ${PORT}`));
