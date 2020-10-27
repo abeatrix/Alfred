@@ -169,3 +169,71 @@ exports.loginController = (req, res) => {
         })
     }
 }
+
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT)
+
+exports.googleController = (req, res) => {
+    //GET TOKEN
+    const idToken = req.body.idToken
+    console.log('GOOGLE LOGIN RESPONSE',idToken)
+    //VERIFY TOKEN
+    client.verifyIdToken(
+        {
+            idToken,
+            audience: process.env.GOOGLE_CLIENT
+        }
+        ).then(response=>{
+        console.log('GOOGLE LOGIN RESPONSE',response)
+        const {
+            email_verified,
+            name,
+            email
+        } = response.payload;
+        // is email verified?
+        if (email_verified) {
+            User.findOne({email}).exec((err, user)=>{
+                //if email exist in backend = user
+                if(user){
+                    const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {
+                        expiresIn: '7d'
+                    })
+
+                    const {_id, email, name} = user;
+                    // send res token to react
+                    return res.json({
+                        token,
+                        user: {_id, email, name}
+                    })
+                } else {
+                    let password = email + process.env.JWT_SECRET;
+                    let username = name
+                    user = new User({username, email, password})
+                    user.save((err, data) => {
+                        if(err){
+                            return res.status(400).json({
+                                error: 'unable to signup a new account with google'
+                            })
+                        }
+
+                        const token = jwt.sign(
+                            { _id: data._id },
+                            process.env.JWT_SECRET,
+                            { expiresIn: '7d' }
+                        );
+
+                        const { _id, email, username } = data;
+                        return res.json({
+                            token,
+                            user: {_id, email, username}
+                        })
+                    })
+                }
+            })
+        } else {
+            return res.status(400).json({
+                error: 'failed login attempt'
+            })
+        }
+    })
+}

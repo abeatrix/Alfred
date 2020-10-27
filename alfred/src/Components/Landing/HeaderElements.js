@@ -26,6 +26,7 @@ export const VideoBG = styled.video`
     object-fit: cover;
     background: black;
     opacity: 50%;
+    z-index: 0;
 `
 export const HeaderContent = styled.div`
     z-index: 3;
@@ -47,4 +48,32 @@ export const HeaderP = styled.p `
     color: white;
     flex-direction: column;
     align-items: center;
+`
+
+export const WhiteBtn = styled.button`
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    background: white
+    color: black;
+    white-space: nowrap;
+    padding: 14px 50px;
+    position: absolute;
+    top: 20px;
+    right: 20px
+`
+
+export const GreenBtn = styled.button`
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    background: #50E68C;
+    color: white;
+    white-space: nowrap;
+    padding: 14px 50px;
+    position: absolute;
+    top: 20px;
+    right: 20px
 `

@@ -6,7 +6,6 @@ import Footer from './Components/Footer/index'
 function App() {
   return (
     <div className="App">
-      <TopNavbar />
       <Landing />
       <Footer />
     </div>

@@ -3,9 +3,9 @@ import { ToastContainer, toast } from 'react-toastify';
 // import Toast from 'react-bootstrap/Toast'
 import { authenticate, isAuth } from '../../config/auth'
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Link, Redirect, withRouter} from 'react-router-dom';
 
-import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text } from './SingupElements'
+import { Container, FormWrap, Icon, FormContent, Form, SignupLogo, SigninLogo, FormLabel, FormInput, FormButton, Text, TitleWrapper } from './SingupElements'
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -54,18 +54,20 @@ const Signup = () => {
                 {isAuth() ? <Redirect to='/' /> : null }
                 <ToastContainer />
                 <FormWrap>
-                    <Icon to='/'>alfred</Icon>
+                    <NavLink to='/'><Icon>alfred</Icon></NavLink>
                     <FormContent>
                         <Form onSubmit={handleSubmit}>
-                            <FormH1>Sign Up here</FormH1>
-                            <FormLabel htmlFor='for'>Username</FormLabel>
-                            <FormInput type='text' name='username' onChange={handleChange('username')} required/>
-                            <FormLabel htmlFor='for'>Email</FormLabel>
-                            <FormInput type='email' name='email' onChange={handleChange('email')} required/>
-                            <FormLabel htmlFor='for'>Password</FormLabel>
-                            <FormInput type='password' name='password' onChange={handleChange('password1')} required />
-                            <FormLabel htmlFor='for'>Confirm Password</FormLabel>
-                            <FormInput type='password' onChange={handleChange('password2')} required />
+                            <TitleWrapper>
+                                <NavLink to='/signin'><SigninLogo>Sign In</SigninLogo></NavLink><NavLink to='/signup'><SignupLogo>Sign Up</SignupLogo></NavLink>
+                            </TitleWrapper>
+                            {/* <FormLabel htmlFor='for'>Username</FormLabel> */}
+                            <FormInput type='text' name='username' value='Username' onChange={handleChange('username')} required/>
+                            {/* <FormLabel htmlFor='for'>Email</FormLabel> */}
+                            <FormInput type='email' name='email' value='Email' onChange={handleChange('email')} required/>
+                            {/* <FormLabel htmlFor='for'>Password</FormLabel> */}
+                            <FormInput type='password' name='password' value='Password' onChange={handleChange('password1')} required />
+                            {/* <FormLabel htmlFor='for'>Confirm Password</FormLabel> */}
+                            <FormInput type='password' value='Confirm Password' onChange={handleChange('password2')} required />
                             <FormButton type='submit'>Sign Up</FormButton>
                             <Text>Already have an account?</Text>
                         </Form>

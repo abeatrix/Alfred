@@ -4,7 +4,7 @@ import { isAuth } from '../../config/auth'
 import {Navbar, Nav, NavDropdown, Form, Button, FormControl} from 'react-bootstrap'
 import {WhiteBtn, GreenBtn} from './NavbarEle'
 
-const TopNavbar = () => {
+const LandingNavBar = () => {
   return (
     <Navbar style={{backgroundColor: 'black'}} variant='dark' expand="lg">
       <Navbar.Brand href="#home">Alfred</Navbar.Brand>
@@ -40,4 +40,4 @@ const TopNavbar = () => {
   );
 };
 
-export default TopNavbar;
+export default LandingNavBar;

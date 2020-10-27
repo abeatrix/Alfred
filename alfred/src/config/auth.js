@@ -1,4 +1,5 @@
 import cookie from 'js-cookie'
+import { GoogleLogout } from 'react-google-login';
 
 // Set in Cookie
 export const setCookie = (key, value) => {
@@ -18,7 +19,7 @@ export const removeCookie = key => {
     }
 }
 
-// Get from cookie like token
+// Get token from cookie
 export const getCookie = key => {
     if(window !== 'undefined') {
         return cookie.get(key)
@@ -28,7 +29,7 @@ export const getCookie = key => {
 // Set in localstorage
 export const setLocalStorage = (key, value) => {
     if(window !== 'undefined'){
-        localStorage.removeItem(key)
+        localStorage.setItem(key, JSON.stringify(value));
     }
 }
 
@@ -43,28 +44,29 @@ export const removeLocalStorage = key => {
 export const authenticate = (res, next) => {
     setCookie('token', res.data.token)
     setLocalStorage('user', res.data.user)
-    next()
+    next();
 }
 
 // Signout
 export const signout = next => {
-    removeCookie('token')
-    removeLocalStorage('user')
+    removeCookie('token');
+    removeLocalStorage('user');
+    next();
 }
 
 // Get user info from localstroage
 export const isAuth = () => {
-    if(window !== 'undefined'){
-        const cookieChecked = getCookie('token')
-        if(cookieChecked){
-            if(localStorage.getItem('user')){
-                return JSON.parse(localStorage.getItem('user'))
+    if (window !== 'undefined') {
+        const cookieChecked = getCookie('token');
+        if (cookieChecked) {
+            if (localStorage.getItem('user')) {
+                return JSON.parse(localStorage.getItem('user'));
             } else {
-                return false
+                return false;
             }
         }
     }
-}
+};
 
 // Update user data in localstorage
 export const updateUser = (res, next) => {
