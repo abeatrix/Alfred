@@ -2,12 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter as Router } from 'react-router-dom';
+import SignInPage from './pages/singin'
+import SignupPage from './pages/signup'
+import ActivatePage from './pages/activate'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css'
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App/>
+      <Switch>
+          <Route path='/' component={App} exact />
+          <Route path='/signin' component={SignInPage} exact />
+          <Route path='/signup' component={SignupPage} exact />
+          <Route path='/users/activate/:token' component={ActivatePage} exact />
+      </Switch>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

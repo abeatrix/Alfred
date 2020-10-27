@@ -17,9 +17,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// MIDDLEWARE - API Routes
-// app.use('/api/v1/portfolios', routes.portfolio);
-
 // USERS ROUTES
 // app.use('api/v1/users', routes.user);
 
