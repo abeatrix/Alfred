@@ -56,8 +56,8 @@ const Signup = () => {
                 <FormWrap>
                     <Icon to='/'>alfred</Icon>
                     <FormContent>
-                        <Form action='#' onSubmit={handleSubmit}>
-                            <FormH1>Sign in here</FormH1>
+                        <Form onSubmit={handleSubmit}>
+                            <FormH1>Sign Up here</FormH1>
                             <FormLabel htmlFor='for'>Username</FormLabel>
                             <FormInput type='text' name='username' onChange={handleChange('username')} required/>
                             <FormLabel htmlFor='for'>Email</FormLabel>

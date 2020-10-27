@@ -17,6 +17,7 @@ exports.registerController = (req, res) => {
     console.log(username, email, password)
     const errors = validationResult(req)
 
+
     if(!errors.isEmpty()){
         const firstError = errors.array().map(error => error.msg)[0]
         return res.status(422).json({
@@ -49,13 +50,13 @@ exports.registerController = (req, res) => {
 
         const emailMsg = {
             from: process.env.EMAIL_FROM,
-            to: 'beatrixwho@gmail.com',
+            to: email,
             subject: '[Alfred] Account activation link',
             html: `
-            <h1>Please Click to link to activate</h1>
-            <p1>${process.env.CLIENT_URL}/users/activate/${token}</p>
+            <h1>Please Click <a href='${process.env.CLIENT_URL}/users/activate/${token}'>here</a> to activate</h1>
             <hr/>
             <p>${process.env.CLIENT_URL}</p>
+            <p>The Alfred Team</p>
             `
         };
 
@@ -136,7 +137,7 @@ exports.loginController = (req, res) => {
             }
 
             // //Authentication
-            // if(!user.authenticate(password)){
+            // if(!password){
             //     return res.status(400).json({
             //         error: 'The entered info does not match our database'
             //     })
