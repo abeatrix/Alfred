@@ -38,12 +38,8 @@ class SearchContainer extends React.Component {
             query={this.state.query}
             handleInput={this.handleInput}
             handleSubmit={this.handleSubmit}/>
-            <div className="">
             {this.state.searched ?
-            <div class="jumbotron jumbotron-fluid text-center" style={{margin: '3%'}}>
-                <Results data={this.state.results} />
-            </div> : null}
-            </div>
+            <Results data={this.state.results} /> : null}
         </>
         );
     }

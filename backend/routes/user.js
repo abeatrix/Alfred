@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
+// imports
+const router = require('express').Router();
 const ctrl = require('../controllers');
 
-// router.get('/', ctrl.user.show);
+router.get('/:id', ctrl.user.show);
+router.put('/:id', ctrl.games.update);
 
 module.exports = router;
