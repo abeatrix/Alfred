@@ -27,6 +27,8 @@ export const GreenBtn = styled.button`
     padding: 14px 50px;
 `
 
-// export const NavLogo = styled(LinkRouter)`
-//     color: white;
-// `
+export const NavLogo = styled.h3`
+    color: #6FFFB0;
+    text-align: center;
+    font-family: 'Sarina', cursive;
+`

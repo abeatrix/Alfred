@@ -38,7 +38,7 @@ export const HeaderContent = styled.div`
     align-items: center;
 `
 export const HeaderH1 = styled.h1 `
-    color: white;
+    color: #6FFFB0;
     font-size: 100px;
     text-align: center;
     font-family: 'Sarina', cursive;

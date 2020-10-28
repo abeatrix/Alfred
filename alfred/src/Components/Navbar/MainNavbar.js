@@ -1,40 +1,40 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { isAuth } from '../../config/auth'
-import {Navbar, Nav, NavDropdown, Form, Button, FormControl} from 'react-bootstrap'
-import {WhiteBtn, GreenBtn} from './NavbarEle'
+import {Navbar, Nav, NavDropdown, Form, Button, FormControl, DropdownButton, Dropdown} from 'react-bootstrap'
+import {WhiteBtn, GreenBtn, NavLogo} from './NavbarEle'
 
 const MainNavbar = () => {
+  const history = useHistory();
+  const logout = () => {
+    localStorage.clear();
+    if(!isAuth()){
+        history.push('/')
+    }
+  }
+
   return (
     <Navbar style={{backgroundColor: 'black'}} variant='dark' expand="lg">
-      <Navbar.Brand href="#home">Alfred</Navbar.Brand>
+      <Navbar.Brand href="#home"><NavLogo>Alfred</NavLogo></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          {/* <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>  */}
         </Nav>
         {isAuth() ?
-        <WhiteBtn>Sign Out</WhiteBtn>
-        // <Form inline>
-        //   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        //   <Button variant="outline-light">Search</Button>
-        // </Form>
+          <Dropdown>
+            <Dropdown.Toggle variant="link" id="dropdown-basic">
+              Profile Picture
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#/action-1">Portfolio</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Paper Trade</Dropdown.Item>
+              <Dropdown.Item onClick={logout}>Sign Out</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         :
         <GreenBtn>Sign In</GreenBtn>
         }
-
       </Navbar.Collapse>
     </Navbar>
   );
