@@ -39,7 +39,7 @@ export const SubItemsWrapper = styled.div`
 `
 
 export const SubHeader = styled.p`
-color: ${({darkModeText }) => (darkModeText ? 'white' : '#00873D')};
+    color: ${({darkModeText }) => (darkModeText ? '#6FFFB0' : '#00873D')};
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 15px;
@@ -54,7 +54,7 @@ export const SubHeading = styled.h1`
     font-size: 45px;
     line-height: 1.1;
     font-weight: 500;
-    color: ${({darkModeText }) => (darkModeText ? 'white' : '#50E68C')};
+    color: ${({darkModeText }) => (darkModeText ? '#6FFFB0' : '#00873D')};
 `
 export const SubTitle = styled.p`
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -62,7 +62,7 @@ export const SubTitle = styled.p`
     margin-bottom: 35px;
     font-size: 15px;
     line-height: 25px;
-    color: ${({darkModeText}) => (darkModeText ? '#6FFFB0' : '#00C781')};
+    color: ${({darkModeText}) => (darkModeText ? '#6FFFB0' : '#00873D')};
 `
 export const BtnContainer = styled.div`
     display: flex;

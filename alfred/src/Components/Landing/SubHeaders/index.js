@@ -36,7 +36,7 @@ const SubHeaders = ({
                     <SubColumn1>
                         <SubItemsWrapper>
                             <SubHeader darkModeText={darkModeText}> {subheaderText} </SubHeader>
-                            <SubHeading>{subheadingText}</SubHeading>
+                            <SubHeading darkModeText={darkModeText}> {subheadingText}</SubHeading>
                             <SubTitle darkModeText={darkModeText}>{subtitleText}</SubTitle>
                             <BtnContainer lightMode={lightMode}>
                                 {(buttonText) ? <SubHeaderBtn lightMode={lightMode}>{buttonText}</SubHeaderBtn> : null}
