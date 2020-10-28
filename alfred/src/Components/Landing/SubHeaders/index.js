@@ -37,14 +37,14 @@ const SubHeaders = ({
                         <SubItemsWrapper>
                             <SubHeader darkModeText={darkModeText}> {subheaderText} </SubHeader>
                             <SubHeading>{subheadingText}</SubHeading>
-                            <SubTitle lightText={darkModeText}>{subtitleText}</SubTitle>
+                            <SubTitle darkModeText={darkModeText}>{subtitleText}</SubTitle>
                             <BtnContainer lightMode={lightMode}>
                                 {(buttonText) ? <SubHeaderBtn lightMode={lightMode}>{buttonText}</SubHeaderBtn> : null}
                             </BtnContainer>
                         </SubItemsWrapper>
                     </SubColumn1>
                     <SubColumn2>
-                        <ImgWrapper>
+                        <ImgWrapper lightMode={lightMode}>
                         <Img src={img} alt={alt} />
                         </ImgWrapper>
                     </SubColumn2>

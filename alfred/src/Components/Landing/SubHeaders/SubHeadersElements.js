@@ -39,7 +39,8 @@ export const SubItemsWrapper = styled.div`
 `
 
 export const SubHeader = styled.p`
-    color: green;
+color: ${({darkModeText }) => (darkModeText ? 'white' : '#00873D')};
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 15px;
     letter-spacing: 1.5px;
@@ -48,6 +49,7 @@ export const SubHeader = styled.p`
 `
 
 export const SubHeading = styled.h1`
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin-bottom: 25px;
     font-size: 45px;
     line-height: 1.1;
@@ -55,11 +57,12 @@ export const SubHeading = styled.h1`
     color: ${({darkModeText }) => (darkModeText ? 'white' : '#50E68C')};
 `
 export const SubTitle = styled.p`
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     max-width: 500px;
     margin-bottom: 35px;
     font-size: 15px;
     line-height: 25px;
-    color: ${({darkModeText }) => (darkModeText ? 'white' : '#50E68C')};
+    color: ${({darkModeText}) => (darkModeText ? '#6FFFB0' : '#00C781')};
 `
 export const BtnContainer = styled.div`
     display: flex;
@@ -70,6 +73,7 @@ export const BtnContainer = styled.div`
 export const ImgWrapper = styled.div`
     max-width: 550px;
     height: 100%;
+    text-align: ${({lightMode }) => (lightMode ? 'right' : 'left')};
 `
 
 export const Img = styled.img`

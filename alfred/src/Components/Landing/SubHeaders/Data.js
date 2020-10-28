@@ -4,7 +4,7 @@ export const subHeaderOne = {
     lightTextSubTitle: true,
     subheaderText: 'Make Learning Easy',
     subheadingText: 'Learn For Free',
-    subtitleText: '',
+    subtitleText: 'Paper Trading is the best way to get your feet wet in the stock market!',
     buttonText: 'Sign Up Here',
     imgStart: true,
     img: 'https://www.flaticon.com/svg/static/icons/svg/3587/3587791.svg',
