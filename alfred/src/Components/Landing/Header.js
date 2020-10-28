@@ -24,7 +24,7 @@ const Header = () => {
                 {isAuth() ? <WhiteBtn onClick={logout}>Sign Out</WhiteBtn> : <NavLink to={"/signin"}><GreenBtn>Sign In</GreenBtn></NavLink>}
                 <HeaderContent>
                         <HeaderH1>Alfred</HeaderH1>
-                        {isAuth() ? null : <NavLink to={"/signup"}><HeaderBtn>Sign Up</HeaderBtn></NavLink> }
+                        {isAuth() ? <NavLink to={"/portfolio"}><HeaderBtn>Your Portfolio</HeaderBtn></NavLink> : <NavLink to={"/signup"}><HeaderBtn>Sign Up</HeaderBtn></NavLink> }
                 </HeaderContent>
             </HeaderContainer>
         </>
