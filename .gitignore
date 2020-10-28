@@ -2,3 +2,27 @@ alfred/.env
 backend/node_modules
 alfred/node_modules
 backend/.env
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+alfred/node_modules
+alfred/.pnp
+alfred/.pnp.js
+
+# testing
+alfred/coverage
+
+# production
+alfred/build
+
+# misc
+alfred/.DS_Store
+alfred/alfred.env.local
+alfred/.env.development.local
+alfred/.env.test.local
+alfred/.env.production.local
+
+alfred/npm-debug.log*
+alfred/yarn-debug.log*
+alfred/yarn-error.log*

@@ -7,11 +7,11 @@ export const SubContainer = styled.div`
 
 export const SubWrapper = styled.div`
     displayed: grid;
-    height: 550px;
+    height: 500px;
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 25px;
+    padding: 5% 25px;
     justify-content: center;
 `
 export const SubRow = styled.div`
@@ -19,6 +19,7 @@ export const SubRow = styled.div`
     grid-auto-columns: minmax(auto, 2fr);
     align-items: center;
     ${({imgStart}) => (imgStart ? `grid-template-areas:'col2 col1'` : `grid-template-areas: 'col1 col2'` )};
+    text-align: ${({lightMode }) => (lightMode ? 'left' : 'right')};
 `
 
 export const SubColumn1 = styled.div`
@@ -63,6 +64,7 @@ export const SubTitle = styled.p`
 export const BtnContainer = styled.div`
     display: flex;
     justify-content: flex-start;
+    float: ${({lightMode }) => (lightMode ? 'left' : 'right')};
 `
 
 export const ImgWrapper = styled.div`
@@ -71,8 +73,19 @@ export const ImgWrapper = styled.div`
 `
 
 export const Img = styled.img`
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
     margin: 10px 0 0 0;
     padding-right: 0;
+`
+export const SubHeaderBtn = styled.button`
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    background: ${ ({ lightMode }) => (lightMode ? '#50E68C' : 'white')};
+    color: black;
+    white-space: nowrap;
+    padding: 14px 50px;
+    font-family: 'Arial Black', cursive;
 `

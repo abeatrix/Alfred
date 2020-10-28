@@ -101,6 +101,7 @@ export const SigninLogo = styled.div`
     color: white;
     text-align: center;
     display: inline;
+    font-family: Arial Black;
 `
 
 export const SignupLogo = styled.div`
@@ -112,4 +113,5 @@ export const SignupLogo = styled.div`
     color: white;
     text-align: center;
     display: inline;
+    font-family: Arial Black;
 `

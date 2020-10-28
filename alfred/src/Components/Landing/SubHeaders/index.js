@@ -10,6 +10,7 @@ import {
     SubHeading,
     SubTitle,
     BtnContainer,
+    SubHeaderBtn,
     ImgWrapper,
     Img,
 } from "./SubHeadersElements";
@@ -31,14 +32,14 @@ const SubHeaders = ({
     return (
         <SubContainer lightMode={lightMode} id={id}>
             <SubWrapper>
-                <SubRow imgStart={imgStart}>
+                <SubRow imgStart={imgStart} lightMode={lightMode}>
                     <SubColumn1>
                         <SubItemsWrapper>
                             <SubHeader darkModeText={darkModeText}> {subheaderText} </SubHeader>
                             <SubHeading>{subheadingText}</SubHeading>
                             <SubTitle lightText={darkModeText}>{subtitleText}</SubTitle>
-                            <BtnContainer>
-                                <button>{buttonText}</button>
+                            <BtnContainer lightMode={lightMode}>
+                                {(buttonText) ? <SubHeaderBtn lightMode={lightMode}>{buttonText}</SubHeaderBtn> : null}
                             </BtnContainer>
                         </SubItemsWrapper>
                     </SubColumn1>

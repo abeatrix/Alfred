@@ -3,11 +3,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import { authenticate, isAuth} from '../../config/auth'
 import axios from 'axios';
 import GoogleLogin from 'react-google-login';
-import { NavLink, Link, Redirect, withRouter} from 'react-router-dom';
-
+import { NavLink, Link, Redirect, withRouter, useHistory} from 'react-router-dom';
+import { Divider } from 'rsuite';
 import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text, SignupLogo, SigninLogo, TitleWrapper } from './SigninElements'
 
-const SignIn = (props) => {
+const SignIn = () => {
+    const history = useHistory();
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -36,7 +38,7 @@ const SignIn = (props) => {
     const gLoginSuccess = response => {
         authenticate(response, () => {
             if(isAuth()){
-                this.props.history.push('/')
+                history.push('/')
             }
         })
     }
@@ -60,23 +62,15 @@ const SignIn = (props) => {
                             email: '',
                             password: '',
                         })
-                        toast.success(`Hey ${res.data.user.username}, Welcome back!`);
                     })
                     if(isAuth()){
-                        this.props.history.push('/')
+                        history.push('/')
+                        toast.success(`Hey ${res.data.user.username}, Welcome back!`);
                     }
-
                 })
-                // .catch(err => {
-                //     setFormData({
-                //         ...formData,
-                //         email: '',
-                //         password: '',
-                //         status: 'Sign In'
-                //     });
-                //     console.log(err.res);
-                //     // toast.error(err.res.data.errors);
-                // });
+                .catch(err => {
+                    {(err.response) ? toast.error(err.response.data.errors) : toast.error('No Idea')}
+                });
         } else {
             toast.error('All fields are required.');
         }
@@ -94,22 +88,21 @@ const SignIn = (props) => {
                     <FormContent>
                         <Form onSubmit={handleSubmit}>
                             <TitleWrapper>
+                            <hr />
                             <NavLink to='/signin'><SigninLogo>Sign In</SigninLogo></NavLink><NavLink to='/signup'><SignupLogo>Sign Up</SignupLogo></NavLink>
                             </TitleWrapper>
                             {/* <FormLabel htmlFor='for'>Email</FormLabel> */}
-                            <FormInput type='email' name='email' value='email' onChange={handleChange('email')} required/>
+                            <FormInput type='email' name='email' placeholder='email' onChange={handleChange('email')} required/>
                             {/* <FormLabel htmlFor='for'>Password</FormLabel> */}
-                            <FormInput type='password' name='password' value={password} onChange={handleChange('password')} required />
+                            <FormInput type='password' name='password' placeholder='password' onChange={handleChange('password')} required />
                             <FormButton type='submit'>Sign In</FormButton>
-                            <Text>Or Signin with Google</Text>
-                            <div></div>
-                            <GoogleLogin
-                                clientId={`${process.env.REACT_APP_GOOGLE_CLIENT}`}
-                                buttonText="Login"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                            />,
+                            <Text> <Divider>Or Signin with Google</Divider></Text>
+                                <GoogleLogin
+                                    clientId={`${process.env.REACT_APP_GOOGLE_CLIENT}`}
+                                    onSuccess={responseGoogle}
+                                    onFailure={responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
+                                />
                         </Form>
                     </FormContent>
                 </FormWrap>

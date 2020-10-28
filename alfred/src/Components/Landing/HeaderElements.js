@@ -61,6 +61,7 @@ export const WhiteBtn = styled.button`
     padding: 14px 50px;
     position: absolute;
     top: 20px;
+    font-family: 'Arial Black', cursive;
     right: 20px
 `
 
@@ -70,10 +71,25 @@ export const GreenBtn = styled.button`
     cursor: pointer;
     border-radius: 50px;
     background: #50E68C;
-    color: white;
+    color: black;
     white-space: nowrap;
     padding: 14px 50px;
     position: absolute;
+    font-family: 'Arial Black', cursive;
     top: 20px;
+    right: 20px
+`
+export const HeaderBtn = styled.button`
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    background: white
+    color: black;
+    white-space: nowrap;
+    padding: 14px 50px;
+    top: 20px;
+    font-family: 'Arial Black', cursive;
     right: 20px
 `

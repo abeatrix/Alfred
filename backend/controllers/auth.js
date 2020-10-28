@@ -11,7 +11,6 @@ const sgMail = require('@sendgrid/mail')
 require('dotenv').config()
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-
 exports.registerController = (req, res) => {
     const { username, email, password } = req.body
     console.log(username, email, password)
@@ -116,8 +115,7 @@ exports.activateController = (req, res) => {
     }
 }
 
-exports.loginController = (req, res) => {
-    const { email, password } = req.body
+exports.loginController = async(req, res) => {
     const errors = validationResult(req)
 
     if(!errors.isEmpty()){
@@ -127,46 +125,46 @@ exports.loginController = (req, res) => {
         })
     } else {
         // Check is user exist
-        User.findOne({
-            email
-        }).exec((err, user)=> {
-            if(err || !user){
+        const password = req.body.password
+        const foundUser = await User.findOne({ email: req.body.email })
+        .exec((err,user)=>{
+            if (err || !user) {
                 return res.status(400).json({
-                    error: 'Email does not exists.'
+                    errors: 'Email does not exists.'
                 })
             }
 
-            // //Authentication
-            // if(!password){
-            //     return res.status(400).json({
-            //         error: 'The entered info does not match our database'
-            //     })
-            // }
 
-            //Generate Token
-            const token = jwt.sign(
-            {
-                _id: user._id
-            }, process.env.JWT_SECRET,
-            {
-                expiresIn: '7d',
-            },
-            )
+            //Authentication
+            if (user.password != password) {
+                return res.status(400).json({
+                    errors: 'The entered info does not match our database'
+                })
 
-            const {
-                _id,
-                username,
-                email
-            } = user
-            return res.json({
-                token,
-                user: {
-                    _id,
-                    username,
-                    email,
-                }
-            })
+            } else {
+                const token = jwt.sign(
+                    {
+                        _id: user._id
+                    },
+                        process.env.JWT_SECRET,
+                    {
+                        expiresIn: '7d'
+                    }
+                );
+                const { _id, name, email, role } = user;
+
+                return res.json({
+                    token,
+                    user: {
+                        _id,
+                        name,
+                        email,
+                        role
+                    }
+                });
+            }
         })
+
     }
 }
 
