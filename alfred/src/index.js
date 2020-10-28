@@ -1,27 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import SignInPage from './pages/singin'
-import SignupPage from './pages/signup'
-import ActivatePage from './pages/activate'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import { RecoilRoot } from "recoil";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./index.css";
+import App from "./App";
 
 ReactDOM.render(
+  // StrictMode is a tool for highlighting potential
+  // problems in an application. Like Fragment,
+  // StrictMode does not render any visible UI.
+  // It activates additional checks and warnings for
+  // its descendants.
   <React.StrictMode>
-    <Router>
-      <Switch>
-          <Route path='/' component={App} exact />
-          <Route path='/signin' component={SignInPage} exact />
-          <Route path='/signup' component={SignupPage} exact />
-          <Route path='/users/activate/:token' component={ActivatePage} exact />
-      </Switch>
-    </Router>
+    <RecoilRoot>
+      <Router>
+        <App />
+      </Router>
+    </RecoilRoot>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

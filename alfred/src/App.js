@@ -1,13 +1,12 @@
-import React from 'react';
-import TopNavbar from './Components/Navbar/TopNavbar'
-import Landing from './Components/Landing/index'
-import Footer from './Components/Footer/index'
+
+import TopNavbar from './Components/Navbar/TopNavbar';
+import Routes from './config/Routes'
 
 function App() {
   return (
     <div className="App">
-      <Landing />
-      <Footer />
+      <TopNavbar />
+      <Routes />
     </div>
   );
 }
