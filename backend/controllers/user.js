@@ -24,3 +24,13 @@ exports.show = async (req, res) => {
         });
           }
         }
+
+    exports.destroy = (req, res) => {
+        User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
+            if (err) console.log('Error in user#destroy:', err);
+
+            if(!deletedUser) return res.status(200).json({ "message": "No User with that id found in db" });
+
+            res.status(200).json({ "user": deletedUser });
+        });
+    };
