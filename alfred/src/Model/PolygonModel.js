@@ -8,7 +8,13 @@ class PolygonModel {
     static search = (query) => {
       return axios.get(`${URL}/${query}/quote?token=${API}`)
     }
+
+    static show = (query) => {
+      return fetch(`${URL}/${query}/quote?token=${API}`).then(response => response.json());
+    }
+
 }
+
 
 export default PolygonModel;
 

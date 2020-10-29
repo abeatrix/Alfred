@@ -1,10 +1,21 @@
+import { render } from "@testing-library/react"
 import {
   Card,
   Table,
-} from "react-bootstrap"
+} from "react-bootstrap";
+import usePolygon from '../../../../hooks/userPolygon';
+import PolygonModel from '../../../../Model/PolygonModel';
 
-export const HotStocks = (props) => {
-  function displayResults(data){
+// class HotStocks extends React.Component{
+//   state = {
+//     companyName: '',
+//     latestPrice: '',
+//   }
+
+function HotStocks(props) {
+
+  const [polyStock] = usePolygon('AAPL');
+
     return (
       <Card style={{ margin: "5%" }}>
         <Card.Body>
@@ -22,7 +33,7 @@ export const HotStocks = (props) => {
                 <tr>
                   <td>
                     <p className="mb-1 text-dark font-weight-medium">NFLX</p>
-                    <small className="font-weight-medium">{data}</small>
+                    <small className="font-weight-medium">{polyStock.companyName}</small>
                   </td>
                   <td className="font-weight-medium">$250.00</td>
                   <td className="text-success font-weight-medium">+12.64</td>
@@ -57,10 +68,6 @@ export const HotStocks = (props) => {
         </Card.Body>
       </Card>
     )
-  }
-  return(
-    <div>
-      {displayResults(props.data)}
-    </div>
-  )
 };
+
+export default HotStocks;

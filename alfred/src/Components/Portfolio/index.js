@@ -5,8 +5,8 @@ import Toast from 'react-bootstrap/Toast'
 import SearchContainer from '../SearchContainer/SearchContainer'
 import { PageContainer, PageWrapper, DashboardContainer, AddaStockBtn, PortfolioContainer, PortSideBarContainer, PortNotSideBarContainer, AddaStockBtnsWrapper } from './PortfolioElements';
 import {netGainData, netGainOptions, hotStocksData} from './Data'
-import {HotStocks} from './HotStocks'
-import {AddaStock} from './AddStock'
+import {HotStocks} from './Components/HotStocks/index'
+import {AddaStock} from './Components/AddStock'
 import PolygonModel from '../../Model/PolygonModel';
 
 // const PortfolioPage = () => {
@@ -18,11 +18,25 @@ class PortfolioPage extends React.Component {
     results: null,
   }
 
-  hotStocksData = () => PolygonModel.search('AAPL').then(response => {
-    console.log(response.data.companyName)
-    return( response.data)
-  })
+  componentDidUpdate(){
+  }
 
+  handleInput = (event) => {
+      this.setState({
+      query: event.target.value,
+      searched: false,
+      })
+  }
+
+  handleSubmit = (event) => {
+      event.preventDefault();
+      PolygonModel.search(this.state.query).then(response => {
+          this.setState({
+              searched: true,
+              results: response.data
+          })
+      })
+  }
 
   render() {
   return (

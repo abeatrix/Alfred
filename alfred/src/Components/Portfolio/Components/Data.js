@@ -1,8 +1,8 @@
 import PolygonModel from '../../Model/PolygonModel';
 
-  const hotStocksData = PolygonModel.search('AAPL').then(response => {
-    return( {result: response.data.companyName} )
-  })
+// export const hotStocksData = PolygonModel.search('AAPL').then(response => {
+//   return( {result: response.data.companyName} )
+// })
 
 export const result = '';
 

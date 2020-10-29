@@ -6,7 +6,8 @@ exports.create =  async (req, res) => {
       const foundUser = await User.findById(req.userId);
       const addStock = await Portfolio.create(req.body)
       await foundUser.portfolio.push(addStock)
-      await addStock.save()
+      await foundUser.save()
+
       res.status(201).json({ "portfolio": addStock });
     }
     catch (err) {
