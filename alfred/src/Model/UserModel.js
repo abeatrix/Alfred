@@ -7,4 +7,4 @@ class UserModel {
     }
 }
 
-export default PortfolioModel;
+export default UserModel;

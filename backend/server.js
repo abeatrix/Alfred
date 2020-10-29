@@ -17,8 +17,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// USERS ROUTES
-// app.use('api/v1/users', routes.user);
+// PORTFOLIO ROUTES
+app.use('/api/portfolio', routes.portfolio);
+
+// USER ROUTES
+app.use('/api/user/', routes.user);
 
 // AUTH ROUTES
 app.use('/api/auth/', routes.auth);

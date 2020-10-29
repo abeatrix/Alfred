@@ -7,7 +7,7 @@ import {WhiteBtn, GreenBtn} from './NavbarEle'
 const TopNavbar = () => {
   return (
     <Navbar style={{backgroundColor: 'black'}} variant='dark' expand="lg">
-      <Navbar.Brand href="#home">Alfred</Navbar.Brand>
+      <Navbar.Brand href="/">Alfred</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

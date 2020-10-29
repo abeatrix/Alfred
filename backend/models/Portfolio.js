@@ -1,11 +1,17 @@
 const mongoose = require(`mongoose`);
-const Schema = mongoose.Schema;
 
-const PortfolioSchema = new Schema({
-    symbol: String,
-    quantity: Number,
-    avgcost: Number,
-});
+const PortfolioSchema = new mongoose.Schema(
+    {
+    symbol: {type: String, required: true},
+    quantity: {type: Number, required: true},
+    avgcost: {type: Number, required: true},
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    },
+    {
+    timestamps: true,
+    },
+);
 
 const Portfolio = mongoose.model('Portfolio', PortfolioSchema);
 

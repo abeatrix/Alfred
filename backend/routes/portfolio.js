@@ -1,13 +1,14 @@
 // imports
 const router = require('express').Router();
-const ctrl = require('../controllers');
+const {create, index} = require('../controllers/portfolio');
+const {authRequired} = require('../middleware/valid')
 
 // routes
-router.get('/', ctrl.portfolio.index);
-router.get('/:id', ctrl.portfolio.show);
-router.post('/', ctrl.portfolio.create);
-router.put('/:id', ctrl.portfolio.update);
-router.delete('/:id', ctrl.portfolio.destroy);
+router.post('/', authRequired, create);
+router.get('/', authRequired, index);
+// router.get('/:id', show);
+// router.put('/:id', ctrl.portfolio.update);
+// router.delete('/:id', ctrl.portfolio.destroy);
 
 // EXPORTS
 module.exports = router;

@@ -15,7 +15,7 @@ const MainNavbar = () => {
 
   return (
     <Navbar style={{backgroundColor: 'black'}} variant='dark' expand="lg">
-      <Navbar.Brand href="#home"><NavLogo>Alfred</NavLogo></Navbar.Brand>
+      <Navbar.Brand href="/"><NavLogo>Alfred</NavLogo></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

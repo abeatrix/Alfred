@@ -1,5 +1,5 @@
 module.exports = {
     portfolio: require('./portfolio'),
-    user: require('./user'),
-    auth: require('./auth')
+    auth: require('./auth'),
+    user: require('./user')
 };

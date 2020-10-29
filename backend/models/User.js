@@ -1,19 +1,12 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
     {
         username: {type: String, require: [true, 'you must provide a username'], minlength: 4, maxlength: 20, unique: true},
         email: {type: String, required: true, unique: true, trim: true},
         password: {type: String, required: true},
         profilePic: {type: String, default: 'https://www.flaticon.com/svg/static/icons/svg/3121/3121753.svg'},
-        portfolio: [
-            // reference
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Portfolio'
-            }
-        ],
+        portfolio: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Portfolio'}]
     },
     {
         timestamps: true,
