@@ -5,22 +5,27 @@ import axios from 'axios';
 import { PageContainer, PageWrapper, DashboardContainer, PortfolioContainer, PortSideBarContainer, PortNotSideBarContainer, AddaStockBtnsWrapper } from '../Portfolio/PortfolioElements';
 import { useState, useEffect } from "react";
 
+const wsFinnHub = `wss://ws.finnhub.io?token=${process.env.REACT_APP_FINNHUB_API_KEY}`
+const socket = new WebSocket(wsFinnHub);
+console.log(socket)
+class Profile extends React.Component {
+
+    componentDidMount = () => {
+        socket.onmessage =  () => { console.log('hi')};
+        // socket.onmessage = this.displayStocks;
+        socket.onclose = () => { console.log('websocket connected')}
+    }
+
+    displayStocks = () => {
+        let result = socket.send(JSON.stringify({
+            symbol: 'AAPL'
+        }))
+        console.log(result)
+    }
 
 
-function Profile () {
 
-    const [response, setResponse] = useState("");
-
-    useEffect(() => {
-        const socket = `wss://ws.finnhub.io?token=${process.env.REACT_APP_FINNHUB_API_KEY}`
-        socket.on("FromAPI", data => {
-        setResponse(data);
-        });
-    }, []);
-
-
-
-
+    render() {
         return (
         <div>
                     <DashboardContainer>
@@ -33,6 +38,7 @@ function Profile () {
                     </PortfolioContainer>
         </div>
     );
+        }
 
 }
 

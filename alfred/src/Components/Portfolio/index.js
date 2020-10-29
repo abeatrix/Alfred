@@ -26,15 +26,15 @@ class PortfolioPage extends React.Component {
     }
 
     componentDidMount = () => {
-        this.connection = new WebSocket(wsMNETURL);
-        this.connection.onmessage = this.savingWsStocks;
-        this.connection.onclose = () => { this.setState({api_status: true}) }
+        const socket = new WebSocket(wsMNETURL);
+        socket.onmessage = this.savingWsStocks;
+        socket.onclose = () => { this.setState({api_status: true}) }
     }
 
     savingWsStocks = (event) => {
         let result = JSON.parse(event.data);
         let [priceUp, priceDown] = [0, 0];
-        let timeSaveValue = Date.now();
+        let current_time = Date.now();
         let new_stocks = this.state.stocks
         result.map((stock) =>
         {
@@ -42,7 +42,7 @@ class PortfolioPage extends React.Component {
             {
             new_stocks[stock[0]].current_value > Number(stock[1]) ? priceUp++ : priceDown++;
             new_stocks[stock[0]].current_value = Number(stock[1])
-            new_stocks[stock[0]].stats.push({time: timeSaveValue, value: Number(stock[1])})
+            new_stocks[stock[0]].stats.push({time: current_time, value: Number(stock[1])})
             }
             else
             {
