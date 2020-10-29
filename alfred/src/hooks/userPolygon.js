@@ -6,13 +6,14 @@ function usePolygon(symbol) {
   const [polystocks, setPolyStock] = useState([]);
 
   function fetchPolygon(ticker) {
+    console.log(ticker)
     if (ticker) {
       PolygonModel.show(ticker).then((data) => {
-        setPolyStock(data.polystock);
+        setPolyStock(data);
       });
     } else {
       PolygonModel.all().then((data) => {
-        setPolyStock(data.polystocks);
+        setPolyStock(data);
       });
     }
   }

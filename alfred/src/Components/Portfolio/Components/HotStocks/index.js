@@ -7,15 +7,9 @@ import usePolygon from '../../../../hooks/userPolygon';
 import HotIndexItem from './HotIndexItem';
 import PolygonModel from '../../../../Model/PolygonModel';
 
-// class HotStocks extends React.Component{
-//   state = {
-//     companyName: '',
-//     latestPrice: '',
-//   }
-
 export  const HotStocks = () => {
 
-  const [polystock] = usePolygon('AAPL');
+  const [polystock, setPolystock] = usePolygon('NFLX');
 
     return (
       <Card style={{ margin: "5%" }}>
@@ -31,15 +25,7 @@ export  const HotStocks = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* <HotIndexItem polystock={polystock} /> */}
-                <tr>
-                  <td>
-                    <p className="mb-1 text-dark font-weight-medium">NFLX</p>
-                    <small className="font-weight-medium">Netflix, Inc.</small>
-                  </td>
-                  <td className="font-weight-medium">$250.00</td>
-                  <td className="text-success font-weight-medium">+12.64</td>
-                </tr>
+                <HotIndexItem polystock={polystock} />
                 <tr>
                   <td>
                     <p className="mb-1 text-dark font-weight-medium">TSLA</p>
