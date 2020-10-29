@@ -1,17 +1,17 @@
 import React from "react";
-import { Card } from 'react-bootstrap';
+import { Card , Form, Button} from 'react-bootstrap';
 import { AddaStockBtn, AddaStockBtnsWrapper } from '../PortfolioElements';
 
 
-class AddaStock extends React.Component
-  return (){
+export const AddaStock = () => {
+  return (
       <Card style={{ margin: '5%' }}>
       <Card.Body>
           <Card.Title>Add a Stock</Card.Title>
           <Form>
-            <Form.Group onSubmit={this.props.handleSubmit} controlId="formGroupEmail">
+            <Form.Group controlId="formGroupEmail">
               <Form.Label>Symbol</Form.Label>
-              <Form.Control value={this.props.query}type="text" name='symbol' placeholder="Ticker" />
+              <Form.Control type="text" name='symbol' placeholder="Ticker" />
             </Form.Group>
             <Form.Group controlId="formGroupPassword">
               <Form.Label>Average Cost</Form.Label>
@@ -28,7 +28,5 @@ class AddaStock extends React.Component
           </Form>
       </Card.Body>
     </Card>
-  };
-
-  export default AddaStock;
-
+  );
+}

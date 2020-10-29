@@ -9,8 +9,8 @@ class PolygonModel {
       return axios.get(`${URL}/${query}/quote?token=${API}`)
     }
 
-    static show = (query) => {
-      return fetch(`${URL}/${query}/quote?token=${API}`).then(response => response.json());
+    static show = (symbol) => {
+      return fetch(`${URL}/${symbol}/quote?token=${API}`).then(response => response.json());
     }
 
 }

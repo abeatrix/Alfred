@@ -4,6 +4,7 @@ import {
   Table,
 } from "react-bootstrap";
 import usePolygon from '../../../../hooks/userPolygon';
+import HotIndexItem from './HotIndexItem';
 import PolygonModel from '../../../../Model/PolygonModel';
 
 // class HotStocks extends React.Component{
@@ -12,28 +13,29 @@ import PolygonModel from '../../../../Model/PolygonModel';
 //     latestPrice: '',
 //   }
 
-function HotStocks(props) {
+export  const HotStocks = () => {
 
-  const [polyStock] = usePolygon('AAPL');
+  const [polystock] = usePolygon('AAPL');
 
     return (
       <Card style={{ margin: "5%" }}>
         <Card.Body>
           <Table responsive>
-            <Card.Title>Popular Stocks</Card.Title>
+            <Card.Title>Today's Market</Card.Title>
             <Table responsive>
               <thead>
                 <tr>
-                  <th>Symbol</th>
+                  <th>Index</th>
                   <th>Last Price</th>
                   <th>Change</th>
                 </tr>
               </thead>
               <tbody>
+                {/* <HotIndexItem polystock={polystock} /> */}
                 <tr>
                   <td>
                     <p className="mb-1 text-dark font-weight-medium">NFLX</p>
-                    <small className="font-weight-medium">{polyStock.companyName}</small>
+                    <small className="font-weight-medium">Netflix, Inc.</small>
                   </td>
                   <td className="font-weight-medium">$250.00</td>
                   <td className="text-success font-weight-medium">+12.64</td>
@@ -68,6 +70,5 @@ function HotStocks(props) {
         </Card.Body>
       </Card>
     )
-};
+}
 
-export default HotStocks;

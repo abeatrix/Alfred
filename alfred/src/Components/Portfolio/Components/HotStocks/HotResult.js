@@ -1,17 +1,19 @@
-import { Card, Form, Button, Table } from 'react-bootstrap';
+import React from 'react';
+import HotIndexItem from './HotIndexItem';
+
 
 const HotResults = (props) => {
-    function displayResults(data){
-        return (
-            <Card body>{data.companyName}{data.latestPrice}</Card>
-        )
+    function generateHotItem(polystocks) {
+        return polystocks.map(polystock => {
+            return <HotIndexItem key={'APPL'} polystock={polystock} />
+        })
     }
-    return(
-        <div class="card-columns">
-            {displayResults(props.data)}
-        </div>
+
+    return (
+        <tr>
+            {generateHotItem(props.data)}
+        </tr>
     )
 }
-
 
 export default HotResults;

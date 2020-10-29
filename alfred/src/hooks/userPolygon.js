@@ -1,29 +1,30 @@
 import { useState, useEffect } from "react";
 import PolygonModel from "../Model/PolygonModel";
 
-function usePolygon(query) {
-  const [polystock, setPolyStock] = useState([]);
+function usePolygon(symbol) {
 
-  function fetchPolygon(id) {
-    if (id) {
-      PolygonModel.show(query).then((data) => {
-        setGames(data.polystock);
+  const [polystocks, setPolyStock] = useState([]);
+
+  function fetchPolygon(ticker) {
+    if (ticker) {
+      PolygonModel.show(ticker).then((data) => {
+        setPolyStock(data.polystock);
       });
     } else {
       PolygonModel.all().then((data) => {
-        setGames(data.polystock);
+        setPolyStock(data.polystocks);
       });
     }
   }
 
   useEffect(
     function () {
-      fetchGames(query);
+      fetchPolygon(symbol);
     },
-    [query]
+    [symbol]
   );
 
-  return [polystock, fetchPolygon];
+  return [polystocks, fetchPolygon];
 }
 
 export default usePolygon;

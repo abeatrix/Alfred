@@ -1,10 +1,5 @@
-import PolygonModel from '../../Model/PolygonModel';
+import PolygonModel from '../../../Model/PolygonModel';
 
-// export const hotStocksData = PolygonModel.search('AAPL').then(response => {
-//   return( {result: response.data.companyName} )
-// })
-
-export const result = '';
 
 export const netGainData = {labels: ["Energy", "Materials", "Consumer", "Health Care", "Finance", "Technology"],
   datasets: [{
