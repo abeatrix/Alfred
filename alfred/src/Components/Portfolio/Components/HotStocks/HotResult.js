@@ -5,7 +5,9 @@ import HotIndexItem from './HotIndexItem';
 const HotResults = (props) => {
     function generateHotItem(polystocks) {
         return polystocks.map(polystock => {
-            return <HotIndexItem key={'APPL'} polystock={polystock} />
+            return (
+                    <HotIndexItem polystock={polystock} />
+            )
         })
     }
 

@@ -5,13 +5,16 @@ import {
 } from "react-bootstrap";
 import usePolygon from '../../../../hooks/userPolygon';
 import HotIndexItem from './HotIndexItem';
-import PolygonModel from '../../../../Model/PolygonModel';
 
 export  const HotStocks = () => {
 
   const [polystock, setPolystock] = usePolygon('NFLX');
+  const [polystock2, setPolystock2] = usePolygon('GOOG');
+  const [polystock3, setPolystock3] = usePolygon('TSLA');
+  const [polystock4, setPolystock4] = usePolygon('AMZN');
 
     return (
+
       <Card style={{ margin: "5%" }}>
         <Card.Body>
           <Table responsive>
@@ -25,31 +28,10 @@ export  const HotStocks = () => {
                 </tr>
               </thead>
               <tbody>
-                <HotIndexItem polystock={polystock} />
-                <tr>
-                  <td>
-                    <p className="mb-1 text-dark font-weight-medium">TSLA</p>
-                    <small className="font-weight-medium">Tesla, Inc.</small>
-                  </td>
-                  <td className="font-weight-medium">$458.00</td>
-                  <td className="text-danger font-weight-medium">-14.53</td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="mb-1 text-dark font-weight-medium">GOOG</p>
-                    <small className="font-weight-medium">Alphabet, Inc.</small>
-                  </td>
-                  <td className="font-weight-medium">$250.00</td>
-                  <td className="text-danger font-weight-medium">+12.64</td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="mb-1 text-dark font-weight-medium">AMZN</p>
-                    <small className="font-weight-medium">Amazon.com, Inc.</small>
-                  </td>
-                  <td className="font-weight-medium">$546.00</td>
-                  <td className="text-success font-weight-medium">+24.34</td>
-                </tr>
+                <tr><HotIndexItem polystock={polystock} /></tr>
+                <tr><HotIndexItem polystock={polystock2} /></tr>
+                <tr></tr><HotIndexItem polystock={polystock3} />
+                <tr></tr><HotIndexItem polystock={polystock4} />
               </tbody>
             </Table>
           </Table>

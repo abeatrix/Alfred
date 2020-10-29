@@ -7,6 +7,7 @@ import { PageContainer, PageWrapper, DashboardContainer, PortfolioContainer, Por
 import {netGainData, netGainOptions, hotStocksData} from './Components/Data';
 import {HotStocks} from './Components/HotStocks/index';
 import {AddaStock} from './Components/AddStock'
+import {NewsSection} from './Dashboard/NewsSection'
 import Profile from '../Profile'
 
 
@@ -85,7 +86,7 @@ class PortfolioPage extends React.Component {
                     <PortNotSideBarContainer>
 
                         <Profile/>
-
+                        <NewsSection/>
                     </PortNotSideBarContainer>
             </PageWrapper>
         </PageContainer>
