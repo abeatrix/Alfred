@@ -6,7 +6,6 @@ function usePolygon(symbol) {
   const [polystocks, setPolyStock] = useState([]);
 
   function fetchPolygon(ticker) {
-    console.log(ticker)
     if (ticker) {
       PolygonModel.show(ticker).then((data) => {
         setPolyStock(data);

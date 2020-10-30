@@ -8,7 +8,7 @@ class Search extends React.Component {
           <i class="fas fa-search" aria-hidden="true"></i>
           <input class="form-control form-control-sm ml-3 w-75"
               type="text"
-              placeholder="Search"
+              placeholder="Symbol Lookup"
               aria-label="Search"
               value={this.props.query}
               onInput={this.props.handleInput}

@@ -26,12 +26,12 @@ const HotIndexList = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {Object.keys(props.stocks).map((stock_name, index) =>
+                {Object.keys(props.stocks).slice(0, 5).map((stock_name, i) =>
                   {
                     let current_stock = props.stocks[stock_name];
                     return (
                       <HotIndexRow
-                        key={index} stock_name={stock_name}
+                        key={i} stock_name={stock_name}
                         data={current_stock}
                       />
                     )

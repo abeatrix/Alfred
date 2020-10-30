@@ -30,8 +30,8 @@ export  const HotStocks = () => {
               <tbody>
                 <tr><HotIndexItem polystock={polystock} /></tr>
                 <tr><HotIndexItem polystock={polystock2} /></tr>
-                <tr></tr><HotIndexItem polystock={polystock3} />
-                <tr></tr><HotIndexItem polystock={polystock4} />
+                <tr><HotIndexItem polystock={polystock3} /></tr>
+                <tr><HotIndexItem polystock={polystock4} /></tr>
               </tbody>
             </Table>
           </Table>

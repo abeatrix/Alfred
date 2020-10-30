@@ -28,9 +28,8 @@ class Profile extends React.Component {
     render() {
         return (
         <div>
-                    <DashboardContainer>
-                        <SearchContainer />
-                    </DashboardContainer>
+                    {/* <DashboardContainer>
+                    </DashboardContainer> */}
 
                     <PortfolioContainer>
                         <PortfolioStockList/>
