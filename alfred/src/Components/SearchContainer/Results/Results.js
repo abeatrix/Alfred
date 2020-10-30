@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
-import { ProgressBar, Dropdown, Card, Form, Button, Table } from 'react-bootstrap';
+import { Card, Form, Button } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
 import AddStockContainer from '../../Portfolio/Components/AddStock/AddStockContainer';
 import {AddaStockBtn, AddaStockBtnsWrapper } from '../../Portfolio/PortfolioElements'
-import {isAuth} from '../../../config/auth'
+import {isAuth, getCookie} from '../../../config/auth'
 import PolygonModel from '../../../Model/PolygonModel'
+import axios from 'axios';
 
 const Results = (props) => {
     const user = isAuth()
@@ -18,46 +20,50 @@ const Results = (props) => {
 
     const { symbol, quantity, avgcost, userId, submitted} = formData
 
-    const handleInput = text => e => {
-        setFormData({...formData, [text]: e.target.value, userId: user._id, submitted: false,})
-    }
 
-    // handleInput = (e) => {
-    //     setFormData({
-    //     symbol: e.target.value,
-    //     quantity: e.target.value,
-    //     avgcost: e.target.value,
-    //     userId: '',
-    //     submitted: false,
-    //     })
-    // }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        PolygonModel.search(this.state.query).then(res => {
-            setFormData({
-                ...formData,
-                symbol: '',
-                quantity: '',
-                avgcost: '',
-                userId: '',
-                submitted: true,
-            })
-        })
-    }
 
     function displayResults(data){
         const user = isAuth()
+        // const token = getCookie()
+        const handleInput = text => e => {
+            setFormData({...formData, [text]: e.target.value, symbol: data.symbol, userId: user._id, submitted: false,})
+        }
+
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            axios.post(`${process.env.REACT_APP_BACKEND_PORTFOLIO_API_URL}`, {
+                symbol,
+                quantity,
+                avgcost,
+                userId
+            }).then(res => {
+                setFormData({
+                    ...formData,
+                    symbol: '',
+                    quantity: '',
+                    avgcost: '',
+                    userId: '',
+                    submitted: true,
+                })
+            }).catch(err => {
+                {(err.response) ? toast.error(err.response.data.errors) : toast.error('No Idea')}
+            });
+
+        }
+
         return (
             <>
                 <Card style={{ margin: '5%' }}>
                     <Card.Body>
                         <Card.Title>Add a Stock</Card.Title>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
+                        <fieldset disabled>
                             <Form.Group controlId="formGroupEmail">
                                 <Form.Label>{data.companyName}</Form.Label>
-                                <Form.Control type="text" name='symbol' placeholder="Ticker" value={data.symbol} onChange={handleInput('symbol')}/>
+                                <Form.Control type="text" name='symbol' placeholder="Ticker" defaultValue={data.symbol} />
+                                <input type="hidden" name="symbol" value={data.symbol}></input>
                             </Form.Group>
+                            </fieldset>
                             <Form.Group controlId="formAvgCost">
                                 <Form.Label>Average Cost</Form.Label>
                                 <Form.Control type="number" name='avgcost' placeholder="Cost per Share" onChange={handleInput('avgcost')} required/>

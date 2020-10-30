@@ -9,7 +9,7 @@ const NewsListRow = (props) => {
                 <td>{category}</td>
                 <td >{headline}</td>
                 <td>{source}</td>
-                <td>{summary}</td>
+                <td><small>{summary}</small></td>
             </>
         );
 }

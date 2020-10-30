@@ -4,7 +4,7 @@ const {create, index, destroy} = require('../controllers/portfolio');
 const {authRequired} = require('../middleware/valid')
 
 // routes
-router.post('/', authRequired, create);
+router.post('/', create);
 router.get('/', authRequired, index);
 router.delete('/:id', authRequired, destroy);
 
