@@ -1,20 +1,37 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PortfolioStockListRow from './PortfolioStockListRow'
-
-
+import useShowPortDetail from '../../../hooks/useShowPortDetail'
+import PortfolioModel from '../../../Model/PortfolioModel'
 import {
   Card,
   Table,
 } from "react-bootstrap";
 
+
 const PortfolioStockList = (props) => {
-  function generatePortfolioItem(portStocks) {
-    return portStocks.map(stock => {
-        return (
-                <PortfolioStockListRow data={stock} />
-        )
+
+    // console.log(props.data)
+    // console.log(props.data.length)
+
+      function props.map(portId => {
+      PortfolioModel.detail(portId).then((data) => {
+        console.log(data)
+      });
     })
+
+
+  function generatePortfolioItem(data) {
+
+    return
+
   }
+
+    // return portStocks.map(stock => {
+    //     return (
+    //             <PortfolioStockListRow data={stock} />
+    //     )
+    // })
+
 
   return (
 

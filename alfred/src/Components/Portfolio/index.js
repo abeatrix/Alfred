@@ -15,9 +15,9 @@ const wsMNETURL = 'ws://stocks.mnet.website/';
 
 class PortfolioPage extends React.Component {
 
-  state = {
-     stocks: {},
-     api_status: false
+    state = {
+        stocks: {},
+        api_status: false
     }
 
     isWsConencted = () => {

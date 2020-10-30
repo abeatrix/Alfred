@@ -32,7 +32,7 @@ const Results = (props) => {
 
         const search = async data=>{
             setFormData({submitted: false});
-            const res = await axios(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=bude72f48v6ped90lmfg`);
+            const res = await axios(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=${process.env.REACT_APP_FINNHUB_API_KEY}`);
             const symbol = await res.displaySymbol;
             setFormData({ symbol, loading: false });
         }

@@ -27,12 +27,10 @@ class SearchContainer extends React.Component {
     }
 
     handleInput = (event) => {
-
         this.setState({
             query: event.target.value,
             searched: false,
-        })
-        this.search(event.target.value);
+        }, () => this.search())
     }
 
     handleSubmit = (event) => {

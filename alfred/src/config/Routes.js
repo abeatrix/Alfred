@@ -8,6 +8,7 @@ import Portfolio from "../pages/portfolio";
 import SignInPage from "../pages/singin";
 import SignupPage from "../pages/signup";
 import ActivatePage from "../pages/activate";
+import MyPortfolio from '../Components/Portfolio/Dashboard/MyPortfolio'
 
 
 
@@ -20,6 +21,7 @@ const Routes = (props) => {
                 <Route path='/signin' component={SignInPage} exact />
                 <Route path='/signup' component={SignupPage} exact />
                 <Route path='/users/activate/:token' component={ActivatePage} exact />
+                <Route path='/users/portfolio' component={MyPortfolio} exact />
         </Switch>
     );
 };

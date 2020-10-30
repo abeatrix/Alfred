@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import PortfolioModel from "../Model/PortfolioModel";
 
-function usePortfolio(user) {
-
+function usePortfolio(userId) {
+    // console.log(userId)
     const [portfolio, setPortfolio] = useState([]);
-    let userId = user
-    function fetchPortfolio() {
-
+    function fetchPortfolio(userId) {
         PortfolioModel.show(userId).then((data) => {
+            console.log(data)
             setPortfolio(data);
         });
     }
@@ -15,7 +14,7 @@ function usePortfolio(user) {
 
     useEffect(
         function () {
-            fetchPortfolio(user);
+            fetchPortfolio(userId);
         },
         []
     );
