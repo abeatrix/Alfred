@@ -5,7 +5,7 @@ const {authRequired} = require('../middleware/valid')
 
 // routes
 router.post('/', create);
-router.get('/', authRequired, index);
+router.get('/', index);
 router.delete('/:id', authRequired, destroy);
 
 // router.get('/:id', show);

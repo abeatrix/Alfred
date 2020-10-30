@@ -1,12 +1,21 @@
 import React from 'react'
 import PortfolioStockListRow from './PortfolioStockListRow'
 
+
 import {
   Card,
   Table,
 } from "react-bootstrap";
 
 const PortfolioStockList = (props) => {
+  function generatePortfolioItem(portStocks) {
+    return portStocks.map(stock => {
+        return (
+                <PortfolioStockListRow data={stock} />
+        )
+    })
+  }
+
   return (
 
         <Card.Body style={{ margin: "5%" }}>
@@ -24,17 +33,9 @@ const PortfolioStockList = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {/* {Object.keys(props.stocks).map((stock_name, index) =>
-                  {
-                    let current_stock = props.stocks[stock_name];
-                    return (
-                      <PortfolioStockListRow
-                        key={index} stock_name={stock_name}
-                        data={current_stock}
-                      />
-                    )
-                  }
-                )} */}
+              <tr>
+                {generatePortfolioItem(props.data)}
+              </tr>
               </tbody>
             </Table>
           </Table>

@@ -1,6 +1,8 @@
 import React from "react";
 import { ProgressBar, Dropdown, Card, Form, Button, Table } from 'react-bootstrap';
 import SearchContainer from '../SearchContainer/SearchContainer'
+import {isAuth} from '../../config/auth'
+import usePortfolio from '../../hooks/usePortfolio'
 import axios from 'axios';
 import PortfolioStockList from '../../Components/Portfolio/Dashboard/PortfolioStockList'
 import { DashboardContainer, PortfolioContainer } from '../Portfolio/PortfolioElements';
@@ -11,12 +13,17 @@ const wsFinnHub = `wss://socket.polygon.io/stocks`
 const socket = new WebSocket(wsFinnHub);
 console.log(socket)
 
-class Profile extends React.Component {
+const user = isAuth()
+const userId = user._id
 
-    componentDidMount = () => {
-        // socket.onmessage = this.displayStocks;
-        socket.onclose = () => { console.log('websocket connected')}
-    }
+export  const Profile = () => {
+
+    const [portfolio, setPortfolio] = usePortfolio(userId);
+
+    // componentDidMount = () => {
+    //     // socket.onmessage = this.displayStocks;
+    //     socket.onclose = () => { console.log('websocket connected')}
+    // }
 
     // displayStocks = () => {
     //     let result = socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
@@ -24,21 +31,17 @@ class Profile extends React.Component {
     // }
 
 
-
-    render() {
         return (
         <div>
                     {/* <DashboardContainer>
                     </DashboardContainer> */}
 
                     <PortfolioContainer>
-                        <PortfolioStockList/>
+
+                        <PortfolioStockList data={portfolio}/>
 
                     </PortfolioContainer>
         </div>
     );
-        }
 
 }
-
-export default Profile;

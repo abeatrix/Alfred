@@ -25,12 +25,20 @@ const Results = (props) => {
     function displayResults(data){
         const user = isAuth()
         // const token = getCookie()
+
         const handleInput = text => e => {
             setFormData({...formData, [text]: e.target.value, symbol: data.symbol, userId: user._id, submitted: false,})
         }
 
-        const handleSubmit = (event) => {
-            event.preventDefault();
+        const search = async data=>{
+            setFormData({submitted: false});
+            const res = await axios(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=bude72f48v6ped90lmfg`);
+            const symbol = await res.displaySymbol;
+            setFormData({ symbol, loading: false });
+        }
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
             axios.post(`${process.env.REACT_APP_BACKEND_PORTFOLIO_API_URL}`, {
                 symbol,
                 quantity,

@@ -7,7 +7,7 @@ import {HotStocks} from './Components/HotStocks/index';
 import {NewsSection} from './Dashboard/NewsSection'
 import PortfolioDiversity from './Components/PortfolioDiversity/index'
 import StockSearchContainer from './StockSearchContainer/index'
-import Profile from '../Profile'
+import {Profile} from '../Profile'
 
 
 const wsMNETURL = 'ws://stocks.mnet.website/';
