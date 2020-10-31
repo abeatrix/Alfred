@@ -1,7 +1,6 @@
 import cookie from 'js-cookie'
 import { GoogleLogout } from 'react-google-login';
 
-// Set in Cookie
 export const setCookie = (key, value) => {
     if(window !== 'undefined'){
         cookie.set(key, value, {
@@ -10,7 +9,6 @@ export const setCookie = (key, value) => {
     }
 }
 
-// Remove from cookie
 export const removeCookie = key => {
     if(window !== 'undefined') {
         cookie.remove(key, {
@@ -19,27 +17,24 @@ export const removeCookie = key => {
     }
 }
 
-// Get token from cookie
 export const getCookie = key => {
     if(window !== 'undefined') {
         return cookie.get(key)
     }
 }
 
-// Set in localstorage
 export const setLocalStorage = (key, value) => {
     if(window !== 'undefined'){
         localStorage.setItem(key, JSON.stringify(value));
     }
 }
 
-
-// Remove from localstorage
 export const removeLocalStorage = key => {
     if(window !== 'undefined') {
         localStorage.removeItem(key)
     }
 }
+
 // Auth user after login
 export const authenticate = (res, next) => {
     setCookie('token', res.data.token)
@@ -47,7 +42,6 @@ export const authenticate = (res, next) => {
     next();
 }
 
-// Signout
 export const signout = next => {
     removeCookie('token');
     removeLocalStorage('user');
@@ -68,7 +62,6 @@ export const isAuth = () => {
     }
 };
 
-// Update user data in localstorage
 export const updateUser = (res, next) => {
     if(window !== 'undefined'){
         let auth = JSON.parse(localStorage.getItem('user'))

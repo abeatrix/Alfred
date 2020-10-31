@@ -3,6 +3,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import { isAuth } from '../../config/auth'
 import {Navbar, Nav, NavDropdown, Form, Button, FormControl, DropdownButton, Dropdown} from 'react-bootstrap'
 import {WhiteBtn, GreenBtn, NavLogo} from './NavbarEle'
+import Avatar from 'react-avatar';
 
 const MainNavbar = () => {
   const history = useHistory();
@@ -12,6 +13,8 @@ const MainNavbar = () => {
         history.push('/')
     }
   }
+
+  console.log(isAuth)
 
   return (
     <Navbar style={{backgroundColor: 'black'}} variant='dark' expand="lg">
