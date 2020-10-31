@@ -1,7 +1,7 @@
 import React from 'react'
 
 const NewsListRow = (props) => {
-
+    // console.log(props)
     const { category, headline,source, summary } = props.finnNew;
 
         return (

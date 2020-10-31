@@ -37,17 +37,3 @@ class MyPortfolio extends React.Component {
 }
 export default MyPortfolio;
 
-
-
-// componentDidMount = () => {
-//     socket.onopen = () => {
-//         socket.send(`{"action":"auth","params":"pk_b6f095f4e3bd490fb605c071ec8ba242"}`)
-//     }
-//     socket.onmessage = this.displayStocks;
-//     socket.onclose = () => { console.log('websocket connected')}
-// }
-
-// displayStocks = () => {
-//     let result = socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
-//     // console.log(result)
-// }

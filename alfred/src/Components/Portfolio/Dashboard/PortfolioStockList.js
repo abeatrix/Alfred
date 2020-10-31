@@ -1,37 +1,19 @@
-import React, {useState} from 'react'
-import PortfolioStockListRow from './PortfolioStockListRow'
-import useShowPortDetail from '../../../hooks/useShowPortDetail'
+import React from 'react'
+import {PortfolioStockListRow} from './PortfolioStockListRow'
 import PortfolioModel from '../../../Model/PortfolioModel'
-import {
-  Card,
-  Table,
-} from "react-bootstrap";
+import {Card,Table} from "react-bootstrap";
 
 
 const PortfolioStockList = (props) => {
-
-    // console.log(props.data)
-    // console.log(props.data.length)
-
-      function props.map(portId => {
-      PortfolioModel.detail(portId).then((data) => {
-        console.log(data)
-      });
+  // console.log(props)
+  function generatePortStock(stocks) {
+    // console.log(stocks)
+    return stocks.map((data) =>{
+      return(
+        <PortfolioStockListRow data={data} />
+      )
     })
-
-
-  function generatePortfolioItem(data) {
-
-    return
-
   }
-
-    // return portStocks.map(stock => {
-    //     return (
-    //             <PortfolioStockListRow data={stock} />
-    //     )
-    // })
-
 
   return (
 
@@ -42,17 +24,14 @@ const PortfolioStockList = (props) => {
               <thead>
                 <tr>
                   <th>Symbol</th>
-                  <th>Name</th>
                   <th>Quantity</th>
-                  <th>Value</th>
                   <th>Cost</th>
+                  <th>Value</th>
                   <th>Return</th>
                 </tr>
               </thead>
               <tbody>
-              <tr>
-                {generatePortfolioItem(props.data)}
-              </tr>
+              {props.data.portfolio ? generatePortStock(props.data.portfolio) : 'Loading'}
               </tbody>
             </Table>
           </Table>
@@ -62,3 +41,5 @@ const PortfolioStockList = (props) => {
 }
 
 export default PortfolioStockList;
+
+

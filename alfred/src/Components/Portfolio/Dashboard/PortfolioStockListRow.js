@@ -1,18 +1,26 @@
 import React from 'react'
-import { Sparklines, SparklinesLine, SparklinesBars } from 'react-sparklines';
+import useShowPortDetail from '../../../hooks/useShowPortDetail'
 
-class PortfolioStockListRow extends React.Component {
 
-  render() {
-    return (
-      <tr >
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    );
-  }
+export const PortfolioStockListRow = (props) => {
+
+  const [portfoliodetail, setPortfolioDetail] = useShowPortDetail(props.data);
+  console.log(portfoliodetail)
+
+  return (
+
+    <>
+       {(portfoliodetail.data) ?
+        <tr>
+          <td>{portfoliodetail.data.symbol}</td>
+          <td>{portfoliodetail.data.quantity}</td>
+          <td>{portfoliodetail.data.avgcost}</td>
+          <td>value</td>
+          <td>return</td>
+        </tr>
+        : <h4>Loading</h4>}
+
+    </>
+  );
+
 }
-
-export default PortfolioStockListRow;

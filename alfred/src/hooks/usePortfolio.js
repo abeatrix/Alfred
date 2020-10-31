@@ -6,8 +6,8 @@ function usePortfolio(userId) {
     const [portfolio, setPortfolio] = useState([]);
     function fetchPortfolio(userId) {
         PortfolioModel.show(userId).then((data) => {
-            console.log(data)
             setPortfolio(data);
+            // console.log(data)
         });
     }
 
