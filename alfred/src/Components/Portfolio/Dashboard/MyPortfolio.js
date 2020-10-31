@@ -9,19 +9,18 @@ const socket = new WebSocket(wsFinnHub);
 
 class MyPortfolio extends React.Component {
 
+    componentDidMount = () => {
+    // Connection opened -> Subscribe
+        socket.addEventListener('open', function (event) {
+        socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
+        console.log('hi')
+    });
 
-    // componentDidMount = () => {
-    // // Connection opened -> Subscribe
-    //     socket.addEventListener('open', function (event) {
-    //     socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
-    //     console.log('hi')
-    // });
-
-    // // Listen for messages
-    //     socket.addEventListener('message', function (event) {
-    //     console.log('Message from server ', event.data);
-    // });
-    // }
+    // Listen for messages
+        socket.addEventListener('message', function (event) {
+        console.log('Message from server ', event.data.type);
+    });
+    }
 
 
 

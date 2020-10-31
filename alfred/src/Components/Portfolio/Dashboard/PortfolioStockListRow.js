@@ -6,7 +6,7 @@ import rateLimit from 'axios-rate-limit';
 
 export const PortfolioStockListRow = (props) => {
 
-  // const [portfoliodetail, setPortfolioDetail] = useShowPortDetail(props.data);
+  const [portfoliodetail, setPortfolioDetail] = useShowPortDetail(props.data);
 
   const stockData = [
     {
@@ -17,8 +17,6 @@ export const PortfolioStockListRow = (props) => {
       gains: 0
     }
   ]
-
-  onst [portfoliodetail, setPortfolioDetail] = useState([]);
 
   const [portstockData, setportstockData] = useState(stockData);
 
@@ -45,8 +43,7 @@ export const PortfolioStockListRow = (props) => {
 
   return (
     <>
-    {/* && portstockData.loaded == true */}
-       {(portfoliodetail.data ) ?
+       {(portfoliodetail.data && portstockData.loaded == true ) ?
         <tr>
           {(portfoliodetail.data.symbol) ? <td>{portfoliodetail.data.symbol}</td> : <td> <Spinner animation="border" variant="success" /></td>}
           {(portfoliodetail.data.quantity) ? <td>{portfoliodetail.data.quantity}</td> : <td> <Spinner animation="border" variant="success" /></td>}

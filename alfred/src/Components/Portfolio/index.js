@@ -12,7 +12,6 @@ import {Profile} from '../Profile'
 
 const wsMNETURL = 'ws://stocks.mnet.website/';
 
-
 class PortfolioPage extends React.Component {
 
     state = {
@@ -61,7 +60,7 @@ class PortfolioPage extends React.Component {
                         stocks={this.state.stocks}
                         marketTrend={this.marketTrend}
                         isWsConencted={this.isWsConencted}/>
-                        <PortfolioDiversity/>
+                        {/* <PortfolioDiversity/> */}
 
                     </PortSideBarContainer>
 
@@ -69,7 +68,7 @@ class PortfolioPage extends React.Component {
 
 
                     <PortNotSideBarContainer>
-                        <Profile/>
+                        {/* <Profile/> */}
                         <NewsSection/>
                     </PortNotSideBarContainer>
             </PageWrapper>
