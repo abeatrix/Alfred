@@ -4,6 +4,7 @@ import { Detector } from "react-detect-offline";
 import {
   Card,
   Table,
+  Spinner
 } from "react-bootstrap";
 
 const HotIndexList = (props) => {
@@ -37,7 +38,9 @@ const HotIndexList = (props) => {
                     )
                   }
                 )}
-                { props.isWsConencted() ? <tr><td colSpan='4'>No stocks loaded yet!</td></tr> : null }
+                { props.isWsConencted() ? <tr><Spinner animation="border" role="status">
+                  <span className="sr-only">Loading...</span>
+                </Spinner></tr> : null }
               </tbody>
             </Table>
           </Table>

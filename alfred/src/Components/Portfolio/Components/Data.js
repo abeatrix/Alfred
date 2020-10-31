@@ -1,6 +1,3 @@
-import PolygonModel from '../../../Model/PolygonModel';
-
-
 export const netGainData = {labels: ["Energy", "Materials", "Consumer", "Health Care", "Finance", "Technology"],
   datasets: [{
       data: [80, 10, 40, 30, 0, 90]

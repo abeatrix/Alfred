@@ -15,7 +15,7 @@ export  const NewsSection = () => {
       <Card style={{ margin: "5%" }}>
         <Card.Body>
           <Table responsive>
-            <Card.Title>Market News</Card.Title>
+            <Card.Title>Latest Market News</Card.Title>
             <Table responsive>
                 <thead>
                     <tr>

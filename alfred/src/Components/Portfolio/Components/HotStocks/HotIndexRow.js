@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sparklines, SparklinesLine, SparklinesBars } from 'react-sparklines';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 
 class HotIndexRow extends React.Component {
 

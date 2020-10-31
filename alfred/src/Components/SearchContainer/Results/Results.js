@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
 import { Card, Form, Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import AddStockContainer from '../../Portfolio/Components/AddStock/AddStockContainer';
 import {AddaStockBtn, AddaStockBtnsWrapper } from '../../Portfolio/PortfolioElements'
 import {isAuth, getCookie} from '../../../config/auth'
-import PolygonModel from '../../../Model/PolygonModel'
 import axios from 'axios';
 
 const Results = (props) => {

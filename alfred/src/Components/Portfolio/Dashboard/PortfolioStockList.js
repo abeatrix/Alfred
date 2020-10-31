@@ -1,6 +1,5 @@
 import React from 'react'
 import {PortfolioStockListRow} from './PortfolioStockListRow'
-import PortfolioModel from '../../../Model/PortfolioModel'
 import {Card,Table} from "react-bootstrap";
 
 
