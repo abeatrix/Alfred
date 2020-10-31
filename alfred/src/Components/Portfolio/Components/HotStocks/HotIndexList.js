@@ -12,12 +12,7 @@ const HotIndexList = (props) => {
     <Card style={{ margin: "5%" }}>
         <Card.Body>
           <Table responsive>
-            <Card.Title> Hot Stock - <Detector render={({ online }) => (
-              <span className={online ? "text-success" : "text-danger"}>
-                {online ? <span>Live</span> : "Offline"}
-              </span>
-              )}/>
-            </Card.Title>
+            <Card.Title> Hot Stock Today</Card.Title>
             <Table responsive>
               <thead>
                 <tr>

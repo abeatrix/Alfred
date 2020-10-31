@@ -23,8 +23,8 @@ const MainNavbar = () => {
         </Nav>
         {isAuth() ?
           <Dropdown>
-            <Dropdown.Toggle variant="link" id="dropdown-basic">
-              { userInfoSearch() ? <Avatar name="{userInfo.data.username}" size="150" /> : <Avatar size="50" round={true} src={"https://www.flaticon.com/svg/static/icons/svg/595/595555.svg"} />}
+            <Dropdown.Toggle variant="noCaret" id="dropdown-basic">
+              { userInfoSearch() ? <Avatar name="{userInfo.data.username}" size="150" /> : <Avatar size="50" round={true} src={"https://a.thumbs.redditmedia.com/nmh5l-zCsmmc3y2ehfjtWRJjGmCEWEJDTjtW3AGMz60.png"} />}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

@@ -3,6 +3,7 @@ import Searchbar from '../SearchContainer/Searchbar/Searchbar';
 import PolygonModel from '../../Model/PolygonModel';
 import Results from '../SearchContainer/Results/Results';
 import { Card } from 'react-bootstrap';
+import HSBar from "react-horizontal-stacked-bar-chart";
 
 class SearchContainer extends React.Component {
     state = {
@@ -58,6 +59,8 @@ class SearchContainer extends React.Component {
                     <Card.Body>
                         <p>Searching...</p>
                         <p>{this.state.info.symbol}: {this.state.info.companyName}</p>
+                        <p>This Month Advise from Top Analysts:</p>
+                        <HSBar data={[{ value: 10 }, { value: 20 }]} />
                     </Card.Body>
                 </Card>
                 : null}
