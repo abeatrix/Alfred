@@ -1,10 +1,11 @@
 import cookie from 'js-cookie'
 import { GoogleLogout } from 'react-google-login';
+import UserModel  from '../Model/UserModel'
 
 export const setCookie = (key, value) => {
     if(window !== 'undefined'){
         cookie.set(key, value, {
-            expires: 1 //1day
+            expires: 1 //1 day
         })
     }
 }
@@ -69,4 +70,9 @@ export const updateUser = (res, next) => {
         localStorage.setItem('user', JSON.stringify(auth))
     }
     next()
+}
+
+export const userInfoSearch = () => {
+    UserModel.search(isAuth()._id).then(user => {
+    })
 }
