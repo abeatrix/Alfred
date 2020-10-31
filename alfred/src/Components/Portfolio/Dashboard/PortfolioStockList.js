@@ -6,7 +6,6 @@ import {Card,Table} from "react-bootstrap";
 const PortfolioStockList = (props) => {
   // console.log(props)
   function generatePortStock(stocks) {
-    // console.log(stocks)
     return stocks.map((data) =>{
       return(
         <PortfolioStockListRow data={data} />
@@ -23,6 +22,7 @@ const PortfolioStockList = (props) => {
               <thead>
                 <tr>
                   <th>Symbol</th>
+                  <th>Market</th>
                   <th>Quantity</th>
                   <th>Cost</th>
                   <th>Value</th>
