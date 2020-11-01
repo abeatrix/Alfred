@@ -21,7 +21,7 @@ export const Profile = () => {
 
                     <PortfolioContainer>
 
-                        {(portfolio) ? <PortfolioStockList data={portfolio}/> : 'Loading'}
+                        {/* {(portfolio) ? <PortfolioStockList data={portfolio}/> : 'Loading'} */}
 
                     </PortfolioContainer>
         </div>

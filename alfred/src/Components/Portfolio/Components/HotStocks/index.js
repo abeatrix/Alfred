@@ -28,7 +28,7 @@ export  const HotStocks = () => {
   http.getMaxRPS() // 2
 
   useEffect(() => {
-    http.get(`https://api.polygon.io/v1/marketstatus/now?apiKey=gqf23sEvmyZ8hzWDeBRy5TedKBU03kF5`)
+    http.get(`https://api.polygon.io/v1/marketstatus/now?apiKey=gqf23sEvmyZ8hzWDeBRy5TedKBU03kF5`, {headers: {"Access-Control-Allow-Origin": "*"}})
       .then(res => {
         console.log(JSON.parse(res.data.market))
         // setportstockData({

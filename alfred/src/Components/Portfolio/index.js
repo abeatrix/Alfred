@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ProgressBar, Dropdown, Card, Form, Button, Table } from 'react-bootstrap';
 import SearchContainer from '../SearchContainer/SearchContainer'
 import HotIndexList from './Components/HotStocks/HotIndexList'
 import { PageContainer, PageWrapper, DashboardContainer, PortfolioContainer, PortSideBarContainer, PortNotSideBarContainer, AddaStockBtnsWrapper } from './PortfolioElements';
 import {HotStocks} from './Components/HotStocks/index';
 import {NewsSection} from './Dashboard/NewsSection'
+import axios from 'axios';
 import PortfolioDiversity from './Components/PortfolioDiversity/index'
 import StockSearchContainer from './StockSearchContainer/index'
 import {Profile} from '../Profile'
 
-
 const wsMNETURL = 'ws://stocks.mnet.website/';
+
+
 
 class PortfolioPage extends React.Component {
 
+
+
     state = {
         stocks: {},
-        api_status: false
+        api_status: false,
+        market: true
     }
 
     isWsConencted = () => {
@@ -27,6 +32,18 @@ class PortfolioPage extends React.Component {
         const socket = new WebSocket(wsMNETURL);
         socket.onmessage = this.savingWsStocks;
         socket.onclose = () => { this.setState({api_status: true}) }
+        // axios.get(`https://api.polygon.io/v1/marketstatus/now?apiKey=gqf23sEvmyZ8hzWDeBRy5TedKBU03kF5`, {headers: {"Access-Control-Allow-Origin": "*"}})
+        // .then(res => {
+        //     console.log(res.market)
+        //     // setportstockData({
+        //     //     ...portstockData,
+        //     //     marketprice: parseInt(res.data.quote.latestPrice),
+        //     //     totalvalue: parseInt(portstockData.marketprice)*parseInt(props.data.quantity),
+        //     //     cost: parseInt(props.data.quantity)*parseInt(props.data.avgcost),
+        //     //     gains: parseInt(portstockData.totalvalue)-parseInt(portstockData.cost),
+        //     //     loaded: true
+        //     // })
+        // });
     }
 
     savingWsStocks = (event) => {
@@ -61,14 +78,11 @@ class PortfolioPage extends React.Component {
                         marketTrend={this.marketTrend}
                         isWsConencted={this.isWsConencted}/>
                         {/* <PortfolioDiversity/> */}
-
                     </PortSideBarContainer>
 
 
-
-
                     <PortNotSideBarContainer>
-                        {/* <Profile/> */}
+                        <Profile/>
                         <NewsSection/>
                     </PortNotSideBarContainer>
             </PageWrapper>

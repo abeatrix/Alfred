@@ -8,7 +8,9 @@ const socket = new WebSocket(wsFinnHub);
 
 
 class MyPortfolio extends React.Component {
-
+    state = {
+        wsData: null
+    }
     componentDidMount = () => {
     // Connection opened -> Subscribe
         socket.addEventListener('open', function (event) {
@@ -17,8 +19,19 @@ class MyPortfolio extends React.Component {
     });
 
     // Listen for messages
-        socket.addEventListener('message', function (event) {
-        console.log('Message from server ', event.data.type);
+    socket.addEventListener('message', function (event) {
+        if(event.data[4] === "p"){
+            console.log(event.data)
+            //
+        }
+        console.log('Message from server ', event);
+        this.setState({wsData: JSON.parse(event)})
+    });
+
+    // try to reconnect if it got disconnected
+    socket.addEventListener('message', function (event) {
+        // console.log('Message from server ', event.data.type);
+        console.log('Message from server ', "disconnected");
     });
     }
 
@@ -27,7 +40,6 @@ class MyPortfolio extends React.Component {
     render() {
         return (
         <div>
-
             <h1>testing</h1>
         </div>
         );
