@@ -8,8 +8,7 @@ import {NewsSection} from './Dashboard/NewsSection'
 import {Chatroom} from '../chatbox/index'
 import axios from 'axios';
 import PortfolioDiversity from './Components/PortfolioDiversity/index'
-import StockSearchContainer from './StockSearchContainer/index'
-import {Profile} from '../Profile'
+import {Portfolio} from '../Portfolio/Dashboard/Portfolio'
 
 const wsMNETURL = 'ws://stocks.mnet.website/';
 
@@ -84,7 +83,7 @@ class PortfolioPage extends React.Component {
 
 
                     <PortNotSideBarContainer>
-                        <Profile/>
+                        <Portfolio/>
                         <NewsSection/>
                     </PortNotSideBarContainer>
             </PageWrapper>

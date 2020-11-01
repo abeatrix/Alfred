@@ -1,31 +1,28 @@
-import React from "react";
-import { ProgressBar, Dropdown, Card, Form, Button, Table, Spinner } from 'react-bootstrap';
-import SearchContainer from '../SearchContainer/SearchContainer'
-import {isAuth} from '../../config/auth'
-import UserModel from '../../Model/UserModel'
-import usePortfolio from '../../hooks/usePortfolio'
 import axios from 'axios';
-import PortfolioStockList from '../../Components/Portfolio/Dashboard/PortfolioStockList'
-import { DashboardContainer, PortfolioContainer } from '../Portfolio/PortfolioElements';
 
-export const Profile = () => {
-    const user = isAuth()
-    const userId = user._id
-    const [portfolio, setPortfolio] = usePortfolio(userId);
+class Profile extends React.Component {
+    state = {
+        data: null
+    }
+
+    // marketHour = () =>{
+    //     const res = axios(`https://financialmodelingprep.com/api/v3/market-hours?apikey=6a81c4fba84851a61900dc1666ff4890`)
+    //         .then(result =>
+    //             { return console.log(result.data[0].isTheStockMarketOpen)
+    //             })
+    //         .catch(error => { console.error(error); return Promise.reject(error); });
+    // }
 
 
-    return (
+    render() {
+
+        return (
         <div>
-                    {/* <DashboardContainer>
-                    </DashboardContainer> */}
-
-                    <PortfolioContainer>
-
-                        {(portfolio) ? <PortfolioStockList data={portfolio}/> : <Spinner animation="grow" />}
-
-                    </PortfolioContainer>
+            <h1>testing</h1>
         </div>
-    );
+        );
+    }
 
 }
+export default Profile;
 

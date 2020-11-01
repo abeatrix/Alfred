@@ -28,6 +28,7 @@ const MainNavbar = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
+            <Dropdown.Item href="/portfolio">Profile</Dropdown.Item>
               <Dropdown.Item href="/portfolio">Portfolio</Dropdown.Item>
               <Dropdown.Item onClick={logout}>Sign Out</Dropdown.Item>
             </Dropdown.Menu>

@@ -2,14 +2,17 @@ import MainNavbar from '../Components/Navbar/MainNavbar'
 import PortfolioPage from '../Components/Portfolio/index'
 import Footer from '../Components/Footer/index'
 
-function Portfolio() {
+
+class Portfolio extends React.Component {
+  render(){
     return (
-        <div className="App">
-          <MainNavbar />
-          <PortfolioPage />
-          <Footer />
-        </div>
-      );
+      <div className="App">
+        <MainNavbar />
+        <PortfolioPage />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default Portfolio

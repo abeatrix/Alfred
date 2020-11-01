@@ -19,10 +19,10 @@ export  const NewsSection = () => {
             <Table responsive>
                 <thead>
                     <tr>
-                        <th>category</th>
-                        <th>headline</th>
-                        <th>source</th>
-                        <th>summary</th>
+                        <th>Category</th>
+                        <th>Headline</th>
+                        <th>Summary</th>
+                        <th>Link</th>
                     </tr>
                 </thead>
               <tbody>
