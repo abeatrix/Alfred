@@ -91,9 +91,7 @@ const SignIn = () => {
                             <hr />
                             <NavLink to='/signin'><SigninLogo>Sign In</SigninLogo></NavLink><NavLink to='/signup'><SignupLogo>Sign Up</SignupLogo></NavLink>
                             </TitleWrapper>
-                            {/* <FormLabel htmlFor='for'>Email</FormLabel> */}
                             <FormInput type='email' name='email' placeholder='email' onChange={handleChange('email')} required/>
-                            {/* <FormLabel htmlFor='for'>Password</FormLabel> */}
                             <FormInput type='password' name='password' placeholder='password' onChange={handleChange('password')} required />
                             <FormButton type='submit'>Sign In</FormButton>
                             <Text> <Divider>Or Signin with Google</Divider></Text>

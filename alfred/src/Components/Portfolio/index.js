@@ -5,6 +5,7 @@ import HotIndexList from './Components/HotStocks/HotIndexList'
 import { PageContainer, PageWrapper, DashboardContainer, PortfolioContainer, PortSideBarContainer, PortNotSideBarContainer, AddaStockBtnsWrapper } from './PortfolioElements';
 import {HotStocks} from './Components/HotStocks/index';
 import {NewsSection} from './Dashboard/NewsSection'
+import {Chatroom} from '../chatbox/index'
 import axios from 'axios';
 import PortfolioDiversity from './Components/PortfolioDiversity/index'
 import StockSearchContainer from './StockSearchContainer/index'
@@ -73,6 +74,7 @@ class PortfolioPage extends React.Component {
                     <PortSideBarContainer>
                         <SearchContainer/>
                         <HotStocks />
+                        {/* <Chatroom /> */}
                         <HotIndexList
                         stocks={this.state.stocks}
                         marketTrend={this.marketTrend}
