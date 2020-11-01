@@ -22,8 +22,8 @@ const PortfolioStockList = (props) => {
               <thead>
                 <tr>
                   <th>Symbol</th>
-                  <th>Market</th>
                   <th>Quantity</th>
+                  <th>Market</th>
                   <th>Cost</th>
                   <th>Value</th>
                   <th>Return</th>

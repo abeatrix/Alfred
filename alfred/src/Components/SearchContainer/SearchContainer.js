@@ -3,6 +3,7 @@ import Searchbar from '../SearchContainer/Searchbar/Searchbar';
 import PolygonModel from '../../Model/PolygonModel';
 import Results from '../SearchContainer/Results/Results';
 import { Card } from 'react-bootstrap';
+import axios from 'axios';
 import HSBar from "react-horizontal-stacked-bar-chart";
 
 class SearchContainer extends React.Component {
@@ -12,10 +13,26 @@ class SearchContainer extends React.Component {
         results: null,
         getinfo: false,
         info: null,
+        buy: 0,
+        sell: 0,
+        chart: false,
+        chartinfo: '',
     }
 
     componentDidUpdate(){
     }
+
+    recommendation = () =>{
+        if(this.state.chart) {
+            const symbol = this.state.chartinfo
+            const res = axios(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/1y/?token=${process.env.REACT_APP_IEX_API_KEY}`);
+            console.log(res)
+            const ibuy = parseInt(res.buy)
+            const isell = parseInt(res.sell)
+            this.setState({ buy: ibuy, sell: isell, chart: false });
+        }
+    }
+
 
     search = () =>{
         PolygonModel.search(this.state.query)
@@ -30,6 +47,7 @@ class SearchContainer extends React.Component {
     handleInput = (event) => {
         this.setState({
             query: event.target.value,
+            chartinfo: event.target.value,
             searched: false,
         }, () => this.search())
     }
@@ -42,6 +60,7 @@ class SearchContainer extends React.Component {
                 results: response.data,
                 getinfo: false,
                 info: null,
+                chart: true,
             })
         })
     }
@@ -59,13 +78,12 @@ class SearchContainer extends React.Component {
                     <Card.Body>
                         <p>Searching...</p>
                         <p>{this.state.info.symbol}: {this.state.info.companyName}</p>
-                        <p>This Month Advise from Top Analysts:</p>
-                        <HSBar data={[{ value: 10 }, { value: 20 }]} />
                     </Card.Body>
                 </Card>
                 : null}
             {this.state.searched ?
             <Results data={this.state.results} /> : null}
+            { this.state.buy >0 ? <HSBar data={[{ value: this.state.buy }, { value: this.state.sell }]} /> : null }
         </>
         );
     }

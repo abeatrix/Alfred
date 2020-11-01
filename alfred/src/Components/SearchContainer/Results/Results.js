@@ -9,14 +9,14 @@ const Results = (props) => {
     const user = isAuth()
 
     const [formData, setFormData] = useState({
-        symbol: '',
+        symbol: null,
         quantity: '',
         avgcost: '',
         userId: user._id,
         submitted: false,
     });
 
-    const { symbol, quantity, avgcost, userId, submitted} = formData
+    const { symbol, quantity, avgcost, userId, buy, sell, submitted} = formData
 
 
 
@@ -26,13 +26,6 @@ const Results = (props) => {
 
         const handleInput = text => e => {
             setFormData({...formData, [text]: e.target.value, symbol: data.symbol, userId: user._id, submitted: false,})
-        }
-
-        const search = async data=>{
-            setFormData({submitted: false});
-            const res = await axios(`https://finnhub.io/api/v1/stock/symbol?exchange=US&token=${process.env.REACT_APP_FINNHUB_API_KEY}`);
-            const symbol = await res.displaySymbol;
-            setFormData({ symbol, loading: false });
         }
 
         const handleSubmit = (e) => {
@@ -45,7 +38,7 @@ const Results = (props) => {
             }).then(res => {
                 setFormData({
                     ...formData,
-                    symbol: '',
+                    symbol: null,
                     quantity: '',
                     avgcost: '',
                     userId: '',
@@ -67,7 +60,7 @@ const Results = (props) => {
                             <Form.Group controlId="formGroupEmail">
                                 <Form.Label>{data.companyName}</Form.Label>
                                 <Form.Control type="text" name='symbol' placeholder="Ticker" defaultValue={data.symbol} />
-                                <input type="hidden" name="symbol" value={data.symbol}></input>
+                                <input type="hidden" name="symbol" value={data.symbol} >< /input>
                             </Form.Group>
                             </fieldset>
                             <Form.Group controlId="formAvgCost">
