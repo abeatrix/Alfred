@@ -2,9 +2,8 @@ import React from 'react';
 import Searchbar from '../SearchContainer/Searchbar/Searchbar';
 import PolygonModel from '../../Model/PolygonModel';
 import Results from '../SearchContainer/Results/Results';
-import { Card } from 'react-bootstrap';
+import { Card, ProgressBar } from 'react-bootstrap';
 import axios from 'axios';
-import HSBar from "react-horizontal-stacked-bar-chart";
 
 class SearchContainer extends React.Component {
     state = {
@@ -13,8 +12,6 @@ class SearchContainer extends React.Component {
         results: null,
         getinfo: false,
         info: null,
-        buy: 0,
-        sell: 0,
         chart: false,
         chartinfo: '',
     }
@@ -25,11 +22,15 @@ class SearchContainer extends React.Component {
     recommendation = () =>{
         if(this.state.chart) {
             const symbol = this.state.chartinfo
-            const res = axios(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/1y/?token=${process.env.REACT_APP_IEX_API_KEY}`);
-            console.log(res)
-            const ibuy = parseInt(res.buy)
-            const isell = parseInt(res.sell)
-            this.setState({ buy: ibuy, sell: isell, chart: false });
+            const res = axios(`https://finnhub.io/api/v1/stock/recommendation?symbol=${symbol}&token=${process.env.REACT_APP_IEX_API_KEY}`)
+            .then(result =>
+                { console.log(result);
+
+                return (
+                    this.state.chartinfo = result.data[0]
+                )
+                })
+            .catch(error => { console.error(error); return Promise.reject(error); });
         }
     }
 
@@ -61,6 +62,8 @@ class SearchContainer extends React.Component {
                 getinfo: false,
                 info: null,
                 chart: true,
+            }, () => {
+                this.recommendation()
             })
         })
     }
@@ -80,10 +83,19 @@ class SearchContainer extends React.Component {
                         <p>{this.state.info.symbol}: {this.state.info.companyName}</p>
                     </Card.Body>
                 </Card>
-                : null}
+            : null}
             {this.state.searched ?
-            <Results data={this.state.results} /> : null}
-            { this.state.buy >0 ? <HSBar data={[{ value: this.state.buy }, { value: this.state.sell }]} /> : null }
+            <Results data={this.state.results} />
+            : null}
+            { this.state.chartinfo ?
+                <Card style={{ margin: '5%' }}>
+                    <ProgressBar>
+                        <ProgressBar striped variant="success" now={this.state.chartinfo.buy} key={1} label={this.state.chartinfo.buy}/>
+                        <ProgressBar variant="warning" now={this.state.chartinfo.hold} key={2} label={this.state.chartinfo.hold} />
+                        <ProgressBar striped variant="danger" now={this.state.chartinfo.sell} key={3} label={this.state.chartinfo.sell} />
+                    </ProgressBar>
+                </Card>
+            : null }
         </>
         );
     }

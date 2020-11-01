@@ -1,5 +1,5 @@
 import React from "react";
-import { ProgressBar, Dropdown, Card, Form, Button, Table } from 'react-bootstrap';
+import { ProgressBar, Dropdown, Card, Form, Button, Table, Spinner } from 'react-bootstrap';
 import SearchContainer from '../SearchContainer/SearchContainer'
 import {isAuth} from '../../config/auth'
 import UserModel from '../../Model/UserModel'
@@ -21,7 +21,7 @@ export const Profile = () => {
 
                     <PortfolioContainer>
 
-                        {/* {(portfolio) ? <PortfolioStockList data={portfolio}/> : 'Loading'} */}
+                        {(portfolio) ? <PortfolioStockList data={portfolio}/> : <Spinner animation="grow" />}
 
                     </PortfolioContainer>
         </div>

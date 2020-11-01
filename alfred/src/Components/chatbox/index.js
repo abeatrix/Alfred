@@ -5,17 +5,20 @@ import 'firebase/firestore';
 import {Chatbox} from './Components/Chatbox'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 import { isAuth } from '../../config/auth';
+import { AddaStockBtn, AddaStockBtnsWrapper } from '../Portfolio/PortfolioElements';
 
-firebase.initializeApp({
-    apiKey: process.env.REACT_APP_FIREBASE_API,
-    authDomain: "alfred-d7569.firebaseapp.com",
-    databaseURL: process.env.REACT_APP_FIREBASE_URL,
-    projectId: "alfred-d7569",
-    storageBucket: "alfred-d7569.appspot.com",
-    messagingSenderId: process.env.REACT_APP_FIREBASE_SENDERID,
-    appId: process.env.REACT_APP_FIREBASE_APPID,
-    measurementId: "G-MS172H2LCY"
-})
+if(!firebase.apps.length){
+    firebase.initializeApp({
+        apiKey: process.env.REACT_APP_FIREBASE_API,
+        authDomain: "alfred-d7569.firebaseapp.com",
+        databaseURL: process.env.REACT_APP_FIREBASE_URL,
+        projectId: "alfred-d7569",
+        storageBucket: "alfred-d7569.appspot.com",
+        messagingSenderId: process.env.REACT_APP_FIREBASE_SENDERID,
+        appId: process.env.REACT_APP_FIREBASE_APPID,
+        measurementId: "G-MS172H2LCY"
+    })
+}
 
 export const Chatroom = () => {
 
@@ -52,14 +55,16 @@ export const Chatroom = () => {
                 <Card.Title>Welcome to Live Chat!</Card.Title>
                 {
                     alfredtalks && alfredtalks ?
-                    alfredtalks && alfredtalks.map(msg => <Chatbox key={msg.id} message={msg} />)
+                    alfredtalks && alfredtalks.map(msg => <Chatbox key={msg.id} message={msg} user={user}/>)
                     : <Chatbox key={alfredtalks.id} message={alfredtalks.message} />
                 }
                 <Form onSubmit={sendMsgs}>
-                <Form.Group controlId="formGroupEmail">
+                <Form.Group controlId="chatboxFormGroup">
                     <Form.Control value={formValue} onChange={(e) => setFormValue(e.target.value)} type="text" name='message' placeholder="Enter Your Message Here" />
                 </Form.Group>
-                    { user ? <Button variant="success" type='submit'>Send</Button> : null }
+                <AddaStockBtnsWrapper>
+                    { user ? <Button variant='success' type='submit'>Send</Button> : null }
+                </AddaStockBtnsWrapper>
                 </Form>
             </Card.Body>
         }

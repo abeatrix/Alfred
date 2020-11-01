@@ -8,7 +8,7 @@ const StockSearchResult = (props) => {
         )
     }
     return(
-        <div class="card-columns">
+        <div className="card-columns">
             {displayStockResults(props.data)}
         </div>
     )

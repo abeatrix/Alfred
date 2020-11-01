@@ -33,9 +33,9 @@ class PortfolioPage extends React.Component {
         const socket = new WebSocket(wsMNETURL);
         socket.onmessage = this.savingWsStocks;
         socket.onclose = () => { this.setState({api_status: true}) }
-        // axios.get(`https://api.polygon.io/v1/marketstatus/now?apiKey=gqf23sEvmyZ8hzWDeBRy5TedKBU03kF5`, {headers: {"Access-Control-Allow-Origin": "*"}})
+        // axios.get(`https://api.polygon.io/v1/marketstatus/now?apiKey=process.env.REACT_APP_POLY_API_KEY`, {headers: {"Access-Control-Allow-Origin": "*"}})
         // .then(res => {
-        //     console.log(res.market)
+        //     console.log(res.data)
         //     // setportstockData({
         //     //     ...portstockData,
         //     //     marketprice: parseInt(res.data.quote.latestPrice),
@@ -74,7 +74,7 @@ class PortfolioPage extends React.Component {
                     <PortSideBarContainer>
                         <SearchContainer/>
                         <HotStocks />
-                        {/* <Chatroom /> */}
+                        <Chatroom />
                         <HotIndexList
                         stocks={this.state.stocks}
                         marketTrend={this.marketTrend}

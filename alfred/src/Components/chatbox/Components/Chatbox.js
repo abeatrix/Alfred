@@ -1,6 +1,7 @@
 import {useRef, useState} from 'react';
 import { ListGroup } from 'react-bootstrap';
 import firebase from 'firebase/app';
+import Avatar from 'react-avatar';
 import 'firebase/firestore';
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 
@@ -9,7 +10,9 @@ export const Chatbox = (props) => {
     return (
         <div>
             <ListGroup variant="flush">
-                <ListGroup.Item>{props.message}</ListGroup.Item>
+                <ListGroup.Item>
+                    <Avatar name="Beatrix" size="20" round={true} textSizeRatio={1.75} color="green" /> {props.message.message}
+                </ListGroup.Item>
             </ListGroup>
         </div>
     )
