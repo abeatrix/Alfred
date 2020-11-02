@@ -7,11 +7,7 @@ const {authRequired} = require('../middleware/valid')
 router.post('/', create);
 router.get('/', index);
 router.get('/:id/detail', detail);
-router.delete('/:id', authRequired, destroy);
-
-// router.get('/:id', show);
-// router.put('/:id', ctrl.portfolio.update);
-// router.delete('/:id', ctrl.portfolio.destroy);
+router.delete('/:id', destroy);
 
 // EXPORTS
 module.exports = router;

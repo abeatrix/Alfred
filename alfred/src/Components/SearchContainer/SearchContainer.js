@@ -19,10 +19,9 @@ class SearchContainer extends React.Component {
     recommendation = () =>{
         if(this.state.chart) {
             const symbol = this.state.chartinfo
-            const res = axios(`https://finnhub.io/api/v1/stock/recommendation?symbol=${symbol}&token=${process.env.REACT_APP_IEX_API_KEY}`)
+            const res = axios(`https://finnhub.io/api/v1/stock/recommendation?symbol=${symbol}&token=${process.env.REACT_APP_FINNHUB_API_KEY}`)
             .then(result =>
-                { console.log(result);
-
+                {
                     this.setState({
                         chartinfo: result.data[0]
                         })

@@ -10,7 +10,7 @@ export const PortfolioStockListRow = (props) => {
 
   return (
     <>
-       {(portfoliodetail.data ) ?
+       { portfoliodetail.data?
         <tr>
           {(portfoliodetail.data.symbol) ? <td>{portfoliodetail.data.symbol}</td> : <td> <Spinner animation="border" variant="success" /></td>}
           {(portfoliodetail.data.quantity) ? <td>{portfoliodetail.data.quantity}</td> : <td> <Spinner animation="border" variant="success" /></td>}
