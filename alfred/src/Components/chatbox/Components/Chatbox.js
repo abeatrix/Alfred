@@ -1,6 +1,5 @@
-import {useRef, useState} from 'react';
+
 import { ListGroup } from 'react-bootstrap';
-import firebase from 'firebase/app';
 import Avatar from 'react-avatar';
 import 'firebase/firestore';
 import {useCollectionData} from 'react-firebase-hooks/firestore'

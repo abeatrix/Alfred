@@ -1,6 +1,6 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-const URL = 'https://cloud.iexapis.com/stable/stock';
+// const URL = 'https://cloud.iexapis.com/stable/stock';
 const API = process.env.REACT_APP_FINNHUB_API_KEY;
 
 

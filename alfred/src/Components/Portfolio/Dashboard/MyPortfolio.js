@@ -6,8 +6,6 @@ const wsFinnHub = `wss://ws.finnhub.io?token=${process.env.REACT_APP_FINNHUB_API
 
 const socket = new WebSocket(wsFinnHub);
 
-const now = new Date().toISOString()
-
 class MyPortfolio extends React.Component {
     state = {
         wsData: null
@@ -36,13 +34,13 @@ class MyPortfolio extends React.Component {
     // });
     // }
 
-    marketHour = () =>{
-        const res = axios(`https://financialmodelingprep.com/api/v3/market-hours?apikey=6a81c4fba84851a61900dc1666ff4890`)
-            .then(result =>
-                { return console.log(result.data[0].isTheStockMarketOpen)
-                })
-            .catch(error => { console.error(error); return Promise.reject(error); });
-        }
+    // marketHour = () =>{
+    //     const res = axios(`https://financialmodelingprep.com/api/v3/market-hours?apikey=6a81c4fba84851a61900dc1666ff4890`)
+    //         .then(result =>
+    //             { return console.log(result.data[0].isTheStockMarketOpen)
+    //             })
+    //         .catch(error => { console.error(error); return Promise.reject(error); });
+    //     }
 
 
 

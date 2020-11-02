@@ -5,10 +5,8 @@ import NewsListRow from './NewsListRow';
 const NewsList = (props) => {
 
     function generateNewsItem(finnNews) {
-        return finnNews.slice(0, 5).map((finnNew, i )=> {
-            return (
-                <tr><NewsListRow key={i} finnNew={finnNew} /></tr>
-            )
+        return finnNews.slice(0, 5).map((finnNew, index )=> {
+            return <NewsListRow key={index} finnNew={finnNew} />
         })
     }
 

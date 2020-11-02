@@ -5,12 +5,12 @@ const NewsListRow = (props) => {
     const { category, headline, source, summary, url } = props.finnNew;
 
         return (
-            <>
+            <tr>
                 <td>{category}</td>
                 <td >{headline}</td>
                 <td><small>{summary}</small></td>
                 <td><a href={url}>{source}</a></td>
-            </>
+            </tr>
         );
 }
 

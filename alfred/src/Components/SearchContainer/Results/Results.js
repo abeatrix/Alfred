@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { Card, Form, Button } from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import {AddaStockBtn, AddaStockBtnsWrapper } from '../../Portfolio/PortfolioElements'
-import {isAuth, getCookie} from '../../../config/auth'
+import {isAuth} from '../../../config/auth'
 import axios from 'axios';
 
 const Results = (props) => {
@@ -16,13 +16,10 @@ const Results = (props) => {
         submitted: false,
     });
 
-    const { symbol, quantity, avgcost, userId, buy, sell, submitted} = formData
-
-
+    const { symbol, quantity, avgcost, userId} = formData
 
     function displayResults(data){
         const user = isAuth()
-        // const token = getCookie()
 
         const handleInput = text => e => {
             setFormData({...formData, [text]: e.target.value, symbol: data.symbol, userId: user._id, submitted: false,})

@@ -1,7 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { isAuth } from '../../config/auth'
-import {Navbar, Nav, NavDropdown, Form, Button, FormControl} from 'react-bootstrap'
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import {WhiteBtn, GreenBtn} from './NavbarEle'
 
 const TopNavbar = () => {

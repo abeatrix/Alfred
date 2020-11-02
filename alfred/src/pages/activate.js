@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import jwt from 'jsonwebtoken';
-import { authenticate, isAuth } from '../config/auth'
+import { isAuth } from '../config/auth'
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
-import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text } from '../Components/Signup/SingupElements'
+import { Redirect } from 'react-router-dom';
+import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormButton, Text } from '../Components/Signup/SingupElements'
 
 const ActivatePage = ({match}) => {
     const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const ActivatePage = ({match}) => {
         }
     }, [])
 
-    const {username, show, token} = formData
+    const {token} = formData
 
     const handleSubmit = e => {
         e.preventDefault()

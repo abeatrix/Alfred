@@ -1,28 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { ProgressBar, Dropdown, Card, Form, Button, Table } from 'react-bootstrap';
+import React from "react";
 import SearchContainer from '../SearchContainer/SearchContainer'
 import HotIndexList from './Components/HotStocks/HotIndexList'
-import { PageContainer, PageWrapper, DashboardContainer, PortfolioContainer, PortSideBarContainer, PortNotSideBarContainer, AddaStockBtnsWrapper } from './PortfolioElements';
+import { PageContainer, PageWrapper, PortSideBarContainer, PortNotSideBarContainer } from './PortfolioElements';
 import {HotStocks} from './Components/HotStocks/index';
 import {NewsSection} from './Dashboard/NewsSection'
 import {Chatroom} from '../chatbox/index'
-import axios from 'axios';
-import PortfolioDiversity from './Components/PortfolioDiversity/index'
+// import axios from 'axios'
+// import PortfolioDiversity from './Components/PortfolioDiversity/index'
 import {Portfolio} from '../Portfolio/Dashboard/Portfolio'
 
 const wsMNETURL = 'ws://stocks.mnet.website/';
 
-
-
 class PortfolioPage extends React.Component {
-
-
-
     state = {
         stocks: {},
         api_status: false,
-        market: true
+        market: true,
+        marketHour: true
     }
+
+    // shouldComponentUpdate(){
+    //     const marketHour = () =>{
+    //         axios(`https://financialmodelingprep.com/api/v3/market-hours?apikey=6a81c4fba84851a61900dc1666ff4890`)
+    //         .then(result =>
+    //             {
+    //                 return this.state.marketHour = result.data[0].isTheStockMarketOpen
+
+    //             })
+    //         .catch(error => { console.error(error); return Promise.reject(error); });
+    //     }
+    //     return false;
+    // }
 
     isWsConencted = () => {
         return this.state.stocks.length == 0;

@@ -1,7 +1,6 @@
 import React from "react";
 import { Spinner } from 'react-bootstrap';
 import {isAuth} from '../../../config/auth'
-import UserModel from '../../../Model/UserModel'
 import usePortfolio from '../../../hooks/usePortfolio'
 import PortfolioStockList from './PortfolioStockList'
 import { DashboardContainer, PortfolioContainer } from '../PortfolioElements';
@@ -14,8 +13,8 @@ export const Portfolio = () => {
 
     return (
         <div>
-                    {/* <DashboardContainer>
-                    </DashboardContainer> */}
+                    <DashboardContainer>
+                    </DashboardContainer>
 
                     <PortfolioContainer>
 

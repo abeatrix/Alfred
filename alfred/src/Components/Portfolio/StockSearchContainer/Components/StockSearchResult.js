@@ -1,4 +1,4 @@
-import { ProgressBar, Dropdown, Card, Form, Button, Table } from 'react-bootstrap';
+import { Card} from 'react-bootstrap';
 
 const StockSearchResult = (props) => {
     function displayStockResults(data){

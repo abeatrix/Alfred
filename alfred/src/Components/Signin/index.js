@@ -3,9 +3,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import { authenticate, isAuth} from '../../config/auth'
 import axios from 'axios';
 import GoogleLogin from 'react-google-login';
-import { NavLink, Link, Redirect, withRouter, useHistory} from 'react-router-dom';
+import { NavLink, Redirect, useHistory} from 'react-router-dom';
 import { Divider } from 'rsuite';
-import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton, Text, SignupLogo, SigninLogo, TitleWrapper } from './SigninElements'
+import { Container, FormWrap, Icon, FormContent, Form, FormInput, FormButton, Text, SignupLogo, SigninLogo, TitleWrapper } from './SigninElements'
 
 const SignIn = () => {
     const history = useHistory();
@@ -16,9 +16,8 @@ const SignIn = () => {
         status: 'Sign In',
     });
 
-    const { email, password, status} = formData
+    const { email, password} = formData
 
-    // Handle changes from form inputs
     const handleChange = text => e => {
         setFormData({...formData, [text]: e.target.value})
     }
@@ -48,7 +47,6 @@ const SignIn = () => {
         sendGToken(response.tokenId)
     }
 
-    // Submit form data to backend
     const handleSubmit = e => {
         e.preventDefault()
         if (email && password) {

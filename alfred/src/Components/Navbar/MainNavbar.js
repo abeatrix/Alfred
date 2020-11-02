@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { isAuth, userInfoSearch } from '../../config/auth'
-import {Navbar, Nav, NavDropdown, Form, Button, FormControl, DropdownButton, Dropdown} from 'react-bootstrap'
-import {WhiteBtn, GreenBtn, NavLogo} from './NavbarEle'
+import {Navbar, Nav, Dropdown} from 'react-bootstrap'
+import {GreenBtn, NavLogo} from './NavbarEle'
 import Avatar from 'react-avatar';
 
 const MainNavbar = () => {

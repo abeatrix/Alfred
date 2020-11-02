@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import React from "react";
 import useShowPortDetail from '../../../hooks/useShowPortDetail'
 import Spinner from 'react-bootstrap/Spinner'
-import rateLimit from 'axios-rate-limit';
 import {PortfolioStockListRowItem} from './PortfolioStockListRowItem'
 
 export const PortfolioStockListRow = (props) => {

@@ -1,6 +1,5 @@
 import React from 'react'
 import HotIndexRow from './HotIndexRow'
-import { Detector } from "react-detect-offline";
 import {
   Card,
   Table,

@@ -3,11 +3,11 @@ import {
   Card,
   Table,
 } from "react-bootstrap";
-import axios from 'axios';
 import usePolygon from '../../../../hooks/userPolygon';
 import HotIndexItem from './HotIndexItem';
 import Spinner from 'react-bootstrap/Spinner'
-import rateLimit from 'axios-rate-limit';
+// import axios from 'axios';
+// import rateLimit from 'axios-rate-limit';
 
 export  const HotStocks = () => {
 
@@ -16,27 +16,18 @@ export  const HotStocks = () => {
   const [polystock3, setPolystock3] = usePolygon('TSLA');
   const [polystock4, setPolystock4] = usePolygon('AMZN');
 
-  const marketTime = [
-    {
-      open: false
-    }
-  ]
+  // const marketTime = true
 
-  const [marketStatus, setmarketStatus] = useState(marketTime);
+  // const [marketStatus, setmarketStatus] = useState(marketTime);
 
-  const http = rateLimit(axios.create(), { maxRequests: 2, perMilliseconds: 1000, maxRPS: 2 })
-  http.getMaxRPS() // 2
+//   useEffect(() => {
+//     http.get(`https://financialmodelingprep.com/api/v3/market-hours?apikey=6a81c4fba84851a61900dc1666ff4890`)
+//       .then(res => {
+//         console.log(res.data[0].isTheStockMarketOpen)
 
-  useEffect(() => {
-    http.get(`https://api.polygon.io/v1/marketstatus/now?apiKey=gqf23sEvmyZ8hzWDeBRy5TedKBU03kF5`, {headers: {"Access-Control-Allow-Origin": "*"}})
-      .then(res => {
-        console.log(JSON.parse(res.data.market))
-        // setportstockData({
-        //   ...setmarketStatus,
-        //   open: true
-        // })
-      });
-}, [])
+//         this.marketTime= res.data[0].isTheStockMarketOpen
+//       });
+// }, [])
 
     return (
 

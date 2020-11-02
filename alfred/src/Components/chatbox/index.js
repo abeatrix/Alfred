@@ -1,11 +1,11 @@
-import {useRef, useState} from 'react';
+import {useState} from 'react';
 import { Card, Form, Button, Spinner } from 'react-bootstrap';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {Chatbox} from './Components/Chatbox'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 import { isAuth } from '../../config/auth';
-import { AddaStockBtn, AddaStockBtnsWrapper } from '../Portfolio/PortfolioElements';
+import { AddaStockBtnsWrapper } from '../Portfolio/PortfolioElements';
 
 if(!firebase.apps.length){
     firebase.initializeApp({

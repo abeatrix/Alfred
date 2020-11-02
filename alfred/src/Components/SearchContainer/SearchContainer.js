@@ -16,9 +16,6 @@ class SearchContainer extends React.Component {
         chartinfo: '',
     }
 
-    componentDidUpdate(){
-    }
-
     recommendation = () =>{
         if(this.state.chart) {
             const symbol = this.state.chartinfo
@@ -26,9 +23,13 @@ class SearchContainer extends React.Component {
             .then(result =>
                 { console.log(result);
 
-                return (
-                    this.state.chartinfo = result.data[0]
-                )
+                    this.setState({
+                        chartinfo: result.data[0]
+                        })
+
+                // return (
+                //     this.state.chartinfo = result.data[0]
+                // )
                 })
             .catch(error => { console.error(error); return Promise.reject(error); });
         }

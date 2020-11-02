@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 // import Toast from 'react-bootstrap/Toast'
-import { authenticate, isAuth } from '../../config/auth'
+import { isAuth } from '../../config/auth'
 import axios from 'axios';
-import { NavLink, Link, Redirect, withRouter, useHistory} from 'react-router-dom';
+import { NavLink, Redirect, useHistory} from 'react-router-dom';
 import { Container, FormWrap, Icon, FormContent, Form, SignupLogo, SigninLogo, FormLabel, FormInput, FormButton, Text, TitleWrapper } from './SingupElements'
 
 const Signup = () => {

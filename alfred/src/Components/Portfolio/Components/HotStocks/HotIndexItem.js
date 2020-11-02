@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HotIndexItem = (props) => {
-    const { symbol, companyName,latestPrice, change } = props.polystock;
+    const { symbol, companyName,latestPrice } = props.polystock;
     const s = JSON.stringify(props.polystock.change)
 
     return (
