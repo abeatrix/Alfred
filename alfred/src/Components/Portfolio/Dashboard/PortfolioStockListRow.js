@@ -7,16 +7,15 @@ export const PortfolioStockListRow = (props) => {
 
   const [portfoliodetail, setPortfolioDetail] = useShowPortDetail(props.data);
 
-
   return (
     <>
-       { portfoliodetail.data?
+       { portfoliodetail.data ?
         <tr>
           {(portfoliodetail.data.symbol) ? <td>{portfoliodetail.data.symbol}</td> : <td> <Spinner animation="border" variant="success" /></td>}
           {(portfoliodetail.data.quantity) ? <td>{portfoliodetail.data.quantity}</td> : <td> <Spinner animation="border" variant="success" /></td>}
           <PortfolioStockListRowItem data={portfoliodetail.data}/>
         </tr>
-        : <Spinner animation="border" variant="success" /> }
+        : null}
 
     </>
   );

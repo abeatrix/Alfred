@@ -1,7 +1,7 @@
 import React from 'react'
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 
-class HotIndexRow extends React.Component {
+class LiveMarketDataListRow extends React.Component {
 
   render() {
     return (
@@ -11,7 +11,7 @@ class HotIndexRow extends React.Component {
           {this.props.data.current_value.toFixed(2)}
         </td>
         <td>
-          <Sparklines data={(this.props.data.stats).map((stats) => { return stats.value })}>
+          <Sparklines data={(this.props.data.stats).map((stats) => { return stats.value})}>
             <SparklinesLine color="green" />
           </Sparklines>
         </td>
@@ -20,4 +20,4 @@ class HotIndexRow extends React.Component {
   }
 }
 
-export default HotIndexRow;
+export default LiveMarketDataListRow;

@@ -10,8 +10,8 @@ const Results = (props) => {
 
     const [formData, setFormData] = useState({
         symbol: null,
-        quantity: '',
-        avgcost: '',
+        quantity: 'Number of Shares',
+        avgcost: 'Cost per Share',
         userId: user._id,
         submitted: false,
     });
@@ -35,10 +35,8 @@ const Results = (props) => {
             }).then(res => {
                 setFormData({
                     ...formData,
-                    symbol: null,
-                    quantity: '',
-                    avgcost: '',
-                    userId: '',
+                    quantity: 'Number of Shares',
+                    avgcost: 'Cost per Share',
                     submitted: true,
                 })
             }).catch(err => {
@@ -62,11 +60,11 @@ const Results = (props) => {
                             </fieldset>
                             <Form.Group controlId="formAvgCost">
                                 <Form.Label>Average Cost</Form.Label>
-                                <Form.Control type="number" name='avgcost' placeholder="Cost per Share" onChange={handleInput('avgcost')} required/>
+                                <Form.Control type="number" name='avgcost' placeholder={avgcost} onChange={handleInput('avgcost')} required/>
                             </Form.Group>
                             <Form.Group controlId="formQuan">
                                 <Form.Label>Quantity</Form.Label>
-                                <Form.Control type="number" name='quantity' placeholder="Number of Shares" onChange={handleInput('quantity')}/>
+                                <Form.Control type="number" name='quantity' placeholder={quantity} onChange={handleInput('quantity')}/>
                             </Form.Group>
                             <input type="hidden" name="userId" value={user._id}></input>
                             <AddaStockBtnsWrapper>
