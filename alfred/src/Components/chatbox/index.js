@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useRef} from 'react';
 import { Card, Form, Button, Spinner } from 'react-bootstrap';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -28,11 +28,13 @@ export const Chatroom = () => {
 
     const allMessages = firestore.collection('alfredtalks');
 
-    const messages = allMessages.orderBy('createdAt').limit(10);
+    const messages = allMessages.orderBy('createdAt', 'desc').limit(5);
 
     const [ alfredtalks ] = useCollectionData(messages, {idField: 'id'});
 
     const [formValue, setFormValue] = useState(['']);
+
+    const currentView = useRef();
 
     const sendMsgs = async(e) => {
         e.preventDefault();
@@ -44,10 +46,12 @@ export const Chatroom = () => {
         })
 
         setFormValue('');
+        currentView.current.scrollIntoView({behavior: 'auto'});
     }
 
     return (
         <>
+        <div ref={currentView}></div>
         <Card style={{ margin: '5%' }}>
         { alfredtalks === undefined ?
         <Spinner animation="border" variant="success" /> :
