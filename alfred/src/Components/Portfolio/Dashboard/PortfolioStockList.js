@@ -1,14 +1,29 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {PortfolioStockListRow} from './PortfolioStockListRow'
 import {Card,Table} from "react-bootstrap";
-
+import axios from 'axios';
 
 const PortfolioStockList = (props) => {
   // console.log(props)
+
+  const [deleteStock, setDeleteStock] = useState(false)
+
+  const handleDelete = (portId) => {
+    axios.delete(`http://localhost:4000/api/portfolio/${portId}`)
+    .then((res)=>{
+      const updatedList = props.data.portfolio.filter((portId) => {
+      return portId !== res.data.portfolio._id;
+      });
+      props.setPortfolio({updatedList})
+      setDeleteStock(true)
+
+    })
+  }
+
   function generatePortStock(stocks) {
     return stocks.map((data) =>{
       return(
-        <PortfolioStockListRow data={data} />
+        <PortfolioStockListRow data={data} userId={props.userId} handleDelete={handleDelete}/>
       )
     })
   }

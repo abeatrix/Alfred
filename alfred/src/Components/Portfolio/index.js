@@ -55,6 +55,7 @@ class PortfolioPage extends React.Component {
     }
 
 
+
     // marketHour = () =>{
     //     const res = axios(`https://financialmodelingprep.com/api/v3/market-hours?apikey=process.env.REACT_APP_FMP_API_KEY`)
     //         .then(result =>

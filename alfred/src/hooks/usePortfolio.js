@@ -7,7 +7,7 @@ function usePortfolio(userId) {
     function fetchPortfolio(userId) {
         PortfolioModel.show(userId).then((data) => {
             setPortfolio(data);
-            // console.log(data)
+            console.log(data)
         });
     }
 

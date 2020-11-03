@@ -13,9 +13,6 @@ export const Portfolio = (props) => {
     const [portfolio, setPortfolio] = usePortfolio(userId);
     const [userInfo, setUserInfo] = useFindUserInfo(userId);
 
-    // console.log(userInfo.data.username)
-
-    // console.log(userInfoSearch())
     return (
         <div>
                     <DashboardContainer>
@@ -24,7 +21,7 @@ export const Portfolio = (props) => {
                     </DashboardContainer>
 
                     <PortfolioContainer>
-                        {(portfolio) ? <PortfolioStockList data={portfolio}/> : <Spinner animation="grow" />}
+                        {(portfolio) ? <PortfolioStockList data={portfolio} userId={userId} setPortfolio={setPortfolio} usePortfolio={usePortfolio} /> : <Spinner animation="grow" />}
 
                     </PortfolioContainer>
         </div>

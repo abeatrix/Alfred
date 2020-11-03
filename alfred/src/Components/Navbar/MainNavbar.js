@@ -4,8 +4,12 @@ import { isAuth, userInfoSearch } from '../../config/auth'
 import {Navbar, Nav, Dropdown} from 'react-bootstrap'
 import {GreenBtn, NavLogo} from './NavbarEle'
 import Avatar from 'react-avatar';
+import useFindUserInfo from '../../hooks/userFindUserInfo'
 
-const MainNavbar = () => {
+const MainNavbar = (props) => {
+
+  const [userInfo, setUserInfo] = useFindUserInfo(props.userId);
+
   const history = useHistory();
   const logout = () => {
     localStorage.clear();
@@ -24,7 +28,7 @@ const MainNavbar = () => {
         {isAuth() ?
           <Dropdown>
             <Dropdown.Toggle variant="noCaret" id="dropdown-basic">
-              { userInfoSearch() ? <Avatar name="{userInfo.data.username}" size="150" /> : <Avatar size="50" round={true} src={"https://a.thumbs.redditmedia.com/nmh5l-zCsmmc3y2ehfjtWRJjGmCEWEJDTjtW3AGMz60.png"} />}
+              { userInfo.data ?  <Avatar size="50" round={true} src={userInfo.data.profilePic} /> : <Avatar name="A"  size="50" round={true}  />}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>

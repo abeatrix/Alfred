@@ -1,11 +1,85 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import Spinner from 'react-bootstrap/Spinner';
+import {Modal, Button, Form} from 'react-bootstrap';
 import rateLimit from 'axios-rate-limit';
-import { TiDeleteOutline } from "react-icons/ti";
+import { TiDeleteOutline, TiEdit } from "react-icons/ti";
+
+function MyVerticallyCenteredModal(props) {
+    const [formData, setFormData] = useState({
+        symbol: props.symbol,
+        quantity: 'Number of Shares',
+        avgcost: 'Cost per Share',
+        userId: props.userId,
+        submitted: false,
+    });
+
+    const { symbol, quantity, avgcost, userId} = formData
+
+    const handleInput = text => e => {
+        setFormData({...formData, [text]: e.target.value, symbol: props.symbol, userId: props.userId, submitted: false,})
+    }
+
+    const handleSubmit = (e) => {
+        console.log('submit')
+        e.preventDefault();
+        axios.put(`http://localhost:4000/api/portfolio/${props.portId}`, {
+            symbol,
+            quantity,
+            avgcost,
+            userId
+        }).then(res => {
+            console.log(res)
+            setFormData({
+                ...formData,
+                quantity: 'Number of Shares',
+                avgcost: 'Cost per Share',
+                submitted: true,
+            })
+        }).catch(err => {
+            {(err.response) ? toast.error(err.response.data.errors) : toast.error('Try Again')}
+            console.log(err)
+        });
+
+    }
+
+    return (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+                Editing info for {props.symbol} {props.portId}
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="formAvgCost">
+                        <Form.Label>Average Cost</Form.Label>
+                        <Form.Control type="number" name='avgcost' placeholder='Cost of Share' onChange={handleInput('avgcost')} required/>
+                    </Form.Group>
+                    <Form.Group controlId="formQuan">
+                        <Form.Label>Quantity</Form.Label>
+                        <Form.Control type="number" name='quantity' placeholder='Number of Shares' onChange={handleInput('quantity')} required/>
+                    </Form.Group>
+                    <Button onClick={props.onHide} variant="danger">Cancel</Button>
+                    <Button type='submit' variant="success">Submit</Button>
+                </Form>
+            </Modal.Body>
+        </Modal>
+    );
+}
+
 
 export const PortfolioStockListRowItem = (props) => {
+    const [modalShow, setModalShow] = React.useState(false);
+    // const [deleteStock, setDeleteStock] = React.useState(false);
     const portId = props.data._id
+    const userId = props.userId
     const stockData = [
         {
         marketprice: 0,
@@ -14,7 +88,6 @@ export const PortfolioStockListRowItem = (props) => {
         loaded: false,
         gains: 0,
         portId: props.data._id,
-        render: false
         }
     ]
 
@@ -27,7 +100,6 @@ export const PortfolioStockListRowItem = (props) => {
     useEffect(() => {
         http.get(`https://cloud.iexapis.com/stable/stock/${props.data.symbol}/book?token=${process.env.REACT_APP_IEX_API_KEY}`)
         .then(res => {
-            console.log(res)
             setportstockData({
                 ...portstockData,
                 marketprice: parseInt(res.data.quote.latestPrice),
@@ -39,17 +111,10 @@ export const PortfolioStockListRowItem = (props) => {
         });
     }, [])
 
-    const deleteBtn = () => {
-        axios.delete(`http://localhost:4000/api/portfolio/${portId}`)
-        .then((res)=>{
-            setportstockData({
-                ...portstockData,
-                render: true,
-            })
-            console.log(portstockData)
-        }
-        ).catch(err => err);
-
+    const handleSubmit = (e) => {
+        console.log('DELETE THIS')
+        e.preventDefault();
+        props.handleDelete(portId)
     }
 
 
@@ -59,10 +124,18 @@ export const PortfolioStockListRowItem = (props) => {
         { props.data && portstockData.loaded && portstockData.cost >0 ?
             <>
                 <td>{portstockData.marketprice}</td>
-                {(portstockData.cost) ? <td>{portstockData.cost}</td> : <td> <Spinner animation="border" variant="success" /></td>}
-                {(portstockData.totalvalue) ? <td>{portstockData.totalvalue}</td> : <td> <Spinner animation="border" variant="success" /></td>}
-                {(portstockData.gains) ? <td> {portstockData.gains}  </td> : <td> <Spinner animation="border" variant="success" /></td>}
-                <td><TiDeleteOutline onClick={deleteBtn}/></td>
+                {(portstockData.cost) ? <td>${portstockData.cost}</td> : <td> <Spinner animation="border" variant="success" /></td>}
+                {(portstockData.totalvalue) ? <td>${portstockData.totalvalue}</td> : <td> <Spinner animation="border" variant="success" /></td>}
+                {(portstockData.gains) ? <td className={(portstockData.gains > 0) ? "text-success" : "text-danger"} > ${portstockData.gains}  </td> : <td> <Spinner animation="border" variant="success" /></td>}
+                <td><TiEdit onClick={() => setModalShow(true)}/></td>
+                <MyVerticallyCenteredModal
+                    show={modalShow}
+                    portId={portId}
+                    userId={userId}
+                    symbol={props.data.symbol}
+                    onHide={() => setModalShow(false)}
+                />
+                <td><TiDeleteOutline onClick={handleSubmit}/></td>
             </>
             : <Spinner animation="border" variant="success" /> }
 

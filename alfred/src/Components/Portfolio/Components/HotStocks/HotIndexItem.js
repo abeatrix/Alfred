@@ -10,7 +10,7 @@ const HotIndexItem = (props) => {
                     <p className="mb-1 text-dark font-weight-medium">{symbol}</p>
                     <small className="font-weight-medium">{companyName}</small>
                   </td>
-                  <td className="font-weight-medium" >{latestPrice}</td>
+                  <td className="font-weight-medium" >${latestPrice}</td>
                   <td className={ s >0 ? "text-success" : "text-danger"}> ${s} </td>
         </>
     )

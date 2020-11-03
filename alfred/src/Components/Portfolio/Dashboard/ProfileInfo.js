@@ -9,7 +9,7 @@ export const ProfileInfo = (props) => {
 
     return (
         <div>
-            { props.userInfo ?  <Avatar size="100" src={props.userInfo.data.profilePic} /> : 'loading'}
+            {/* { props.userInfo ?  <Avatar size="100" src={props.userInfo.data.profilePic} /> : 'loading'} */}
             {/* {(portfolio) ? <PortfolioStockList data={portfolio}/> : <Spinner animation="grow" />} */}
         </div>
     );

@@ -4,8 +4,10 @@ import Spinner from 'react-bootstrap/Spinner'
 import {PortfolioStockListRowItem} from './PortfolioStockListRowItem'
 
 export const PortfolioStockListRow = (props) => {
-
+  // console.log(props)
   const [portfoliodetail, setPortfolioDetail] = useShowPortDetail(props.data);
+
+  const portId = props.data._id
 
   return (
     <>
@@ -13,7 +15,7 @@ export const PortfolioStockListRow = (props) => {
         <tr>
           {(portfoliodetail.data.symbol) ? <td>{portfoliodetail.data.symbol}</td> : <td> <Spinner animation="border" variant="success" /></td>}
           {(portfoliodetail.data.quantity) ? <td>{portfoliodetail.data.quantity}</td> : <td> <Spinner animation="border" variant="success" /></td>}
-          <PortfolioStockListRowItem data={portfoliodetail.data}/>
+          <PortfolioStockListRowItem data={portfoliodetail.data} userId={props.userId} handleDelete={props.handleDelete} />
         </tr>
         : null}
 
