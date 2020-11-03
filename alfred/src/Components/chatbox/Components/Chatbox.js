@@ -5,7 +5,7 @@ import 'firebase/firestore';
 import {useCollectionData} from 'react-firebase-hooks/firestore'
 
 export const Chatbox = (props) => {
-    console.log(props)
+    // console.log(props)
     return (
         <div>
             <ListGroup variant="flush">

@@ -7,6 +7,7 @@ import { NavLink, Redirect, useHistory} from 'react-router-dom';
 import { Divider } from 'rsuite';
 import { Container, FormWrap, Icon, FormContent, Form, FormInput, FormButton, Text, SignupLogo, SigninLogo, TitleWrapper } from './SigninElements'
 import { userState } from '../../recoil/atoms'
+import { useSetRecoilState } from 'recoil';
 
 const SignIn = () => {
     const history = useHistory();
