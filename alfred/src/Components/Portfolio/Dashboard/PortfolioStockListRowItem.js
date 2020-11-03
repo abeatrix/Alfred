@@ -30,13 +30,15 @@ function MyVerticallyCenteredModal(props) {
             avgcost,
             userId
         }).then(res => {
-            console.log(res)
-            setFormData({
-                ...formData,
-                quantity: 'Number of Shares',
-                avgcost: 'Cost per Share',
-                submitted: true,
+            props.setportstockData({
+                loaded: true,
+                marketprice: parseInt(props.marketprice),
+                totalvalue: parseInt(props.marketprice)*parseInt(quantity),
+                cost: parseInt(quantity)*parseInt(avgcost),
+                gains: (parseInt(props.marketprice)*parseInt(quantity))-(parseInt(quantity)*parseInt(avgcost)),
+                changed: true
             })
+            props.setPortfolioDetail(props.portId)
         }).catch(err => {
             {(err.response) ? toast.error(err.response.data.errors) : toast.error('Try Again')}
             console.log(err)
@@ -67,7 +69,7 @@ function MyVerticallyCenteredModal(props) {
                         <Form.Control type="number" name='quantity' placeholder='Number of Shares' onChange={handleInput('quantity')} required/>
                     </Form.Group>
                     <Button onClick={props.onHide} variant="danger">Cancel</Button>
-                    <Button type='submit' variant="success">Submit</Button>
+                    <Button type='submit' variant="success" onClick={props.onHide}>Submit</Button>
                 </Form>
             </Modal.Body>
         </Modal>
@@ -77,7 +79,7 @@ function MyVerticallyCenteredModal(props) {
 
 export const PortfolioStockListRowItem = (props) => {
     const [modalShow, setModalShow] = React.useState(false);
-    // const [deleteStock, setDeleteStock] = React.useState(false);
+
     const portId = props.data._id
     const userId = props.userId
     const stockData = [
@@ -88,6 +90,7 @@ export const PortfolioStockListRowItem = (props) => {
         loaded: false,
         gains: 0,
         portId: props.data._id,
+        changed: false
         }
     ]
 
@@ -107,6 +110,7 @@ export const PortfolioStockListRowItem = (props) => {
                 cost: parseInt(props.data.quantity)*parseInt(props.data.avgcost),
                 gains: (parseInt(res.data.quote.latestPrice)*parseInt(props.data.quantity))-(parseInt(props.data.quantity)*parseInt(props.data.avgcost)),
                 loaded: true,
+                changed: false
             })
         });
     }, [])
@@ -133,9 +137,12 @@ export const PortfolioStockListRowItem = (props) => {
                     portId={portId}
                     userId={userId}
                     symbol={props.data.symbol}
+                    marketprice={portstockData.marketprice}
+                    setportstockData={setportstockData}
+                    setPortfolioDetail={props.setPortfolioDetail}
                     onHide={() => setModalShow(false)}
                 />
-                <td><TiDeleteOutline onClick={handleSubmit}/></td>
+                <td><TiDeleteOutline onClick={handleSubmit} /></td>
             </>
             : <Spinner animation="border" variant="success" /> }
 

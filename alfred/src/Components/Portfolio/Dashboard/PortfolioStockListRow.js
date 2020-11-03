@@ -15,7 +15,7 @@ export const PortfolioStockListRow = (props) => {
         <tr>
           {(portfoliodetail.data.symbol) ? <td>{portfoliodetail.data.symbol}</td> : <td> <Spinner animation="border" variant="success" /></td>}
           {(portfoliodetail.data.quantity) ? <td>{portfoliodetail.data.quantity}</td> : <td> <Spinner animation="border" variant="success" /></td>}
-          <PortfolioStockListRowItem data={portfoliodetail.data} userId={props.userId} handleDelete={props.handleDelete} />
+          <PortfolioStockListRowItem data={portfoliodetail.data} userId={props.userId} handleDelete={props.handleDelete} setPortfolioDetail={setPortfolioDetail} />
         </tr>
         : null}
 

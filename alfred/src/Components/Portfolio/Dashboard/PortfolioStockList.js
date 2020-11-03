@@ -11,12 +11,11 @@ const PortfolioStockList = (props) => {
   const handleDelete = (portId) => {
     axios.delete(`http://localhost:4000/api/portfolio/${portId}`)
     .then((res)=>{
-      const updatedList = props.data.portfolio.filter((portId) => {
-      return portId !== res.data.portfolio._id;
+      const updatedList = props.data.portfolio.filter((id) => {
+      return id !== res.data.portfolio._id;
       });
-      props.setPortfolio({updatedList})
-      setDeleteStock(true)
-
+      props.setPortfolio(props.userId)
+      setDeleteStock( !deleteStock)
     })
   }
 
@@ -27,6 +26,8 @@ const PortfolioStockList = (props) => {
       )
     })
   }
+
+
 
   return (
 

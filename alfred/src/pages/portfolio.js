@@ -5,7 +5,7 @@ import React from "react";
 import { isAuth } from '../config/auth'
 
 const user = isAuth()
-const userId = user._id
+// const userId = user._id
 
 class Portfolio extends React.Component {
   state = {
@@ -19,7 +19,7 @@ class Portfolio extends React.Component {
   render(){
     return (
       <div className="App">
-        <MainNavbar userId={userId} />
+        {user ? <MainNavbar userId={isAuth().userId} /> : null}
         <PortfolioPage />
         <Footer />
       </div>

@@ -35,12 +35,8 @@ exports.index = async (req, res) => {
 exports.destroy = async (req, res) => {
   const foundPort = await Portfolio.findById(req.params.id);
   const foundUser = await User.findById(foundPort.userId);
-    for (let i = 0; i < foundUser.portfolio.length; i++) {
-      if (foundUser.portfolio[i] == req.params.id) {
-        foundUser.portfolio.splice(i, 1);
-        await foundUser.save();
-      }
-    }
+  foundUser.portfolio.remove(foundPort)
+  await foundUser.save();
 
     await Portfolio.findByIdAndDelete(req.params.id, (err, deletedStock) => {
       if (err) console.log('Error in stock#destroy:', err);
