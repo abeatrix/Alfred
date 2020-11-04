@@ -1,12 +1,19 @@
 import React, {useState} from 'react'
 import { Card, Form, Button } from 'react-bootstrap';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import {AddaStockBtn, AddaStockBtnsWrapper } from '../../Portfolio/PortfolioElements'
 import {isAuth} from '../../../config/auth'
 import axios from 'axios';
+import usePortfolio from '../../../hooks/usePortfolio'
+import { useRecoilState } from "recoil";
+import {userPortState} from '../../../recoil/atoms'
 
 const Results = (props) => {
     const user = isAuth()
+
+    const [portfolio, setPortfolio] = usePortfolio();
+
+    const [userPort, setuserPort] = useRecoilState(userPortState);
 
     const [formData, setFormData] = useState({
         symbol: null,
@@ -39,6 +46,14 @@ const Results = (props) => {
                     avgcost: 'Cost per Share',
                     submitted: true,
                 })
+                toast.success('Entered Successfully')
+                setuserPort({
+                    symbol,
+                    quantity,
+                    avgcost,
+                    userId
+                });
+                setPortfolio(userId);
             }).catch(err => {
                 {(err.response) ? toast.error(err.response.data.errors) : toast.error('No Idea')}
             });
@@ -48,6 +63,7 @@ const Results = (props) => {
         return (
             <>
                 <Card style={{ margin: '5%' }}>
+                <ToastContainer />
                     <Card.Body>
                         <Card.Title>Add a Stock</Card.Title>
                         <Form onSubmit={handleSubmit}>
@@ -68,7 +84,7 @@ const Results = (props) => {
                             </Form.Group>
                             <input type="hidden" name="userId" value={user._id}></input>
                             <AddaStockBtnsWrapper>
-                                <AddaStockBtn><Button variant="danger">Sell</Button></AddaStockBtn>
+                                {/* <AddaStockBtn><Button variant="danger">Sell</Button></AddaStockBtn> */}
                                 <AddaStockBtn><Button variant="success" type='submit'>Buy</Button></AddaStockBtn>
                             </AddaStockBtnsWrapper>
                         </Form>

@@ -1,6 +1,9 @@
 import React from 'react';
 
 class Search extends React.Component {
+  state = {
+    openAddForm: false,
+  }
 
   render() {
     return (
@@ -13,7 +16,7 @@ class Search extends React.Component {
               value={this.props.query}
               onInput={this.props.handleInput}
               name ="query" />
-          <input type='submit' className='btn' />
+          <input type='submit' onClick={() => this.setState({openAddForm: true})} className='btn' />
       </form>
     );
   }

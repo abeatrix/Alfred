@@ -42,7 +42,7 @@ export const PortNotSideBarContainer = styled.div`
 
 export const DashboardContainer = styled.div`
     displayed: grid;
-    height: 200px;
+    height: 100px;
     width: 100%;
     justify-content: center;
     padding: 5%;

@@ -4,6 +4,7 @@ import PolygonModel from '../../Model/PolygonModel';
 import Results from '../SearchContainer/Results/Results';
 import { Card, ProgressBar } from 'react-bootstrap';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 class SearchContainer extends React.Component {
     state = {
@@ -55,7 +56,8 @@ class SearchContainer extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        PolygonModel.search(this.state.query).then(response => {
+        if(this.state.info.symbol){
+            PolygonModel.search(this.state.query).then(response => {
             this.setState({
                 searched: true,
                 results: response.data,
@@ -66,12 +68,14 @@ class SearchContainer extends React.Component {
                 this.recommendation()
             })
         })
+        } toast.error('Does Not Match Any of the Trading Ticker')
     }
 
 
     render() {
         return (
         <>
+        <ToastContainer />
             <Searchbar
             query={this.state.query}
             handleInput={this.handleInput}
@@ -79,7 +83,7 @@ class SearchContainer extends React.Component {
             {this.state.getinfo ?
                 <Card style={{ margin: '5%' }}>
                     <Card.Body>
-                        <p>Searching...</p>
+                        <p>We Found...</p>
                         <p>{this.state.info.symbol}: {this.state.info.companyName}</p>
                     </Card.Body>
                 </Card>
