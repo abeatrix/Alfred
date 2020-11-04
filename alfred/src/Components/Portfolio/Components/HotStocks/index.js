@@ -39,11 +39,14 @@ export  const HotStocks = (props) => {
         <Card.Body>
           <Table responsive>
             <Card.Title>Alfred's Picks</Card.Title>
+            {polystock.isUSMarketOpen ?
+              <small > Market is Currently <span className={"text-success"} >Open</span> </small>
+              : <small > Market is Currently <span className={"text-danger"} >Closed</span> </small> }
             <Table responsive>
               <thead>
                 <tr>
                   <th>Ticker</th>
-                  <th>Lastest Price</th>
+                  <th>Last Traded</th>
                   <th>Changes</th>
                 </tr>
               </thead>

@@ -6,8 +6,9 @@ import useFindUserInfo from '../../../hooks/userFindUserInfo'
 import {PortfolioStockContainer} from './PortfolioStockContainer'
 import { DashboardContainer, PortfolioContainer } from '../PortfolioElements';
 import {ProfileInfo} from './ProfileInfo'
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { userState } from '../../../recoil/atoms'
+import {userInfoState} from '../../../recoil/selectors'
 
 export const Portfolio = (props) => {
     const userAuth = isAuth()
@@ -15,12 +16,15 @@ export const Portfolio = (props) => {
 
     const [userInfo, setUserInfo] = useFindUserInfo(userId);
 
+    const recoilUserInfo = useRecoilValue(userInfoState);
+
     const [user, setUser] = useRecoilState(userState);
+
 
     return (
         <div>
                     <DashboardContainer>
-                    { userInfo ?  <ProfileInfo userInfo={userInfo.data} /> : <Spinner animation="grow" />}
+                    { userInfo && recoilUserInfo?  <ProfileInfo userInfo={recoilUserInfo.data} /> : <Spinner animation="grow" />}
                     </DashboardContainer>
 
                     <PortfolioContainer>

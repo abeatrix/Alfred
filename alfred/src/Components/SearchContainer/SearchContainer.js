@@ -17,6 +17,14 @@ class SearchContainer extends React.Component {
         chartinfo: '',
     }
 
+    componentDidMount() {
+        this.interval = setInterval(() => this.search(), 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     recommendation = () =>{
         if(this.state.chart) {
             const symbol = this.state.chartinfo
@@ -27,14 +35,10 @@ class SearchContainer extends React.Component {
                         chartinfo: result.data[0]
                         })
 
-                // return (
-                //     this.state.chartinfo = result.data[0]
-                // )
                 })
             .catch(error => { console.error(error); return Promise.reject(error); });
         }
     }
-
 
     search = () =>{
         PolygonModel.search(this.state.query)
@@ -86,13 +90,14 @@ class SearchContainer extends React.Component {
                     <Card.Body>
                         <p>We Found...</p>
                         <p>{this.state.info.symbol}: {this.state.info.companyName}</p>
+                        <p>Last Traded at: {this.state.info.latestPrice}</p>
                     </Card.Body>
                 </Card>
             : null}
             {this.state.searched ?
             <Results data={this.state.results} />
             : null}
-            { this.state.chartinfo ?
+            { this.state.chartinfo && this.state.searched ?
                 <Card style={{ margin: '5%' }}>
                     <Card.Body>Top Analyst Recommendations</Card.Body>
                     <ProgressBar>

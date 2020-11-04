@@ -7,15 +7,19 @@ import { DashboardContainer, PortfolioContainer } from '../PortfolioElements';
 import {ProfileInfo} from './ProfileInfo'
 import { useRecoilState, useRecoilValue } from "recoil";
 import { userState } from '../../../recoil/atoms'
-import { userIdState } from "../../../recoil/selectors";
+import { userIdState, userInfoState } from "../../../recoil/selectors";
 
 export const PortfolioStockContainer = (props) => {
 
-    // console.log(props)
+
 
     const recoilUserId = useRecoilValue(userIdState);
 
-    const userId = props.userInfo.data._id
+    const recoilUserInfo = useRecoilValue(userInfoState);
+
+    // const userId = props.userInfo.data._id
+
+    const userId = recoilUserInfo.data._id
 
     const [portfolio, setPortfolio] = usePortfolio(userId);
 

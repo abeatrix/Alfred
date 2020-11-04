@@ -37,12 +37,16 @@ function MyVerticallyCenteredModal(props) {
         password,
         profilePic
     }).then(res => {
-        props.setUser({
-          email: email,
-          username: username,
-          password: password,
-          profilePic: profilePic
-        })
+      console.log(props.user)
+      props.setUser({
+        ...props.user,
+        username: username,
+      })
+        // props.setUser({
+        //   ...props.user
+        //   username: username,
+        // })
+        console.log(props.user.data)
         props.setUserInfo(props.user.data._id)
     }).catch(err => {
         {(err.response) ? toast.error(err.response.data.errors) : toast.error('Try Again')}
