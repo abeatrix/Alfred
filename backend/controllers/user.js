@@ -35,3 +35,24 @@ exports.destroy = (req, res) => {
         res.status(200).json({ "user": deletedUser });
     });
 };
+
+
+exports.edit = async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser) => {
+      if(err){
+        console.log(err)
+        return res.status(400).json({
+          error: 'Info does not match our database.'
+        })
+      }
+      res.status(200).json({ data: updatedUser});
+    })
+  }
+  catch (err) {
+    return res.status(500).json({
+      status: 500,
+      message: "Incorrect Info.",
+    });
+  }
+}

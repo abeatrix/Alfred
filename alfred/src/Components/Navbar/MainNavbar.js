@@ -1,15 +1,69 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { isAuth, userInfoSearch } from '../../config/auth'
+import { ToastContainer, toast } from 'react-toastify';
 import {Navbar, Nav, Dropdown, Form, Modal, Button, Row, Col } from 'react-bootstrap'
 import {GreenBtn, NavLogo} from './NavbarEle'
 import Avatar from 'react-avatar';
 import useFindUserInfo from '../../hooks/userFindUserInfo'
 import { useRecoilState } from "recoil";
 import {userState} from '../../recoil/atoms'
-import UserModel from '../../Model/UserModel'
+import {Cloudinary} from 'cloudinary-core';
+import axios from 'axios';
+
+const url = process.env.REACT_APP_CLOUDINARY_API_URL
+const preset = process.env.REACT_APP_CLOUDINARY_PRESETS
 
 function MyVerticallyCenteredModal(props) {
+
+  const [formData, setFormData] = useState({
+    username: props.user.data.username,
+    password: '',
+    profilePic: props.user.data.profilePic,
+  });
+
+  const { email, username, password, profilePic} = formData
+
+  const handleInput = text => e => {
+      setFormData({...formData, [text]: e.target.value, submitted: false,})
+  }
+
+  const handleSubmit = (e) => {
+    console.log('submit')
+    e.preventDefault();
+    axios.put(`http://localhost:4000/api/user/${props.user.data._id}`, {
+        email,
+        username,
+        password,
+        profilePic
+    }).then(res => {
+        props.setUser({
+          email: email,
+          username: username,
+          password: password,
+          profilePic: profilePic
+        })
+        props.setUserInfo(props.user.data._id)
+    }).catch(err => {
+        {(err.response) ? toast.error(err.response.data.errors) : toast.error('Try Again')}
+        return <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
+        console.log(err)
+    });
+
+
+}
+
+
   return (
     <Modal
       {...props}
@@ -19,37 +73,63 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Editing Profile Info
+          Editing Profile Info for {props.user.data.username}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>{props.user.data.username}</h4>
+        <div style={{textAlign: "center"}}>
+          <Avatar size="200" src={props.user.data.profilePic} />
+        </div>
         <p>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group as={Row} controlId="formPlaintextEmail">
               <Form.Label column sm="2">
                 Email
               </Form.Label>
               <Col sm="10">
-                <Form.Control plaintext readOnly defaultValue={props.user.data.email} />
+                <Form.Control plaintext readOnly name="email" defaultValue={props.user.data.email} />
               </Col>
             </Form.Group>
-            <Form.Group controlId="username">
-              <Form.Control type="username" name="username" placeholder="Username" />
+            <Form.Group as={Row} controlId="formPlaintextUsername">
+              <Form.Label column sm="2">
+                Username
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control  type="text" name="username" placeholder={props.user.data.username} onChange={handleInput('username')} />
+              </Col>
             </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Control type="password" name="passowrd" placeholder="Password" />
+            <Form.Group as={Row} controlId="formBasicPassword">
+              <Form.Label column sm="2">
+                Password
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control type="password" name="password" placeholder="Password" onChange={handleInput('password')} />
+              </Col>
             </Form.Group>
+            <Form.Group as={Row} controlId="formBasicPic">
+              <Form.Label column sm="2">
+                Profile Picture
+              </Form.Label>
+              <Col sm="10">
+                <Form.Control  type="url" name="profilePic" placeholder="" onChange={handleInput('profilePic')} />
+              </Col>
+            </Form.Group>
+            {/* <Form.Group as={Row} controlId="formBasicPic">
+              <Form.Label column sm="2">
+                Profile Picture
+              </Form.Label>
+              <Col sm="10">
+              <Form.File data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}" onChange={handleInput('profilePic')} name="profilePic" type="file" id="exampleFormControlFile1" data-cloudinary-field="image_id" />
+              </Col>
+            </Form.Group> */}
             <Form.Group controlId="formBasicCheckbox">
               <Form.Check type="checkbox" label="Agree to Terms and Conditions" />
             </Form.Group>
-            <Form.Group>
-              <Form.File id="exampleFormControlFile1" label="Profile Picture" />
-            </Form.Group>
+            <div style={{textAlign: "center"}}>
             <Button variant="primary" onClick={props.onHide} type="submit">
               Submit
             </Button>
+            </div>
           </Form>
         </p>
       </Modal.Body>
@@ -70,7 +150,6 @@ const MainNavbar = (props) => {
   const [modalShow, setModalShow] = React.useState(false);
 
   const history = useHistory();
-
 
   const logout = () => {
     setUser(null);
@@ -99,6 +178,8 @@ const MainNavbar = (props) => {
               <MyVerticallyCenteredModal
                 show={modalShow}
                 user={user}
+                setUser={setUser}
+                setUserInfo={setUserInfo}
                 onHide={() => setModalShow(false)}
               />
               <Dropdown.Item href="/portfolio">Portfolio</Dropdown.Item>
