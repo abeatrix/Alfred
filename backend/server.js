@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 // EXTERNAL IMPORTS
 const express = require('express');
 const mongoose = require('mongoose')
@@ -9,7 +11,6 @@ const routes = require('./routes');
 const db = require("./models");
 
 // all uses of .env
-// require("dotenv").config();
 const PORT = process.env.PORT || 4000;
 
 /* INSTANCED MODULES */
