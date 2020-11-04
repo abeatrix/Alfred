@@ -15,6 +15,7 @@ class SearchContainer extends React.Component {
         info: null,
         chart: false,
         chartinfo: '',
+        submittedAdd: false,
     }
 
     componentDidMount() {
@@ -68,6 +69,7 @@ class SearchContainer extends React.Component {
                 getinfo: false,
                 info: null,
                 chart: true,
+                submittedAdd: false
             }, () => {
                 this.recommendation()
             })
@@ -96,7 +98,7 @@ class SearchContainer extends React.Component {
             : null}
             {this.state.searched ?
             <Results data={this.state.results} />
-            : null}
+            : null }
             { this.state.chartinfo && this.state.searched ?
                 <Card style={{ margin: '5%' }}>
                     <Card.Body>Top Analyst Recommendations</Card.Body>
