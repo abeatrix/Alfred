@@ -24,7 +24,7 @@ function MyVerticallyCenteredModal(props) {
     const handleSubmit = (e) => {
         console.log('submit')
         e.preventDefault();
-        axios.put(`http://localhost:4000/api/portfolio/${props.portId}`, {
+        axios.put(`${process.env.REACT_APP_BACKEND_API}/portfolio/${props.portId}`, {
             symbol,
             quantity,
             avgcost,
