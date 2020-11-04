@@ -1,0 +1,46 @@
+export const subHeaderOne = {
+    id: 'one',
+    lightMode: true,
+    lightTextSubTitle: true,
+    subheaderText: 'Make Learning Easy',
+    subheadingText: 'Learn For Free',
+    subtitleText: 'Paper Trading is the best way to get your feet wet in the stock market!',
+    buttonText: 'Sign Up Here',
+    imgStart: true,
+    img: 'https://www.flaticon.com/svg/static/icons/svg/3587/3587791.svg',
+    alt: 'one',
+    light: true,
+    primary: true,
+    darkModeText: false,
+};
+
+export const subHeaderTwo = {
+    id: 'two',
+    lightMode: false,
+    lightTextSubTitle: false,
+    subheaderText: 'Beginner Friendly',
+    subheadingText: 'Manage Your Portfolio',
+    subtitleText: 'Keep Tabs on Your Portfolio',
+    buttonText: 'Sign In Here',
+    imgStart: false,
+    img: 'https://www.flaticon.com/svg/static/icons/svg/3587/3587823.svg',
+    alt: 'two',
+    light: false,
+    primary: false,
+    darkModeText: true,
+};
+
+export const subHeaderThree = {
+    id: 'one',
+    lightMode: true,
+    lightTextSubTitle: true,
+    subheaderText: 'All In One Place',
+    subheadingText: 'Paper Trade Available',
+    subtitleText: 'A paper trade is a simulated trade that allows an investor to practice buying and selling without risking real money.',
+    imgStart: true,
+    img: 'https://www.flaticon.com/svg/static/icons/svg/3587/3587839.svg',
+    alt: 'one',
+    light: true,
+    primary: true,
+    darkModeText: false,
+};
