@@ -94,10 +94,11 @@ class SearchContainer extends React.Component {
             : null}
             { this.state.chartinfo ?
                 <Card style={{ margin: '5%' }}>
+                    <Card.Body>Top Analyst Recommendations</Card.Body>
                     <ProgressBar>
-                        <ProgressBar striped variant="success" now={this.state.chartinfo.buy} key={1} label={this.state.chartinfo.buy}/>
-                        <ProgressBar variant="warning" now={this.state.chartinfo.hold} key={2} label={this.state.chartinfo.hold} />
-                        <ProgressBar striped variant="danger" now={this.state.chartinfo.sell} key={3} label={this.state.chartinfo.sell} />
+                        <ProgressBar striped variant="success" now={(this.state.chartinfo.buy+this.state.chartinfo.strongBuy*100)} key={1} label='buy'/>
+                        <ProgressBar variant="warning" now={this.state.chartinfo.hold*100} key={2} label='hold' />
+                        <ProgressBar striped variant="danger" now={(this.state.chartinfo.sell+this.state.chartinfo.strongSell)*100} key={3} label='sell' />
                     </ProgressBar>
                 </Card>
             : null }

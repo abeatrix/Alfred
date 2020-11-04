@@ -1,5 +1,5 @@
 import {useState, useRef} from 'react';
-import { Card, Form, Button, Spinner } from 'react-bootstrap';
+import { Card, Form, Button, Spinner, Row, Col } from 'react-bootstrap';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import {Chatbox} from './Components/Chatbox'
@@ -57,19 +57,25 @@ export const Chatroom = () => {
         <Spinner animation="border" variant="success" /> :
             <Card.Body>
                 <Card.Title>Welcome to Live Chat!</Card.Title>
+                <Form onSubmit={sendMsgs}>
+                <Form.Row>
+                    <Col xs={9}>
+                    <Form.Group controlId="chatboxFormGroup">
+                        <Form.Control value={formValue} onChange={(e) => setFormValue(e.target.value)} type="text" name='message' user={user} placeholder="Enter Your Message Here" />
+                    </Form.Group>
+                    </Col>
+                    <Col>
+                        { user ? <Button variant='success' type='submit'>Send</Button> : null }
+                    </Col>
+                </Form.Row>
+
+                </Form>
                 {
                     alfredtalks && alfredtalks ?
                     alfredtalks && alfredtalks.map(msg => <Chatbox key={msg.id} message={msg} user={user}/>)
                     : <Chatbox key={alfredtalks.id} message={alfredtalks.message} />
                 }
-                <Form onSubmit={sendMsgs}>
-                <Form.Group controlId="chatboxFormGroup">
-                    <Form.Control value={formValue} onChange={(e) => setFormValue(e.target.value)} type="text" name='message' placeholder="Enter Your Message Here" />
-                </Form.Group>
-                <AddaStockBtnsWrapper>
-                    { user ? <Button variant='success' type='submit'>Send</Button> : null }
-                </AddaStockBtnsWrapper>
-                </Form>
+
             </Card.Body>
         }
         </Card>

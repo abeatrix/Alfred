@@ -5,31 +5,38 @@ import {AddaStockBtn, AddaStockBtnsWrapper } from '../../Portfolio/PortfolioElem
 import {isAuth} from '../../../config/auth'
 import axios from 'axios';
 import usePortfolio from '../../../hooks/usePortfolio'
+import useFindUserInfo from '../../../hooks/userFindUserInfo'
 import { useRecoilState } from "recoil";
-import {userPortState} from '../../../recoil/atoms'
+import { userPortState, userState, userPortStatusState } from '../../../recoil/atoms'
 
 const Results = (props) => {
-    const user = isAuth()
+    // const user = isAuth()
+
+    const [user, setUser] = useRecoilState(userState);
+
+    const [userInfo, setUserInfo] = useFindUserInfo();
+
+    const [userPort, setuserPort] = useRecoilState(userPortState);
 
     const [portfolio, setPortfolio] = usePortfolio();
 
-    const [userPort, setuserPort] = useRecoilState(userPortState);
+    const [userPortStatus, setuserPortStatus] = useRecoilState(userPortStatusState);
 
     const [formData, setFormData] = useState({
         symbol: null,
         quantity: 'Number of Shares',
         avgcost: 'Cost per Share',
-        userId: user._id,
+        userId: user.data._id,
         submitted: false,
     });
 
     const { symbol, quantity, avgcost, userId} = formData
 
     function displayResults(data){
-        const user = isAuth()
+        // const user = isAuth()
 
         const handleInput = text => e => {
-            setFormData({...formData, [text]: e.target.value, symbol: data.symbol, userId: user._id, submitted: false,})
+            setFormData({...formData, [text]: e.target.value, symbol: data.symbol, userId: user.data._id, submitted: false,})
         }
 
         const handleSubmit = (e) => {
@@ -40,6 +47,8 @@ const Results = (props) => {
                 avgcost,
                 userId
             }).then(res => {
+                setUserInfo(userId)
+                setPortfolio(userId)
                 setFormData({
                     ...formData,
                     quantity: 'Number of Shares',
@@ -53,7 +62,6 @@ const Results = (props) => {
                     avgcost,
                     userId
                 });
-                setPortfolio(userId);
             }).catch(err => {
                 {(err.response) ? toast.error(err.response.data.errors) : toast.error('No Idea')}
             });
@@ -82,7 +90,7 @@ const Results = (props) => {
                                 <Form.Label>Quantity</Form.Label>
                                 <Form.Control type="number" name='quantity' placeholder={quantity} onChange={handleInput('quantity')}/>
                             </Form.Group>
-                            <input type="hidden" name="userId" value={user._id}></input>
+                            <input type="hidden" name="userId" value={user.data._id}></input>
                             <AddaStockBtnsWrapper>
                                 {/* <AddaStockBtn><Button variant="danger">Sell</Button></AddaStockBtn> */}
                                 <AddaStockBtn><Button variant="success" type='submit'>Buy</Button></AddaStockBtn>

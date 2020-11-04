@@ -2,11 +2,14 @@ import React, {useState, useEffect} from 'react'
 import {PortfolioStockListRow} from './PortfolioStockListRow'
 import {Card,Table} from "react-bootstrap";
 import axios from 'axios';
+import { useRecoilState } from "recoil";
+import { userPortState, userState, userPortListState } from '../../../recoil/atoms'
 
 const PortfolioStockList = (props) => {
   // console.log(props)
 
   const [deleteStock, setDeleteStock] = useState(false)
+  const [userPortList, setuserPortList] = useRecoilState(userPortListState);
 
   const handleDelete = (portId) => {
     axios.delete(`http://localhost:4000/api/portfolio/${portId}`)
@@ -16,6 +19,7 @@ const PortfolioStockList = (props) => {
       });
       props.setPortfolio(props.userId)
       setDeleteStock( !deleteStock)
+      setuserPortList(updatedList)
     })
   }
 

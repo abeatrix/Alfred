@@ -5,6 +5,10 @@ export const userState = atom({
   default: null,
 });
 
+export const userIDState = atom({
+  key: "userIDState",
+  default: null,
+});
 
 export const userPortState = atom({
   key: "userPortState",
@@ -13,5 +17,15 @@ export const userPortState = atom({
 
 export const userPortItemState = atom({
   key: "userPortItemState",
+  default: null,
+});
+
+export const userPortListState = atom({
+  key: "userPortListState",
+  default: [],
+});
+
+export const userPortStatusState = atom({
+  key: "userPortStatusState",
   default: null,
 });

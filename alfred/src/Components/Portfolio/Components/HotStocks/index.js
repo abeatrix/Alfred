@@ -6,35 +6,39 @@ import {
 import usePolygon from '../../../../hooks/userPolygon';
 import HotIndexItem from './HotIndexItem';
 import Spinner from 'react-bootstrap/Spinner'
+import MyPortfolio from '../../Dashboard/MyPortfolio'
 // import axios from 'axios';
 // import rateLimit from 'axios-rate-limit';
 
-export  const HotStocks = () => {
-
+export  const HotStocks = (props) => {
+  // console.log(props)
   const [polystock, setPolystock] = usePolygon('NFLX');
   const [polystock2, setPolystock2] = usePolygon('GOOG');
   const [polystock3, setPolystock3] = usePolygon('TSLA');
   const [polystock4, setPolystock4] = usePolygon('AMZN');
+  const [polystock5, setPolystock5] = usePolygon('AAPL');
 
-  // const marketTime = true
-
-  // const [marketStatus, setmarketStatus] = useState(marketTime);
-
-//   useEffect(() => {
-//     http.get(`https://financialmodelingprep.com/api/v3/market-hours?apikey=6a81c4fba84851a61900dc1666ff4890`)
-//       .then(res => {
-//         console.log(res.data[0].isTheStockMarketOpen)
-
-//         this.marketTime= res.data[0].isTheStockMarketOpen
-//       });
-// }, [])
+  useEffect(() => {
+    const interval = setInterval(() => setPolystock('NFLX'), 30000);
+    const interval2 = setInterval(() => setPolystock2('GOOG'), 30000);
+    const interval3 = setInterval(() => setPolystock3('TSLA'), 30000);
+    const interval4 = setInterval(() => setPolystock4('AMZN'), 30000);
+    const interval5 = setInterval(() => setPolystock4('AAPL'), 30000);
+    return () => {
+      clearInterval(interval);
+      clearInterval(interval2);
+      clearInterval(interval3);
+      clearInterval(interval4);
+      clearInterval(interval5);
+    };
+  }, []);
 
     return (
 
       <Card style={{ margin: "5%" }}>
         <Card.Body>
           <Table responsive>
-            <Card.Title>Today's Market </Card.Title>
+            <Card.Title>Alfred's Picks</Card.Title>
             <Table responsive>
               <thead>
                 <tr>
@@ -45,6 +49,8 @@ export  const HotStocks = () => {
               </thead>
               {(polystock ) ?
               <tbody>
+                {/* <tr><MyPortfolio /></tr> */}
+                <tr><HotIndexItem polystock={polystock5} /></tr>
                 <tr><HotIndexItem polystock={polystock} /></tr>
                 <tr><HotIndexItem polystock={polystock2} /></tr>
                 <tr><HotIndexItem polystock={polystock3} /></tr>

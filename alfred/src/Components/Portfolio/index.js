@@ -7,7 +7,6 @@ import {NewsSection} from './Dashboard/NewsSection'
 import {Chatroom} from '../chatbox/index'
 import {isAuth} from '../../config/auth'
 import {Portfolio} from '../Portfolio/Dashboard/Portfolio'
-import LiveMarketData from '../../Components/Portfolio/Components/HotStocks/LiveMarketData'
 
 const wsMNETURL = process.env.REACT_APP_MOCK_WS
 
@@ -19,7 +18,6 @@ class PortfolioPage extends React.Component {
         marketHour: true,
         userId: isAuth()
     }
-
 
     isWsConencted = () => {
         return this.state.stocks.length == 0;
@@ -54,26 +52,15 @@ class PortfolioPage extends React.Component {
         this.setState({stocks: new_stocks})
     }
 
-
-
-    // marketHour = () =>{
-    //     const res = axios(`https://financialmodelingprep.com/api/v3/market-hours?apikey=process.env.REACT_APP_FMP_API_KEY`)
-    //         .then(result =>
-    //             { return console.log(result.data[0].isTheStockMarketOpen)
-    //             })
-    //         .catch(error => { console.error(error); return Promise.reject(error); });
-    //     }
-
-
     render() {
+        // console.log(this.props)
         return (
             <div>
             <PageContainer>
                 <PageWrapper>
                     <PortSideBarContainer>
                         <SearchContainer/>
-                        {/* <LiveMarketData data={'AAPL'}/> */}
-                        <HotStocks />
+                        <HotStocks live={this.props.live}/>
                         <Chatroom />
                         <HotIndexList
                         stocks={this.state.stocks}

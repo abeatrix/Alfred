@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner'
 
 const wsFinnHub = `wss://ws.finnhub.io?token=${process.env.REACT_APP_FINNHUB_API_KEY}`
 
@@ -14,6 +15,7 @@ class MyPortfolio extends React.Component {
     // Connection opened -> Subscribe
         socket.addEventListener('open', function (event) {
         socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
+        socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'MSFT'}))
         console.log('Connected to socket')
         });
 
@@ -22,6 +24,7 @@ class MyPortfolio extends React.Component {
         socket.onmessage = e =>{
             const message = JSON.parse(e.data)
             if(message.data != undefined){
+                console.log(message)
             result.setState({
                 wsData: message.data[0].p
             })
@@ -38,24 +41,19 @@ class MyPortfolio extends React.Component {
         });
     }
 
-    // marketHour = () =>{
-    //     const res = axios(`https://financialmodelingprep.com/api/v3/market-hours?apikey=process.env.REACT_APP_FMP_API_KEY`)
-    //         .then(result =>
-    //             { return console.log(result.data[0].isTheStockMarketOpen)
-    //             })
-    //         .catch(error => { console.error(error); return Promise.reject(error); });
-    //     }
-
-
-
     render() {
         return (
-        <div>
-            {this.state.wsData!= null ? <h1>{this.state.wsData}</h1>: <h1>loading</h1> }
-        </div>
+            <>
+            <td>
+                    <p className="mb-1 text-dark font-weight-medium">AAPL</p>
+                    <small className="font-weight-medium">Apple, Inc.</small>
+                  </td>
+                  {this.state.wsData!= null ? <td className="text-success font-weight-medium" >${this.state.wsData}</td> : <td className="font-weight-medium" ><Spinner animation="border" variant="success" /></td> }
+                  {/* <td className={ s >0 ? "text-success" : "text-danger"}> ${s} </td> */}
+                  <td > Live Data</td>
+        </>
         );
     }
-
 }
 export default MyPortfolio;
 
