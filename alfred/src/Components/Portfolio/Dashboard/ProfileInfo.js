@@ -6,11 +6,10 @@ import PortfolioStockList from '../Dashboard/PortfolioStockList'
 import usePortfolio from '../../../hooks/usePortfolio'
 
 export const ProfileInfo = (props) => {
-    // console.log(props.userInfo.username)
 
     return (
-        <div>
-         { props.userInfo ? <h3>Welcome back {props.userInfo.username}! <Clock type="digital" /> </h3> : <h3>Welcome back! <Clock type="digital" /></h3> }
+        <div  style={{display: 'inline'}}>
+         { props.userInfo ? <div> <Clock style={{float:"right"}} type="digital" /> <h3>Welcome back {props.userInfo.username}! </h3> </div>: <h3>Welcome back! <Clock type="digital" /></h3> }
         </div>
     );
 
