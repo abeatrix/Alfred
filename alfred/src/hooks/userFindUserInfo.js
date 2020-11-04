@@ -9,6 +9,7 @@ function useFindUserInfo(userId) {
     const [userInfo, setUserInfo] = useState([]);
     function fetchUserInfo(userId) {
         UserModel.search(userId).then((data) => {
+            console.log('finding User Info')
             setUserInfo(data);
             setUser(data)
         });

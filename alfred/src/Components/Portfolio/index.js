@@ -9,7 +9,7 @@ import {isAuth} from '../../config/auth'
 import {Portfolio} from '../Portfolio/Dashboard/Portfolio'
 import LiveMarketData from '../../Components/Portfolio/Components/HotStocks/LiveMarketData'
 
-const wsMNETURL = 'ws://stocks.mnet.website/';
+const wsMNETURL = process.env.REACT_APP_MOCK_WS
 
 class PortfolioPage extends React.Component {
     state = {

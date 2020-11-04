@@ -2,6 +2,8 @@ import React from "react";
 import useShowPortDetail from '../../../hooks/useShowPortDetail'
 import Spinner from 'react-bootstrap/Spinner'
 import {PortfolioStockListRowItem} from './PortfolioStockListRowItem'
+import { useRecoilState } from "recoil";
+import {userPortState} from '../../../recoil/atoms'
 
 export const PortfolioStockListRow = (props) => {
   // console.log(props)

@@ -68,7 +68,8 @@ class SearchContainer extends React.Component {
                 this.recommendation()
             })
         })
-        } toast.error('Does Not Match Any of the Trading Ticker')
+        }
+        // toast.error('Does Not Match Any of the Trading Ticker')
     }
 
 

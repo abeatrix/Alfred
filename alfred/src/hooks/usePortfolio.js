@@ -14,6 +14,7 @@ function usePortfolio(userId) {
         PortfolioModel.show(userId).then((data) => {
             setPortfolio(data);
             setuserPort(data);
+            // console.log(userPort)
             // console.log(data)
         });
     }

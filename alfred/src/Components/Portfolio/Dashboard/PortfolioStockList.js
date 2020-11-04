@@ -22,7 +22,7 @@ const PortfolioStockList = (props) => {
   function generatePortStock(stocks) {
     return stocks.map((data) =>{
       return(
-        <PortfolioStockListRow data={data} userId={props.userId} handleDelete={handleDelete}/>
+        <PortfolioStockListRow key={data} data={data} userId={props.userId} handleDelete={handleDelete}/>
       )
     })
   }

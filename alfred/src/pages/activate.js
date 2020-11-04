@@ -3,10 +3,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import jwt from 'jsonwebtoken';
 import { isAuth } from '../config/auth'
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect, useHistory} from 'react-router-dom';
 import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormButton, Text } from '../Components/Signup/SingupElements'
 
 const ActivatePage = ({match}) => {
+    const history = useHistory();
+
     const [formData, setFormData] = useState({
         username: '',
         token: '',
@@ -31,6 +33,7 @@ const ActivatePage = ({match}) => {
         }). then(res => {
             setFormData({...formData, show: false })
             toast.success(res.data.message);
+            history.push('/signin')
         })
         .catch(err=> {
             toast.error(err.response.data.error);
@@ -42,7 +45,7 @@ const ActivatePage = ({match}) => {
                 {isAuth() ? <Redirect to='/' /> : null }
                 <ToastContainer />
                 <FormWrap>
-                    <Icon to='/'>alfred</Icon>
+                <NavLink to='/'><Icon>alfred</Icon></NavLink>
                     <FormContent>
                         <Form action='#' onSubmit={handleSubmit}>
                             <FormH1>Welcome to Alfred</FormH1>

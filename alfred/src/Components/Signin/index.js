@@ -6,12 +6,10 @@ import GoogleLogin from 'react-google-login';
 import { NavLink, Redirect, useHistory} from 'react-router-dom';
 import { Divider } from 'rsuite';
 import { Container, FormWrap, Icon, FormContent, Form, FormInput, FormButton, Text, SignupLogo, SigninLogo, TitleWrapper } from './SigninElements'
-import { userState } from '../../recoil/atoms'
-import { useSetRecoilState } from 'recoil';
 
 const SignIn = () => {
     const history = useHistory();
-    const setUser = useSetRecoilState(userState);
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -64,8 +62,7 @@ const SignIn = () => {
                         })
                     })
                     if(isAuth()){
-                        setUser(res.data.user)
-                        toast.success(`Hey ${res.data.user.username}, Welcome back!`);
+                        toast.success(`Signin Sucessfully! Welcome back!`);
                         history.push('/')
                     }
                 })
