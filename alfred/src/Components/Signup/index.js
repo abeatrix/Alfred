@@ -37,10 +37,10 @@ const Signup = () => {
                         password: '',
                     })
                     toast.success(res.data.message)
-                    history.push('/')
+                    // history.push('/')
                 })
             } else{
-                toast.error('Password not match');
+                toast.error('Passwords do not match');
             }
         } else {
             toast.error('All fields are required')

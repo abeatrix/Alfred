@@ -24,7 +24,7 @@ function MyVerticallyCenteredModal(props) {
     const handleSubmit = (e) => {
         console.log('submit')
         e.preventDefault();
-        axios.put(`${process.env.REACT_APP_BACKEND_API}/portfolio/${props.portId}`, {
+        axios.put(`${process.env.REACT_APP_BACKEND_PORTFOLIO_API_URL}/${props.portId}`, {
             symbol,
             quantity,
             avgcost,
@@ -55,7 +55,7 @@ function MyVerticallyCenteredModal(props) {
         >
             <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-                Editing info for {props.symbol} {props.portId}
+                Editing info for {props.symbol}
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>

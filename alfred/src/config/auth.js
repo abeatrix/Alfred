@@ -1,8 +1,7 @@
 import cookie from 'js-cookie'
 import { GoogleLogout } from 'react-google-login';
 import UserModel  from '../Model/UserModel'
-import { useRecoilState } from "recoil";
-import {userState} from '../recoil/atoms'
+
 
 export const setCookie = (key, value) => {
     if(window !== 'undefined'){

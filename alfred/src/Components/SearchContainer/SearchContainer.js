@@ -29,7 +29,7 @@ class SearchContainer extends React.Component {
     recommendation = () =>{
         if(this.state.chart) {
             const symbol = this.state.chartinfo
-            const res = axios(`https://finnhub.io/api/v1/stock/recommendation?symbol=${symbol}&token=${process.env.REACT_APP_FINNHUB_API_KEY}`)
+            const res = axios(`${process.env.REACT_APP_FINNHUB_RECS.URL}?symbol=${symbol}&token=${process.env.REACT_APP_FINNHUB_API_KEY}`)
             .then(result =>
                 {
                     this.setState({
@@ -42,13 +42,15 @@ class SearchContainer extends React.Component {
     }
 
     search = () =>{
-        PolygonModel.search(this.state.query)
-        .then(response => {
+        if(this.state.query){
+            PolygonModel.search(this.state.query)
+            .then(response => {
             this.setState({
                 getinfo: true,
                 info: response.data
             })
         })
+        }
     }
 
     handleInput = (event) => {

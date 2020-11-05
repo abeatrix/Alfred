@@ -11,8 +11,6 @@ import { userIdState, userInfoState } from "../../../recoil/selectors";
 
 export const PortfolioStockContainer = (props) => {
 
-
-
     const recoilUserId = useRecoilValue(userIdState);
 
     const recoilUserInfo = useRecoilValue(userInfoState);

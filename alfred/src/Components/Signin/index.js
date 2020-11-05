@@ -34,7 +34,7 @@ const SignIn = () => {
             gLoginSuccess(res)
         }).catch(error=>{
             console.log('GOOGLE SIGNIN ERROR', error.response);
-            toast.error('cannot signin with google')
+            toast.error('Cannot signin with google. Email is not signed up with Alfred.')
         })
     }
 
@@ -73,6 +73,7 @@ const SignIn = () => {
                     }
                 })
                 .catch(err => {
+                    console.log(err.response)
                     {(err.response) ? toast.error(err.response.data.errors) : toast.error('No Idea')}
                 });
         } else {

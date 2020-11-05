@@ -8,7 +8,7 @@ import {Chatroom} from '../chatbox/index'
 import {isAuth} from '../../config/auth'
 import {Portfolio} from '../Portfolio/Dashboard/Portfolio'
 
-const wsMNETURL = process.env.REACT_APP_MOCK_WS
+const wsMNETURL = 'ws://stocks.mnet.website/'
 
 class PortfolioPage extends React.Component {
     state = {
