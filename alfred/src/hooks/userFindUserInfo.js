@@ -5,14 +5,17 @@ import {userState} from '../recoil/atoms'
 
 
 function useFindUserInfo(userId) {
+    // console.log(userId)
     const [user, setUser] = useRecoilState(userState);
+
     const [userInfo, setUserInfo] = useState([]);
-    function fetchUserInfo(userId) {
-        UserModel.search(userId).then((data) => {
+
+    function fetchUserInfo(id) {
+        UserModel.search(id).then((data) => {
             // console.log('finding User Info')
-            // console.log(data)
             setUserInfo(data);
             setUser(data)
+
         });
     }
 

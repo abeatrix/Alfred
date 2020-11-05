@@ -17,14 +17,14 @@ const ActivatePage = ({match}) => {
 
     useEffect(() => {
         let token = match.params.token
-        let username = jwt.decode(token)
+        let {username} = jwt.decode(token)
 
         if(token) {
             setFormData({...formData, username, token})
         }
-    }, [])
+    }, [match.params])
 
-    const {token} = formData
+    const {username, token, show } = formData
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -32,6 +32,7 @@ const ActivatePage = ({match}) => {
             token
         }). then(res => {
             setFormData({...formData, show: false })
+            console.log(res)
             toast.success('account signed up successfully');
             toast.success(res.data.message);
             history.push('/signin')
@@ -48,7 +49,7 @@ const ActivatePage = ({match}) => {
                 <FormWrap>
                 <NavLink to='/'><Icon>alfred</Icon></NavLink>
                     <FormContent>
-                        <Form action='#' onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit}>
                             <FormH1>Welcome to Alfred</FormH1>
                             <FormButton type='submit'>Activate Here</FormButton>
                             <Text>Already have an account?</Text>

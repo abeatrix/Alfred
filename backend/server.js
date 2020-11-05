@@ -2,9 +2,7 @@ require('dotenv').config()
 
 // EXTERNAL IMPORTS
 const express = require('express');
-const mongoose = require('mongoose')
 const cors = require('cors');
-const cloudinary = require('cloudinary').v2;
 
 // INTERNAL IMPORTS
 const routes = require('./routes');
@@ -19,20 +17,18 @@ const app = express();
 // // MIDDLEWARE - JSON PARSING
 app.use(express.json());
 app.use(cors());
-app.options('*', cors())
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
 
-// /* CONFIGURATION*/
-
-// const corsOptions = {
-//     origin: ["https://assembleit.herokuapp.com/"], //set url for live app
-//     optionsSuccessStatus: 200, //for legacy ports where some legacy browsers will choke on status 204
-
-// }
-// app.use(cors(corsOptions));
-
+// app.options('*', cors())
+const {authRequired} = require('./middleware/valid')
 
 // PORTFOLIO ROUTES
-app.use('/api/portfolio', routes.portfolio);
+app.use('/api/portfolio', authRequired, routes.portfolio);
 
 // USER ROUTES
 app.use('/api/user', routes.user);

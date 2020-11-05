@@ -1,6 +1,5 @@
 import cookie from 'js-cookie'
 import { GoogleLogout } from 'react-google-login';
-import UserModel  from '../Model/UserModel'
 
 
 export const setCookie = (key, value) => {
@@ -74,7 +73,10 @@ export const updateUser = (res, next) => {
     next()
 }
 
-export const userInfoSearch = () => {
-    UserModel.search(isAuth()._id).then(user => {
-    })
-}
+// export const userInfoSearch = async () => {
+//     const setUser = useSetRecoilState(userState);
+//     const user = await isAuth()
+//     UserModel.search(user._id).then(res => {
+//         setUser(res.data);
+//     })
+// }

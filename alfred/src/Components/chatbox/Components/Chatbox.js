@@ -15,7 +15,7 @@ export const Chatbox = (props) => {
     return (
         <div>
             <ListGroup variant="flush">
-                    { props.message.userId === user.data._id ?
+                    { props.message.userId === user.data._id?
                     <ListGroup.Item><Avatar name="" size="20" round={true} textSizeRatio={1.75} color="green" /> {props.message.message}</ListGroup.Item>
                     : <ListGroup.Item> <Avatar name="" size="20" round={true} textSizeRatio={1.75} color="red" /> {props.message.message}</ListGroup.Item>
                     }
