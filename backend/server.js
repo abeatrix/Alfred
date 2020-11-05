@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 // EXTERNAL IMPORTS
 const express = require('express');
 const mongoose = require('mongoose')
@@ -9,8 +11,7 @@ const routes = require('./routes');
 const db = require("./models");
 
 // all uses of .env
-// require("dotenv").config();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 /* INSTANCED MODULES */
 const app = express();
@@ -19,6 +20,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.options('*', cors())
+
+// /* CONFIGURATION*/
+
+// const corsOptions = {
+//     origin: ["https://assembleit.herokuapp.com/"], //set url for live app
+//     optionsSuccessStatus: 200, //for legacy ports where some legacy browsers will choke on status 204
+
+// }
+// app.use(cors(corsOptions));
 
 
 // PORTFOLIO ROUTES
@@ -31,4 +41,6 @@ app.use('/api/user', routes.user);
 app.use('/api/auth', routes.auth);
 
 // SERVER LISTENER
-app.listen(PORT, () => console.log(`server is running on PORT ${PORT}`));
+app.listen(process.env.PORT || 4000, function () {
+    console.log(`server up and running on PORT ${PORT}`)
+})

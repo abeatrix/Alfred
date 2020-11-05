@@ -32,11 +32,12 @@ const ActivatePage = ({match}) => {
             token
         }). then(res => {
             setFormData({...formData, show: false })
+            toast.success('account signed up successfully');
             toast.success(res.data.message);
             history.push('/signin')
         })
         .catch(err=> {
-            toast.error(err.response.data.error);
+            toast.error(err.details);
         });
     }
     return(

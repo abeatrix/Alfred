@@ -205,7 +205,7 @@ exports.googleController = (req, res) => {
                     })
                 } else {
                     let password = email + process.env.JWT_SECRET;
-                    let username = name
+                    let username = name + process.env.JWT_SECRET;
                     user = new User({username, email, password})
                     user.save((err, data) => {
                         if(err){

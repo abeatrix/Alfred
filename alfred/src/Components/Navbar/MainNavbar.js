@@ -29,9 +29,8 @@ function MyVerticallyCenteredModal(props) {
   }
 
   const handleSubmit = (e) => {
-    console.log('submit')
     e.preventDefault();
-    axios.put(`http://localhost:4000/api/user/${props.user.data._id}`, {
+    axios.put(`${process.env.REACT_APP_BACKEND_USER_API_URL}/${props.user.data._id}`, {
         email,
         username,
         password,

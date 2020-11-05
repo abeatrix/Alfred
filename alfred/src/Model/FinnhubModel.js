@@ -1,6 +1,5 @@
 // import axios from 'axios';
 
-// const URL = 'https://cloud.iexapis.com/stable/stock';
 const API = process.env.REACT_APP_FINNHUB_API_KEY;
 
 
@@ -14,7 +13,7 @@ export class FinnhubModel {
     // }
 
     static news = () => {
-        return fetch(`https://finnhub.io/api/v1/news?category=general&token=${API}`).then(response => response.json())
+        return fetch(`${process.env.REACT_APP_FINNHUB_URL}/news?category=general&token=${API}`).then(response => response.json())
     }
 
 }

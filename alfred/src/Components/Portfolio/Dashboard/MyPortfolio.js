@@ -15,7 +15,6 @@ class MyPortfolio extends React.Component {
     // Connection opened -> Subscribe
         socket.addEventListener('open', function (event) {
         socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
-        socket.send(JSON.stringify({'type':'subscribe', 'symbol': 'MSFT'}))
         console.log('Connected to socket')
         });
 
