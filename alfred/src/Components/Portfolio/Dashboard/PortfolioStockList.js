@@ -12,7 +12,7 @@ const PortfolioStockList = (props) => {
   const [userPortList, setuserPortList] = useRecoilState(userPortListState);
 
   const handleDelete = (portId) => {
-    axios.delete(`http://localhost:4000/api/portfolio/${portId}`)
+    axios.delete(`${process.env.REACT_APP_BACKEND_PORTFOLIO_API_URL}/${portId}`)
     .then((res)=>{
       const updatedList = props.data.portfolio.filter((id) => {
       return id !== res.data.portfolio._id;
