@@ -9,7 +9,7 @@ function Landing() {
   return (
     <div className="App">
       <Header />
-      <SearchContainer />
+      {/* <SearchContainer /> */}
       <Features />
       <SubHeaders {...subHeaderOne}/>
       <SubHeaders {...subHeaderTwo}/>

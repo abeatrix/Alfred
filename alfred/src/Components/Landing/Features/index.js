@@ -19,7 +19,7 @@ const Services = () => {
                 </FeaturesCard>
                 <FeaturesCard>
                     <FeaturesIcon src='https://www.flaticon.com/svg/static/icons/svg/2534/2534215.svg'/>
-                    <FeaturesH2>Virtual Money</FeaturesH2>
+                    <FeaturesH2>Free to use</FeaturesH2>
                     <FeaturesP></FeaturesP>
                 </FeaturesCard>
             </FeaturesWrapper>

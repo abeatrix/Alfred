@@ -7,6 +7,7 @@ import {NewsSection} from './Dashboard/NewsSection'
 import {Chatroom} from '../chatbox/index'
 import {isAuth} from '../../config/auth'
 import {Portfolio} from '../Portfolio/Dashboard/Portfolio'
+import PortfolioDiversity from './Components/PortfolioDiversity'
 
 const wsMNETURL = process.env.REACT_APP_MOCK_WS
 
@@ -65,7 +66,7 @@ class PortfolioPage extends React.Component {
                         <HotIndexList
                         stocks={this.state.stocks}
                         isWsConencted={this.isWsConencted}/>
-                        {/* <PortfolioDiversity/> */}
+                        <PortfolioDiversity/>
                     </PortSideBarContainer>
 
 

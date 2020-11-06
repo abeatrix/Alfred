@@ -11,7 +11,7 @@ const HotIndexList = (props) => {
     <Card style={{ margin: "5%" }}>
         <Card.Body>
           <Table responsive>
-            <Card.Title> Hot Stock Today</Card.Title>
+            <Card.Title>Today's Market Trends</Card.Title>
             <Table responsive>
               <thead>
                 <tr>

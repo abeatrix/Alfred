@@ -62,7 +62,7 @@ const Results = (props) => {
                 userId
             });
         }).catch(err => {
-            {(err.response) ? toast.error(err.response.data.errors) : toast.error('No Idea')}
+            {(err.response) ? toast.error(err.response.data.errors) : toast.error('Please try again')}
         });
 
     }
