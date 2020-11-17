@@ -1,8 +1,7 @@
 //  HUB FOR MODELS AND DB CONNECTIONS
 const mongoose = require('mongoose');
 
-require("dotenv").config(); //USE .ENV FILE
-const connectionString = process.env.MONGODB_URL || 'mongodb://localhost:27017/alfred-db';
+const connectionString = process.env.MONGODB_URI;
 
 /* LOOKING FOR FEEDBACKS */
 mongoose.connect(connectionString, {
