@@ -1,5 +1,10 @@
 # Alfred
-A simple portfolio tracker for everyone.
+<p align="center">
+A simple portfolio tracker made for everyone.</p>
+<p align="center"><a href="https://alfred-tracks.herokuapp.com/">Link to Alfred</a></p>
+<p align="center">Demo Login Email: wahiwec858@aalyaa.com | Password: Demo2020
+</p>
+
 <img src="https://i.ibb.co/TcxHNTn/Landing-Page.png" alt="Landing-Page" border="0" width="100%">
 
 ## Problems
