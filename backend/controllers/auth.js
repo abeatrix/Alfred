@@ -11,7 +11,7 @@ const sgMail = require('@sendgrid/mail')
 require('dotenv').config()
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-exports.registerController = (req, res) => {
+exports.registerController = async (req, res) => {
     const { username, email, password } = req.body
     console.log(username, email, password)
     const errors = validationResult(req)
@@ -23,7 +23,7 @@ exports.registerController = (req, res) => {
             error: firstError
         })
     } else {
-        User.findOne({
+        await User.findOne({
             email
         }).exec((error, user) => {
             //if user exists
@@ -61,7 +61,7 @@ exports.registerController = (req, res) => {
 
         sgMail.send(emailMsg).then(sent => {
             return res.json({
-                message: `Email has been sent to ${email}`
+                message: `Email has been sent to ${email}! Please check your email for account activation link.`
             })
         }).catch(err => {
             return res.status(400).json({
@@ -73,20 +73,22 @@ exports.registerController = (req, res) => {
 }
 
 // save to database after activation
-exports.activateController = (req, res) => {
+exports.activateController = async (req, res) => {
     const { token } = req.body
     if(token){
-        jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION,
+        await jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION,
             (err, decoded) => {
                 if(err){
-                    console.log('Activation error');
+
                     return res.status(401).json({
                         errors: 'Expired Token'
                     })
+
                 } else {
+
                     //save to database
                     const { username, email, password } = jwt.decode(token);
-                    console.log(email)
+
                     const user = new User({
                         username,
                         email,
@@ -115,7 +117,7 @@ exports.activateController = (req, res) => {
     }
 }
 
-exports.loginController = async(req, res) => {
+exports.loginController = async (req, res) => {
     const errors = validationResult(req)
 
     if(!errors.isEmpty()){
@@ -171,7 +173,7 @@ exports.loginController = async(req, res) => {
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT)
 
-exports.googleController = (req, res) => {
+exports.googleController = async (req, res) => {
     //GET TOKEN
     const idToken = req.body.idToken
     console.log('GOOGLE LOGIN RESPONSE',idToken)

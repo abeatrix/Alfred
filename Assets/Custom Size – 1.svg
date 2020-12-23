@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="200" viewBox="0 0 500 200">
+  <defs>
+    <clipPath id="clip-Custom_Size_1">
+      <rect width="500" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="Custom_Size_1" data-name="Custom Size – 1" clip-path="url(#clip-Custom_Size_1)">
+    <rect width="500" height="200" fill="#fff"/>
+    <text id="Alfred" transform="translate(17 135)" fill="#50e68c" font-size="112" font-family="Sarina-Regular, Sarina"><tspan x="0" y="0">Alfred</tspan></text>
+  </g>
+</svg>
